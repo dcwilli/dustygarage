@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+
+{% block content %}
+
+
+
+</header>
+
+
+<main>
+    <!---Contains Main Content-->
+    <section class="container-fluid my-4 text-left" id="services">
+        <h3 class="display-4 mx-auto col-sm-12">{{tool.brand}} {{tool.tool_name}}</h3>
+    </section>
+
+    <!--breadcrumb-start-->
+
+    <nav aria-label="breadcrumb">
+
+        <ol class="container-fluid ml-4 breadcrumb bg-white">
+
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Garden</a></li>
+            <li class="breadcrumb-item"><a href="#">Garden Tools</a></li>
+            <li class="breadcrumb-item"><a href="#">Lawn Mowers</a></li>
+            <li class="breadcrumb-item active">Petrol Lawn Mowers</a></li>
+        </ol>
+
+    </nav>
+
+    <!-- Breadcrumb End -->
+
+
+    <!---Main Content-->
+
+    <!-- Item Description -->
+
+    <div class="container-fluid" id="itemdescription">
+
+        <div class="row p-4" style="background-color: lightgray">
+
+
+            <div class="col-sm-4">
+
+                <article id="itemimg">
+
+                    <img src={{'/static/img/' + tool.images }} class="img-fluid max-width: 30%">
+
+                </article>
+
+            </div>
+
+            <div class="col-sm-4">
+
+                <h4>{{tool.brand}} {{tool.tool_name}}</h4>
+
+
+                <p> {{tool.desc}}</p>
+
+
+
+
+            </div>
+
+            <div class="card mx-auto py-3 h-25 border-0" style="background-color: lightgray">
+
+                <div class="card-body bg-dark text-center rounded text-white">
+                    <medium class="text-white-50 ">Starting Price</medium><br>
+                    <h1 class="card-title center pricing-card-title display-3">${{tool.list_price}}</h1>
+                    {% if tool.soldStatus %}
+                    <medium class="text-white-50 ">Item Sold</medium><br>
+
+                    {% elif current_user.is_authenticated %}
+
+
+
+
+                    {% if bid_user %}
+                    <medium class="text-white-50 ">Current Bid</medium><br>
+                    <medium class="text-white-50 ">{{ current_bid_amount }}</medium><br>
+                    <button type="button" class="btn btn-light py-2 mt-4" data-toggle="modal"
+                        data-target="#bidModal">Update Bid</button>
+                    <form method="POST" action=""/tools/{0}/bid".format(tool.id)" div class="py-3">
+
+                        {{deleteForm.csrf_token}}
+                        {{deleteForm.delete_bid(value= bid_user.id )}}
+                        {{deleteForm.submit(class_="btn btn-danger")}}
+                </div>
+                </form>
+                <!-- Modal -->
+                <div class="modal fade" id="bidModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-dark">Enter a Price</h5>
+                                <div class="modal-body">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="bid-price">$</span>
+                                    </div>
+                                    <div class="input-group mt-4 mb-1">
+                                        {{wtf.quick_form(form, "/tools/{0}/bid".format(tool.id))}}
+
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% else %}
+
+
+                <button type="button" class="btn btn-light mt-4" data-toggle="modal" data-target="#bidModal">Make a
+                    Bid</button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="bidModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-dark">Enter a Price</h5>
+                                <div class="modal-body">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="bid-price">$</span>
+                                    </div>
+                                    <div class="input-group mt-4 mb-1">
+                                        {{wtf.quick_form(form, "/tools/{0}/bid".format(tool.id))}}
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% endif %}
+
+
+                {% else %}
+                <button type="button" class="btn btn-light mt-4"><a href="{{ url_for('auth.login')}}">Login
+                        to Bid</a></button>
+
+                {% endif %}
+            </div>
+
+        </div>
+
+    </div>
+
+    </div>
+    <!-- End Item Description -->
+</main>
+
+
+{% endblock %}
+</body>
+
+</html>
