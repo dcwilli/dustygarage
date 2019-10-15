@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="The Dusty Garage">
+    <title> The Dusty Garage </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <!---Contains Navigation and Logo-->
+
+    <header>
+        <!-- Start Navigation -->
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+
+                    <img class="mr-3" src="Images\customer-support.png" width="30" height="30" alt="">The Dusty
+                    Garage</a>
+
+                <div class="navbar-nav justify-content-end">
+
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+
+                        <a class="nav-item ml-4 nav-link " href="index.html">Home</a>
+
+                        <li class="nav-item dropdown">
+
+                            <a class="nav-link  dropdown-toggle" href="#" id="sellDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sell</a>
+
+                            <div class="dropdown-menu" aria-labelledby="sellDropdown">
+                                <a class="dropdown-item" href="create.html">List Your Tool</a>
+                                <a class="dropdown-item" href="manage.html">Manage Your Tools</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Coming Soon</a>
+                            </div>
+                        </li>
+
+                        <a class="nav-item nav-link" href="#">Find</a>
+                        <a class="nav-item nav-link" href="#">About</a>
+                        <a class="nav-item nav-link" href="#">Login</a>
+
+                        <form class="form-inline">
+
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+
+                            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+        </nav>
+        <!-- End Navigation -->
+
+    </header>
+
+
+    <main>
+        <!---Contains Main Content-->
+        <section class="container-fluid my-4 text-left" id="services">
+            <h3 class="display-4 mx-auto col-sm-12">Victa Lawn Mower - #4983LH</h3>
+        </section>
+
+        <!--breadcrumb-start-->
+
+        <nav aria-label="breadcrumb">
+
+            <ol class="container-fluid ml-4 breadcrumb bg-white">
+
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Garden</a></li>
+                <li class="breadcrumb-item"><a href="#">Garden Tools</a></li>
+                <li class="breadcrumb-item"><a href="#">Lawn Mowers</a></li>
+                <li class="breadcrumb-item active">Petrol Lawn Mowers</a></li>
+            </ol>
+
+        </nav>
+
+        <!-- Breadcrumb End -->
+
+
+        <!---Main Content-->
+
+        <!-- Item Description -->
+
+        <div class="container-fluid" id="itemdescription">
+
+            <div class="row p-4" style="background-color: lightgray">
+
+
+                <div class="col-sm-4">
+
+                    <article id="itemimg">
+
+                        <img src="Images\H310-1562.png" class="img-fluid max-width: 30%">
+
+                    </article>
+
+                </div>
+
+                <div class="col-sm-4">
+
+                    <h4>Victa Hurricane 2L Lawn Mower</h4>
+
+
+                    <p> Features the easy starting, quiet and
+                        efficient
+                        Briggs & Stratton 500e Series OHV engine as well as comfort grip handles and ball bearing wheels
+                        for improved mowing.</p>
+
+
+                    <ul class="txt-indent">
+
+                        <li>Mulch or Catch</li>
+
+                        <li>More powerful than standard Briggs and Stratton mowers</li>
+
+                        <li>Pull start</li>
+
+                        <li>Adjustable height</li>
+
+                        <li>Grass catcher in good condition and mulch plug</li>
+
+                        <li>Extra 2 stroke fuel (in can) also included.</li>
+
+                        <li>In very good working order and condition.</li>
+
+                    </ul>
+
+                </div>
+
+                <div class="card mx-auto py-3 h-25 border-0" style="background-color: lightgray">
+
+                    <div class="card-body bg-dark text-center rounded text-white">
+
+                        <h1 class="card-title center pricing-card-title display-3">$78</h1>
+
+                        <medium class="text-white-50 ">Starting Price</medium><br>
+
+
+
+                        <button type="button" class="btn btn-light mt-4" data-toggle="modal"
+                            data-target="#bidModal">Make a Bid</button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="bidModal" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Enter a Price</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="input-group mt-4 mb-1">
+
+                                            <div class="input-group-prepend">
+
+                                                <span class="input-group-text" id="bid-price">$</span>
+
+                                            </div>
+                                            <input type="text" class="form-control" placeholder="Enter a price">
+
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- End Item Description -->
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+        <div>
+
+            <p>Copyright &copy; 2019</p>
+
+        </div>
+
+    </footer>
+    <!-- End Footer -->
+</body>
+
+</html>
