@@ -30,7 +30,7 @@ def login():
 
         # if there is no user with matching username or password is incorrect
         if u1 is None or not check_password_hash(u1.password_hash, password):
-            flash('Incorrect Login Credentials')
+            flash(u'Incorrect Login Credentials', 'alert alert-danger')
             return redirect(url_for('auth.login'))
         login_user(u1)
 
@@ -71,7 +71,7 @@ def register():
         if user_exists:
             register_error = "The Email \"{}\" is already registered, please try another email or <a href=\"/login\" class=\"alert-link\">Login here</a>" .format(
                 email)
-            flash(Markup(register_error))
+            flash((Markup(register_error)), 'alert alert-danger')
             return redirect(url_for('auth.register'))
 
         # create a new db user
@@ -81,7 +81,9 @@ def register():
         db.session.add(new_user)
         db.session.commit()
         print('COMMITED TO DB')
-
+        register_success = "The Email \"{}\"successfully registered" .format(
+            email)
+        flash((Markup(register_success)), 'alert alert-info')
         # redirect
 
         return redirect(url_for('auth.login'))

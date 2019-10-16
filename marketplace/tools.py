@@ -54,7 +54,7 @@ def manage(id):
     print(sold_user)
 
     bid_user = ""
-    
+
     # If a user has not been marked as sold, show a list of current bids
     if sold_user == "":
         heading = "Current Bids"
@@ -122,8 +122,10 @@ def create():
 def bid(toolid):
     form = BidForm()
     tool = Tool.query.filter_by(id=toolid).first()
+    print(tool)
+    tool_id = tool.id
     tool_list_price = float(tool.list_price)
-
+    print(tool_list_price)
     user_obj = session.get('user_id')
     # check if a bid exists for this user
     bid_user = Bid.query.filter_by(user_id=user_obj, tool_id=toolid).first()
@@ -135,30 +137,41 @@ def bid(toolid):
                       tool_id=toolid, user_id=user_obj)
             bid_float = float(bid.bid_amount)
             if bid_float < tool_list_price:
-                flash('Bid amount needs to be higher than the list price')
-                print('Bid amount needs to be higher than the list price')
-            return redirect(url_for('tool.show', id=toolid))
+                flash('Bid amount needs to be higher than the list price',
+                      'alert alert-danger')
+                print('Bid amount needs to be higher than the list price',
+                      'alert alert-danger')
+                return redirect(url_for('tool.show', id=tool_id))
 
             # add and commit to bid db
             db.session.add(bid)
             db.session.commit()
-            print('Your bid has been added', 'success')
-            # flash('Bid successfully sent to seller')
+            print(u'Your bid has been added', 'success')
+            flash(u'Bid successfully sent to seller for review',
+                  'alert alert-success')
+
     else:
         if form.validate_on_submit():
             bid_id = bid_user.id
             bid = form.bidamount.data
             print(bid)
+            bid_float = float(bid)
+            if bid_float < tool_list_price:
+                flash(u'Bid amount needs to be higher than the list price', 'alert alert-danger')
+                print(u'Bid amount needs to be higher than the list price', 'alert alert-danger')
+                return redirect(url_for('tool.show', id=tool_id))
+
             # retrieve current bid
             current_bid = Bid.query.get(bid_id)
             print(current_bid)
             current_bid.bid_amount = bid
 
             db.session.commit()
-            print('Your bid has been updated', 'success')
-
+            print(u'Your bid has been updated', 'alert alert-success')
+            flash(
+                u'Success, Your updated bid has been sent to the seller for review', 'alert alert-success')
     # redirect to the item page
-    return redirect(url_for('tool.show', id=toolid))
+    return redirect(url_for('tool.show', id=tool_id))
 
 
 def check_file(form):

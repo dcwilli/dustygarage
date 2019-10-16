@@ -5,20 +5,20 @@
 <section class="jumbotron jumbotron-fluid hero-image">
 
     <h1 class="bg-base-blue col-4 text-white">Find The Perfect Tool</h1>
+    <div class="container">
+        <form class="inline-form col-sm-10">
+            <div class="input-group-lg col-sm-10">
+                {{wtf.form_field(form.landing_search, placeholder="I'm looking for...", type="text", class="form-control")}}
+            </div>
+            <div class="input-group-append">
+                {{wtf.form_field(form.landing_search_button, class="form-control btn btn-success", )}}
+            </div>
 
-    <form class="form-inline justify-content-center col-10 ">
-        <div class="input-group-lg">
-            {{wtf.form_field(form.landing_search, placeholder="I'm looking for...", class="col-10 input-group-lg form-control")}}
-        </div>
-        <div class="input-group-append">
-            {{wtf.form_field(form.landing_search_button, class="form-control btn btn-success", )}}
-        </div>
-
-        </div>
+    </div>
 
 
     </form>
-
+    </div>
 </section>
 <!-- Jumbotron Search ./ End -->
 

@@ -14,24 +14,23 @@
 
     <!-- Flash Messages -->
 
-    {% with messages = get_flashed_messages() %} {% if messages %}
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %}
     <!---Check if there are any messages-->
     <div class="container">
         <div class="row mt-3 mb-3">
             <div class="col-md-12">
-                {% for message in messages %}
+                {% for category, message in messages %}
                 <!---Loops through the messages-->
-                <div class="alert alert-danger">{{ message }}</div>
+                <div class="{{ category }}">{{ message }}</div>
                 {% endfor %}
             </div>
         </div>
     </div>
     {% endif %} {% endwith %}
-
     <!-- /End Flash Messages -->
 
     <!---Contains Main Content-->
-    <section class="container-fluid my-4 text-left" id="services">
+    <section class=" container-fluid my-4 text-left" id="services">
         <h3 class="display-4 mx-auto col-sm-12">{{tool.brand}} {{tool.tool_name}}</h3>
     </section>
 
@@ -151,9 +150,14 @@
                                         </div>
                                         <div class="input-group mt-4 mb-1">
                                             {{wtf.quick_form(form, "/tools/{0}/bid".format(tool.id))}}
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
+                                            <form method=post action="/tools/{{tool.id}}/bid">
+                                                {{form.csrf_token}}
+                                                {{form.bidamount}}
+                                                {{form.submit(class_="btn btn-primary")}} <button type="button"
+                                                    class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

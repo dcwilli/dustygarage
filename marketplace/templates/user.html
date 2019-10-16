@@ -9,25 +9,26 @@
 
     <!-- Flash Messages -->
 
-    {% with messages = get_flashed_messages() %} {% if messages %}
+    <!-- Flash Messages -->
+
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %}
     <!---Check if there are any messages-->
     <div class="container">
         <div class="row mt-3 mb-3">
             <div class="col-md-12">
-                {% for message in messages %}
+                {% for category, message in messages %}
                 <!---Loops through the messages-->
-                <div class="alert alert-danger">{{ message }}</div>
+                <div class="{{ category }}">{{ message }}</div>
                 {% endfor %}
             </div>
         </div>
     </div>
     {% endif %} {% endwith %}
-
     <!-- /End Flash Messages -->
 
 
     <!-- Render Form -->
-    <div class="container">
+    <div class=" container">
         <div class="col-md-6 pb-3">
             {{ wtf.quick_form(form, button_map={'submit':'secondary'}) }}
 
