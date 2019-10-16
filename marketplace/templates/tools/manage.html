@@ -86,19 +86,19 @@
             <!-- List of Bids -->
             <div class="col-md-6">
                 <div class="card">
-                    <h5 class="card-header">Recent Bids - {{heading}}</h5>
+                    <h5 class="card-header">{{heading}}</h5>
                     <div class="card-body p-0">
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead class="bg-light">
                                     <tr class="border-0">
-                                        <th class="border-0">Bid Id</th>
 
-                                        <th class="border-0">User Email</th>
-                                        <th class="border-0">First Name</th>
+                                        <th class="border-0">Name</th>
+                                        <th class="border-0">Email</th>
+
                                         <th class="border-0">Bid Date</th>
-                                        <th class="border-0">Bid Amount</th>
-                                        <th class="border-0">Options</th>
+                                        <th class="border-0">Amount</th>
+                                        <th class="border-0 text-center">$</th>
                                     </tr>
                                 </thead>
 
@@ -106,10 +106,8 @@
 
                                     {% for bid, user in bid_user %}
                                     <tr>
-                                        <td>{{user.id}}</td>
+                                        <td>{{bid.name}} {{bid.lastname}}</td>
                                         <th scope="row">{{bid.emailid}}</th>
-
-                                        <td>{{bid.name}} id: {{bid.id}}</td>
                                         <td>{{user.bid_date.strftime("%b %d %Y")}}</td>
                                         <td>${{user.bid_amount}}</td>
                                         <td>

@@ -15,7 +15,7 @@ class User(db.Model, UserMixin):
     tools = db.relationship('Tool', backref='user')
 
     def __repr__(self):
-        return "<Name: {}, ID: {}>".format(self.name, self.id)
+        return "<Name: {}, ID: {}, Last Name {}>".format(self.name, self.id, self.lastName)
 
 
 class Bid(db.Model):

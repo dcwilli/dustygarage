@@ -81,7 +81,7 @@ def manage(id):
         # redirect back to the manage page with refreshed list
         return redirect(url_for('tool.manage', id=id))
 
-    return render_template('tools/manage.html', soldForm=soldForm, userid=userid, tool=tool, undoForm=undoForm, bid_user=bid_user)
+    return render_template('tools/manage.html', soldForm=soldForm, userid=userid, tool=tool, heading=heading, undoForm=undoForm, bid_user=bid_user)
 
     # db_file_path = check_file(form)
 
@@ -113,6 +113,8 @@ def create():
 @bp.route('/<toolid>/bid', methods=['GET', 'POST'])
 def bid(toolid):
     form = BidForm()
+    tool = Tool.query.filter_by(id=toolid).first()
+    tool_list_price = float(tool.list_price)
 
     user_obj = session.get('user_id')
     # check if a bid exists for this user
@@ -123,6 +125,12 @@ def bid(toolid):
         if form.validate_on_submit():
             bid = Bid(bid_amount=form.bidamount.data,
                       tool_id=toolid, user_id=user_obj)
+            bid_float = float(bid.bid_amount)
+            if bid_float < tool_list_price:
+                flash('Bid amount needs to be higher than the list price')
+                print('Bid amount needs to be higher than the list price')
+            return redirect(url_for('tool.show', id=toolid))
+
             # add and commit to bid db
             db.session.add(bid)
             db.session.commit()
