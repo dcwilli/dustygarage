@@ -13,28 +13,22 @@ from wtforms.validators import InputRequired, Length, Email, EqualTo
 
 # creates the login information
 class LoginForm(FlaskForm):
-    username = StringField("User Name", validators=[
-                           InputRequired("Enter user name")])
-    password = PasswordField(
-        "Password", validators=[InputRequired("Enter user password")]
-    )
+    emailid = StringField("Email Address", validators=[
+        InputRequired('Enter email address')])
+    password = PasswordField("Password", validators=[
+                             InputRequired('Enter user password')])
     submit = SubmitField("Login")
 
 
 class RegisterForm(FlaskForm):
-    username = StringField("User Name", validators=[InputRequired()])
-    email = StringField(
-        "Email Address", validators=[Email("Please enter a valid email")]
-    )
+    name = StringField("First Name", validators=[InputRequired()])
+    lastName = StringField("Last Name", validators=[InputRequired()])
+    email = StringField("Email Address", validators=[
+                        Email("Please enter a valid email")])
 
     # linking two fields - password should be equal to data entered in confirm
-    password = PasswordField(
-        "Password",
-        validators=[
-            InputRequired(),
-            EqualTo("confirm", message="Passwords should match"),
-        ],
-    )
+    password = PasswordField("Password", validators=[InputRequired(),
+                                                     EqualTo('confirm', message="Passwords should match")])
     confirm = PasswordField("Confirm Password")
     # submit button
     submit = SubmitField("Register")

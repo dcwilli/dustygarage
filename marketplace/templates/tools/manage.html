@@ -6,7 +6,7 @@
     <!---Contains Main Content-->
     <section class="container-fluid my-4 text-left" id="services">
 
-        <h3 class="display-4 mx-auto col-sm-12">Manage Item {{ sold_user }}</h3>
+        <h3 class="display-4 mx-auto col-sm-12">Manage Item </h3>
 
     </section>
 
@@ -86,7 +86,7 @@
             <!-- List of Bids -->
             <div class="col-md-6">
                 <div class="card">
-                    <h5 class="card-header">Recent Bids - {{ heading }}</h5>
+                    <h5 class="card-header">Recent Bids - {{heading}}</h5>
                     <div class="card-body p-0">
                         <div class="table-responsive">
                             <table class="table table-striped">
@@ -121,7 +121,7 @@
                                                     <form method=post>
                                                 </button>
                                                 <div class="dropdown-menu text-center dropdown-menu-right">
-                                                    {% if tool.soldStatus %}
+                                                    {% if tool.sold_status %}
                                                     {{undoForm.csrf_token}}
                                                     {{undoForm.undoSold(value="")}}
                                                     {{undoForm.submit(class_="btn btn-danger")}}

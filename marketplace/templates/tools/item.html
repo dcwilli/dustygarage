@@ -83,87 +83,81 @@
                     <medium class="text-white-50 ">{{ current_bid_amount }}</medium><br>
                     <button type="button" class="btn btn-light py-2 mt-4" data-toggle="modal"
                         data-target="#bidModal">Update Bid</button>
-                    <form method="POST" action=""/tools/{0}/bid".format(tool.id)" div class="py-3">
 
-                        {{deleteForm.csrf_token}}
-                        {{deleteForm.delete_bid(value= bid_user.id )}}
-                        {{deleteForm.submit(class_="btn btn-danger")}}
-                </div>
-                </form>
-                <!-- Modal -->
-                <div class="modal fade" id="bidModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title text-dark">Enter a Price</h5>
-                                <div class="modal-body">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="bid-price">$</span>
-                                    </div>
-                                    <div class="input-group mt-4 mb-1">
-                                        {{wtf.quick_form(form, "/tools/{0}/bid".format(tool.id))}}
+                    <!-- Modal -->
+                    <div class="modal fade" id="bidModal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-dark">Enter a Price</h5>
+                                    <div class="modal-body">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="bid-price">$</span>
+                                        </div>
+                                        <div class="input-group mt-4 mb-1">
+                                            {{wtf.quick_form(form, "/tools/{0}/bid".format(tool.id))}}
 
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                {% else %}
+                    {% else %}
 
 
-                <button type="button" class="btn btn-light mt-4" data-toggle="modal" data-target="#bidModal">Make a
-                    Bid</button>
+                    <button type="button" class="btn btn-light mt-4" data-toggle="modal" data-target="#bidModal">Make a
+                        Bid</button>
 
-                <!-- Modal -->
-                <div class="modal fade" id="bidModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title text-dark">Enter a Price</h5>
-                                <div class="modal-body">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="bid-price">$</span>
-                                    </div>
-                                    <div class="input-group mt-4 mb-1">
-                                        {{wtf.quick_form(form, "/tools/{0}/bid".format(tool.id))}}
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="bidModal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-dark">Enter a Price</h5>
+                                    <div class="modal-body">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="bid-price">$</span>
+                                        </div>
+                                        <div class="input-group mt-4 mb-1">
+                                            {{wtf.quick_form(form, "/tools/{0}/bid".format(tool.id))}}
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    {% endif %}
+
+
+                    {% else %}
+                    <button type="button" class="btn btn-light mt-4"><a href="{{ url_for('auth.login')}}">Login
+                            to Bid</a></button>
+
+                    {% endif %}
                 </div>
 
-                {% endif %}
-
-
-                {% else %}
-                <button type="button" class="btn btn-light mt-4"><a href="{{ url_for('auth.login')}}">Login
-                        to Bid</a></button>
-
-                {% endif %}
             </div>
 
         </div>
-
-    </div>
 
     </div>
     <!-- End Item Description -->

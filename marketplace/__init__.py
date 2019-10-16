@@ -49,6 +49,9 @@ def create_app():
 
     app.register_blueprint(auth.bp)
 
+    from . import tools
+    app.register_blueprint(tools.bp)
+
     @app.errorhandler(404)
     def not_found(e):
         heading = "404"
