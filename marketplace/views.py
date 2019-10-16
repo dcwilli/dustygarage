@@ -2,6 +2,7 @@ from flask import Blueprint, flash, render_template, request, url_for, redirect
 from flask_login import login_required
 from flask import session as login_session
 from flask import session
+from sqlalchemy import desc
 from .models import User, Bid, Tool
 from .forms import LoginForm, RegisterForm, CreateForm, SearchForm, Results, LandingForm
 import sqlalchemy as db
@@ -19,7 +20,7 @@ bp = Blueprint("main", __name__)
 
 @bp.route("/", methods=["GET", "POST"])
 def index():
-    print()
+    tools = Tool.query.order_by(desc(Tool.date_created)).limit(4).all()
     form_land = LandingForm()
     print("Form has not validated")
     search_results = []
@@ -41,7 +42,7 @@ def index():
         table.border = True
         # del input_string
         return render_template("results.html", form=search, table=table)
-    return render_template("index.html", form=form_land)
+    return render_template("index.html", form=form_land, tools=tools)
 
 
 @bp.route("/results", methods=["GET", "POST"])

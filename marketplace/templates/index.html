@@ -8,7 +8,7 @@
 
     <form class="form-inline justify-content-center col-10 ">
         <div class="input-group-lg">
-            {{wtf.form_field(form.landing_search, placeholder="I'm looking for...", class="col-10 form-control")}}
+            {{wtf.form_field(form.landing_search, placeholder="I'm looking for...", class="col-10 input-group-lg form-control")}}
         </div>
         <div class="input-group-append">
             {{wtf.form_field(form.landing_search_button, class="form-control btn btn-success", )}}
@@ -30,26 +30,42 @@
 
     <section>
 
-        <div class="text-dark ">
-            <h2 class="col-sm-12 ">Popular Items</h2>
+        <div class="text-dark">
+            <h3 class="col-sm-12 ">Recently Listed Items</h3>
         </div>
+        <div class="container">
+            <div class="card-deck my-4">
+                {% for tool in tools %}
 
-        <div class="card-deck ">
-            {% for tool in tools %}
-            <div class="card ">
-                <img class="card-img-top " src={{ '../static/img/' + tool.image }} alt="Tool Image ">
+                <div class="card border-dark">
+                    <div class="card-header bg-base-blue text-white border-dark">
+                        <h5 class="card-title">{{tool.tool_name}}</h5>
+                    </div>
 
-                <div class="card-body ">
-                    <h4 class="card-title ">{{tool.name}}</h4>
-                    <p class="card-text ">{{tool.description}}</p>
+                    <div class="card-body">
+                        <img class="card-img-top mx-auto" src={{'../static/img/' + tool.images }} alt="Tool Image">
+
+                        <p class="card-text d-inline-block text-truncate pt-3" style="max-width: 200px;">{{tool.desc}}
+                        </p>
+
+                    </div>
+                    <div class="text-center text-inline">
+
+                        <div class="card-footer bg-base-blue text-white border-dark">
+                            <h5> Starting Price </h5>
+
+                            <h5 class="font-face"> {{tool.list_price}}</h5>
+                            <hr><a href="{{'/tools/' + tool.id }}" class="btn btn-bg-dp mx-auto btn-inline">Make a
+                                Bid</a>
+
+                        </div>
+                    </div>
+
                 </div>
-                <div class="card-footer ">
-                    <a href="# " class="btn btn-primary ">More Info</a>
-                </div>
+                {% endfor %}
+
+
             </div>
-            {% endfor %}
-
-
         </div>
     </section>
     <!-- Services -->

@@ -95,7 +95,7 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <div class="dropdown-header">Manage</div>
-                                <a class="dropdown-item" href="#">List a
+                                <a class="dropdown-item" href="{{ url_for('tool.create') }}">List a
                                     Tool</a>
                                 <a class="dropdown-item" href="manage">Manage Your
                                     Tools</a>
@@ -106,8 +106,8 @@
 
                         {% else %}
 
-                        <a class="nav-item font-weight-bold text-light-blue nav-link" href="#"><i
-                                class="fas fa-dollar-sign"></i> List a Tool</a>
+                        <a class="nav-item font-weight-bold text-light-blue nav-link"
+                            href="{{ url_for('tool.create') }}"><i class="fas fa-dollar-sign"></i> List a Tool</a>
 
                         <a class="nav-item font-weight-bold text-light-blue nav-link"
                             href="{{ url_for('auth.login') }}"><i class="far fa-user-circle"></i> Login</a>
