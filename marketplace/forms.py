@@ -6,6 +6,7 @@ from wtforms.fields import (
     StringField,
     PasswordField,
     SelectField,
+    HiddenField
 )
 from wtforms.validators import InputRequired, Length, Email, EqualTo
 
@@ -78,3 +79,18 @@ class Results(Table):
     brand = Col("brand")
     date = DateCol("date")
     sold = Col("sold")
+
+
+class MarkSold(FlaskForm):
+    bid_user_id = HiddenField('bid_user id', '{{user.user_id}}')
+    submit = SubmitField("Mark as Sold")
+
+
+class UndoSold(FlaskForm):
+    undoSold = HiddenField('bid_user_id')
+    submit = SubmitField("Undo")
+
+
+class BidForm(FlaskForm):
+    bidamount = StringField("Bid Amount", validators=[InputRequired()])
+    submit = SubmitField("Submit Bid")

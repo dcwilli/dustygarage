@@ -1,7 +1,7 @@
 from flask import (Blueprint, flash, render_template, session,
                    request, url_for, redirect)
 from .models import Tool, Bid, User
-from .forms import ToolForm, BidForm, MarkSold, UndoSold, DeleteBid
+from .forms import BidForm, MarkSold, UndoSold, CreateForm
 from flask_login import login_user, login_required, logout_user
 from werkzeug.utils import secure_filename
 import os
@@ -9,103 +9,100 @@ from . import db
 
 bp = Blueprint('tool', __name__, url_prefix='/tools')
 
-# create a page that will show the details for the destination
+# create a page that will show the details of the tools
 @bp.route('/<id>', methods=["POST", "GET"])
 def show(id):
-    deleteForm = DeleteBid(request.form)
+    bform = BidForm()
     user_obj = session.get('user_id')
     tool = Tool.query.filter_by(id=id).first()
-    bid_user = Bid.query.filter_by(user_id=user_obj, tool_id=id).first()
-    button_text = "Make a bid"
-    current_bid_amount = ""
-    print('current logged in user has the following bids for this item:')
-    print(bid_user)
     print(tool)
-    bform = BidForm()
+    bid_user = Bid.query.filter_by(user_id=user_obj, tool_id=id).first()
+    current_bid_amount = ""
+
+    # if the current logged in user has made a bid on this item, pass the amount
     if bid_user is not None:
         current_bid_amount = bid_user.bid_amount
-        # validate the delete bid form
-    if request.method == "POST":
-        bid_id = deleteForm.delete_bid.data
-        print("BID ID:")
-        print(bid_id)
-        Bid.query.filter(id == bid_id).delete()
-        db.session.commit()
-        print('DELETED FROM DB')
 
-    return render_template('tools/item.html', tool=tool, deleteForm=deleteForm, form=bform, button_text=button_text, bid_user=bid_user, current_bid_amount=current_bid_amount)
+    return render_template('tools/item.html', tool=tool, form=bform, bid_user=bid_user, current_bid_amount=current_bid_amount)
 
 
 @bp.route('/<id>/manage', methods=["POST", "GET"])
+@login_required
 def manage(id):
     soldForm = MarkSold(request.form)
-    heading = "Not sure yet"
     undoForm = UndoSold(request.form)
+
+    # get the user id from the current session
     userid = session.get('user_id')
+
+    # get the current tool details passed through the url
     tool = Tool.query.filter_by(id=id).first()
+
+    # pass the sold status of the item
     sold_user = tool.soldStatus
-    print('sold user ID&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
-    print(sold_user)
     bid_user = ""
+
+    # If a user has not been marked as sold, show a list of current bids
     if sold_user == "":
-        heading = "Printout of all unallocated bids"
+        heading = "Current Bids"
         print(heading)
         bid_user = db.session.query(User, Bid).join(
             Bid).filter_by(tool_id=id).all()
-        print('sold user is none$$$$$$$ / Bid User:')
+        print('Current Bids')
         print(bid_user)
-        print(tool)
+
+    # If a user has been marked as sold, show the details of that user and bid
     if sold_user != "":
+        heading = "Bid sold to:"
+
+        # join the user and bid table
         bid_user = db.session.query(User, Bid).filter(
             Bid.user_id == User.id).filter(Bid.tool_id == Tool.id).filter(Tool.soldStatus == Bid.id).all()
-        print(" allocatted bids - should be sold")
+
         print(bid_user)
 
+    # User submits a mark as sold OR undo
     if request.method == "POST":
+
+        # pass the form details
         bid_userid = soldForm.bid_user_id.data
-        print("bid_userid#######################")
-        print(bid_userid)
+
+        # update and commit the db tool soldStatus column
         update_tool = Tool.query.get(id)
-        print(update_tool)
-        print("888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888")
         update_tool.soldStatus = bid_userid
-
-        # print(soldForm.userid.data)
-
-        # db.session.add(sold_id)
         db.session.commit()
         print('COMMITED TO DB')
-        print(tool)
+
+        # redirect back to the manage page with refreshed list
         return redirect(url_for('tool.manage', id=id))
 
     return render_template('tools/manage.html', soldForm=soldForm, userid=userid, tool=tool, undoForm=undoForm, bid_user=bid_user)
 
+    # db_file_path = check_file(form)
 
-@bp.route('/create', methods=['GET', 'POST'])
+
+@bp.route("/create", methods=["GET", "POST"])
 @login_required
 def create():
-    form = ToolForm()
+    form = CreateForm()
+
     if form.validate_on_submit():
-        print('Successfully validated form entries')
-
-        db_file_path = check_file(form)
-
-        # retrive form data and push to the db
-        new_tool = Tool(tool_name=form.name.data,
-                        brand=form.brand.data,
-                        list_price=form.listingPrice.data,
-                        images=db_file_path,
-                        category=form.category.data,
-                        desc=form.description.data,
-                        userid=session.get('user_id'))
-
-        # return redirect(url_for('tool.create'))
+        print("Form validated")
+        new_tool = Tool(
+            title=form.title.data,
+            modelNo=form.modelNo.data,
+            price=form.price.data,
+            category=form.category.data,
+            user_id=session.get("user_id"),
+            description=form.description.data,
+            brand=form.brand.data,
+        )
         db.session.add(new_tool)
+
         db.session.commit()
-        print('COMMITED TO DB')
-        flash('Tool successfully created')
-        return redirect(url_for('tool.create'))
-    return render_template('tools/create.html', form=form)
+        return redirect(url_for("tool.create"))
+
+    return render_template("tools/create.html", form=form)
 
 
 @bp.route('/<toolid>/bid', methods=['GET', 'POST'])

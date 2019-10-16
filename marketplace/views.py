@@ -44,36 +44,6 @@ def index():
     return render_template("index.html", form=form_land)
 
 
-@bp.route("/manage")
-@login_required
-def manage():
-    return render_template("manage.html")
-
-
-@bp.route("/create", methods=["GET", "POST"])
-@login_required
-def create():
-    form = CreateForm()
-
-    if form.validate_on_submit():
-        print("Form validated")
-        new_tool = Tool(
-            title=form.title.data,
-            modelNo=form.modelNo.data,
-            price=form.price.data,
-            category=form.category.data,
-            user_id=session.get("user_id"),
-            description=form.description.data,
-            brand=form.brand.data,
-        )
-        db.session.add(new_tool)
-
-        db.session.commit()
-        return redirect(url_for("main.create"))
-
-    return render_template("create.html", form=form)
-
-
 @bp.route("/results", methods=["GET", "POST"])
 def search():
 
@@ -99,4 +69,3 @@ def search():
         return render_template("results.html", form=search, table=table)
 
     return render_template("results.html", form=search)
-
