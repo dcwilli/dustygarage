@@ -65,14 +65,14 @@ class LandingForm(FlaskForm):
 
 
 class Results(Table):
-    title = Col("title")
+    tool_name = Col("title")
     modelNo = Col("modelNo")
-    price = Col("price")
+    list_price = Col("price")
     category = Col("category")
-    description = Col("description")
+    desc = Col("description")
     brand = Col("brand")
-    date = DateCol("date")
-    sold = Col("sold")
+    date_created = DateCol("date")
+    sold_status = Col("sold")
 
 
 class MarkSold(FlaskForm):

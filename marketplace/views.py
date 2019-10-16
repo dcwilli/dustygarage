@@ -31,7 +31,7 @@ def index():
 
         all_tools = Tool.query.all()
         for tool in all_tools:
-            if re.search(search_string, tool.title):
+            if re.search(search_string, tool.tool_name):
                 search_results.append(tool)
 
         print("Below is Search results")
@@ -57,7 +57,7 @@ def search():
         if search_string != "":
             all_tools = Tool.query.all()
             for tool in all_tools:
-                if re.search(search_string, tool.title):
+                if re.search(search_string, tool.tool_name):
                     search_results.append(tool)
         else:
             print("This string is empty")

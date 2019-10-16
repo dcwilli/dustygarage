@@ -43,7 +43,7 @@ class Tool(db.Model):
     desc = db.Column(db.String(100))
     brand = db.Column(db.String(100))
     date_created = db.Column(db.DateTime, default=datetime.now())
-    sold_status = db.Column(db.String(100), default="No")
+    sold_status = db.Column(db.String(100), default="")
 
     bid_id = db.relationship('Bid', backref='tools')
 

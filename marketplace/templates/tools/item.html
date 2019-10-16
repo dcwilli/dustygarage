@@ -42,10 +42,10 @@
         <ol class="container-fluid ml-4 breadcrumb bg-white">
 
             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Garden</a></li>
-            <li class="breadcrumb-item"><a href="#">Garden Tools</a></li>
-            <li class="breadcrumb-item"><a href="#">Lawn Mowers</a></li>
-            <li class="breadcrumb-item active">Petrol Lawn Mowers</a></li>
+            <li class="breadcrumb-item"><a href="#">{{tool.category}}</a></li>
+            <li class="breadcrumb-item"><a href="#">{{tool.brand}}</a></li>
+            <li class="breadcrumb-item"><a href="#">{{tool.tool_name}}</a></li>
+
         </ol>
 
     </nav>
@@ -88,7 +88,8 @@
 
                 <div class="card-body bg-dark text-center rounded text-white">
                     <medium class="text-white-50 ">Starting Price</medium><br>
-                    <h1 class="card-title center pricing-card-title display-3">${{tool.list_price}}</h1>
+                    <h1 class="card-title center pricing-card-title display-3">
+                        {{list_price}}</h1>
                     {% if tool.soldStatus %}
                     <medium class="text-white-50 ">Item Sold</medium><br>
 

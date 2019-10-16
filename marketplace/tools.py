@@ -4,6 +4,7 @@ from .models import Tool, Bid, User
 from .forms import BidForm, MarkSold, UndoSold, CreateForm
 from flask_login import login_user, login_required, logout_user
 from werkzeug.utils import secure_filename
+from decimal import Decimal, getcontext
 import os
 from . import db
 
@@ -16,6 +17,14 @@ def show(id):
     user_obj = session.get('user_id')
     tool = Tool.query.filter_by(id=id).first()
     print(tool)
+    list_price = tool.list_price
+
+    # format list price for whole numbers and decimals
+    if list_price.is_integer():
+        list_price = '${:.0f}'.format(list_price)
+    else:
+        list_price = '${:,.2f}'.format(tool.list_price)
+
     bid_user = Bid.query.filter_by(user_id=user_obj, tool_id=id).first()
     current_bid_amount = ""
 
@@ -23,7 +32,7 @@ def show(id):
     if bid_user is not None:
         current_bid_amount = bid_user.bid_amount
 
-    return render_template('tools/item.html', tool=tool, form=bform, bid_user=bid_user, current_bid_amount=current_bid_amount)
+    return render_template('tools/item.html', tool=tool, list_price=list_price, form=bform, bid_user=bid_user, current_bid_amount=current_bid_amount)
 
 
 @bp.route('/<id>/manage', methods=["POST", "GET"])
