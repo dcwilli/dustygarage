@@ -54,8 +54,7 @@ def manage(id):
     print(sold_user)
 
     bid_user = ""
-    # print("sold user:")
-    # print(sold_user)
+    
     # If a user has not been marked as sold, show a list of current bids
     if sold_user == "":
         heading = "Current Bids"
@@ -99,7 +98,7 @@ def manage(id):
 @login_required
 def create():
     form = CreateForm()
-
+    heading = "List an Item"
     if form.validate_on_submit():
         print("Form validated")
         new_tool = Tool(
@@ -116,7 +115,7 @@ def create():
         db.session.commit()
         return redirect(url_for("tool.create"))
 
-    return render_template("tools/create.html", form=form)
+    return render_template("tools/create.html", form=form, heading=heading)
 
 
 @bp.route('/<toolid>/bid', methods=['GET', 'POST'])

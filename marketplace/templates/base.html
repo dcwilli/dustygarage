@@ -88,7 +88,8 @@
                         {% if current_user.is_authenticated %}
 
                         <div class="btn-group">
-                            <button type="button" class="btn btn-light text-black">{{ current_user.name }}</button>
+                            <button type="button" class="btn btn-light text-black"><i class="far fa-user-circle"></i>
+                                {{ current_user.name }}</button>
                             <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split"
                                 data-toggle="dropdown">
                                 <span class="sr-only">Toggle Dropdown</span>
