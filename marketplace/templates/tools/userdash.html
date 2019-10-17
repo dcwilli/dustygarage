@@ -120,18 +120,17 @@
 
                                     <tbody>
 
-                                        {% for tool in tool %}
+                                        {% for bid, tool in bids %}
                                         <tr>
-                                            <td>{{tool.id}}</td>
-                                            <td>{{tool.date_created.strftime("%b %d %Y")}}</td>
-                                            <th scope="row">${{tool.list_price}}</th>
+                                            <td>{{bid.tool_name}}</td>
+                                            <td>{{tool.bid_date.strftime("%b %d %Y")}}</td>
+                                            <th scope="row">${{bid.list_price}}</th>
                                             <td>Not Availiable</td>
                                             <td> <img class="img-fluid img-thumbnail" style="max-width: 70px;"
-                                                    src={{'/static/img/' + tool.images }}></td>
+                                                    src={{'/static/img/' + bid.images }}></td>
                                             <td>
-                                                <form><a href="{{'/tools/' + tool.id + '/manage'}}"><button
-                                                            type="button" onclick="login"
-                                                            class=" btn btn-light mt-4">More
+                                                <form><a href="{{'/tools/' + bid.id}}"><button type="button"
+                                                            onclick="login" class=" btn btn-light mt-4">More
                                                             Details</button></a>
                                                 </form>
                                             </td>

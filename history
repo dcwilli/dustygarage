@@ -1,0 +1,21 @@
+unsold = ""
+
+    tool = Tool.query.filter(
+        Tool.sold_status != unsold).filter_by(user_id=userid).all()
+    print(tool)
+
+    # query db for bids current user has made
+    bids = db.session.query(Tool, Bid).join(
+        Bid).filter_by(user_id=userid).all()
+    print(bids)
+    current_user = session.get('user_id')
+
+
+
+
+
+    # if tool_owner == user_obj:
+            #     flash('You already own this item, sell it to someone else',
+            #           'alert alert-danger')
+            #     print('You already own this item, sell it to someone else',
+            #           'alert alert-danger')
