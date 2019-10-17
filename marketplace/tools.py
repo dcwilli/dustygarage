@@ -1,3 +1,4 @@
+import datetime
 from flask import (Blueprint, flash, render_template, session,
                    request, url_for, redirect)
 from .models import Tool, Bid, User
@@ -33,6 +34,28 @@ def show(id):
         current_bid_amount = bid_user.bid_amount
 
     return render_template('tools/item.html', tool=tool, list_price=list_price, form=bform, bid_user=bid_user, current_bid_amount=current_bid_amount)
+
+
+@bp.route('/userdash/<userid>', methods=["POST", "GET"])
+@login_required
+def userdash(userid):
+
+    print(userid)
+    # query db for tools current user has listed
+    tool = Tool.query.filter_by(user_id=userid).all()
+    print(tool)
+
+    # query db for bids current user has made
+    bids = db.session.query(Tool, Bid).join(
+        Bid).filter_by(user_id=userid).all()
+    print(bids)
+    current_user = session.get('user_id')
+
+    # if the url userid does not match the logged in user - log them out
+    # if current_user != userid:
+    #     return redirect(url_for('auth.logout'))
+
+    return render_template('tools/userdash.html', userid=userid, tool=tool, bids=bids)
 
 
 @bp.route('/<id>/manage', methods=["POST", "GET"])
@@ -157,8 +180,10 @@ def bid(toolid):
             print(bid)
             bid_float = float(bid)
             if bid_float < tool_list_price:
-                flash(u'Bid amount needs to be higher than the list price', 'alert alert-danger')
-                print(u'Bid amount needs to be higher than the list price', 'alert alert-danger')
+                flash(u'Bid amount needs to be higher than the list price',
+                      'alert alert-danger')
+                print(u'Bid amount needs to be higher than the list price',
+                      'alert alert-danger')
                 return redirect(url_for('tool.show', id=tool_id))
 
             # retrieve current bid

@@ -154,41 +154,46 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title text-dark">Enter a Price</h5>
-                            <div class="modal-body">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="bid-price">$</span>
-                                </div>
-                                <div class="input-group mt-4 mb-1">
-                                    {{wtf.quick_form(form, "/tools/{0}/bid".format(tool.id))}}
-                                    <form method=post action="/tools/{{tool.id}}/bid">
-                                        {{form.csrf_token}}
-                                        {{form.bidamount}}
-                                        {{form.submit(class_="btn btn-primary")}} <button type="button" class="close"
-                                            data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </form>
+                            <h5 class="modal-title text-dark">Update your Bid</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="input-group justify-content-center py-3 my-3">
+
+                                <form method=post action="/tools/{{tool.id}}/bid">
+
+                                    {{form.csrf_token}}
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="bid-price">$</span>
+
+                                        {{form.bidamount(placeholder="Enter an amount", class_="form-control")}}
+
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="input-group float-right">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    {{form.submit(class_="btn btn-primary mx-2")}}
                                 </div>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            </form>
+
                         </div>
                     </div>
                 </div>
+
             </div>
-
-            {% endif %}
-
-
-            {% else %}
-            <button type="button" class="btn btn-light mt-4"><a href="{{ url_for('auth.login')}}">Login
-                    to Bid</a></button>
-
-            {% endif %}
         </div>
+    </div>
+
+    {% endif %}
+
+
+    {% else %}
+    <form><a href="/login"><button type="button" onclick="login" class=" btn btn-light mt-4">Login
+                to Bid</button></a>
+    </form>
+    {% endif %}
+    </div>
 
     </div>
 

@@ -48,6 +48,6 @@ class Tool(db.Model):
     bid_id = db.relationship('Bid', backref='tools')
 
     def __repr__(self):
-        return "<Tool Name: {}, Tool ID: {}, Brand: {}, sold_status: {}>".format(
-            self.tool_name, self.id, self.brand, self.sold_status
+        return "\n\n<Tool Name: {}\n Tool ID: {}\n Brand: {}\n sold_status: {}\n User Id: {} \nImages: {}>\n".format(
+            self.tool_name, self.id, self.brand, self.sold_status, self.user_id, self.images
         )
