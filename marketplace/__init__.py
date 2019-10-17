@@ -22,19 +22,14 @@ def create_app():
     # initialize db with flask app
     db.init_app(app)
 
-    app.config.from_mapping(
-        # Flask-SQLAlchemy settings
-        SQLALCHEMY_DATABASE_URI=os.environ['DATABASE_URL'],
-
-
-    bootstrap=Bootstrap(app)
+    bootstrap = Bootstrap(app)
 
     # initialize the login manager
-    login_manager=LoginManager()
+    login_manager = LoginManager()
 
     # set the name of the login function that lets user login
     # in our case it is auth.login (blueprintname.viewfunction name)
-    login_manager.login_view="auth.login"
+    login_manager.login_view = "auth.login"
     login_manager.init_app(app)
 
     # create a user loader function takes userid and returns User
@@ -59,15 +54,15 @@ def create_app():
 
     @app.errorhandler(404)
     def not_found(e):
-        heading="404"
-        image="static/img/404.png"
+        heading = "404"
+        image = "static/img/404.png"
 
         return render_template("error.html", heading=heading, image=image), 404
 
     @app.errorhandler(500)
     def server_error(e):
-        heading="500, Internal Server Error"
-        image="static/img/500.png"
+        heading = "500, Internal Server Error"
+        image = "static/img/500.png"
         return render_template("error.html", heading=heading, image=image), 500
 
     return app
