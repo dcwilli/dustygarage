@@ -15,8 +15,11 @@ bp = Blueprint('tool', __name__, url_prefix='/tools')
 @bp.route('/<id>', methods=["POST", "GET"])
 def show(id):
     bform = BidForm()
+
     user_obj = session.get('user_id')
+
     tool = Tool.query.filter_by(id=id).first()
+
     print(tool)
     list_price = tool.list_price
 
