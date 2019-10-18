@@ -14,13 +14,18 @@ bp = Blueprint('tool', __name__, url_prefix='/tools')
 # create a page that will show the details of the tools
 @bp.route('/<id>', methods=["POST", "GET"])
 def show(id):
+
     bform = BidForm()
 
     user_obj = session.get('user_id')
 
     tool = Tool.query.filter_by(id=id).first()
-
     print(tool)
+
+    # check that the product exists in the DB
+    if tool == None:
+        return redirect('../not_found')
+
     list_price = tool.list_price
 
     # format list price for whole numbers and decimals
