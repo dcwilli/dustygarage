@@ -14,3 +14,9 @@ def userdash(userid):
     print(tool)
 
     return render_template('tools/sellhistory.html', userid=userid, tool=tool, bids=bids)
+
+
+
+#in html iterate over bootstrap table
+
+
