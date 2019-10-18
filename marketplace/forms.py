@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from flask_table import Table, Col, BoolCol, DateCol
+# from flask_table import Table, Col, BoolCol, DateCol
 from wtforms.fields import (
     TextAreaField,
     SubmitField,
@@ -64,15 +64,15 @@ class LandingForm(FlaskForm):
     landing_search_button = SubmitField("Search")
 
 
-class Results(Table):
-    tool_name = Col("title")
-    modelNo = Col("modelNo")
-    list_price = Col("price")
-    category = Col("category")
-    desc = Col("description")
-    brand = Col("brand")
-    date_created = DateCol("date")
-    sold_status = Col("sold")
+# class Results(Table):
+#     tool_name = Col("title")
+#     modelNo = Col("modelNo")
+#     list_price = Col("price")
+#     category = Col("category")
+#     desc = Col("description")
+#     brand = Col("brand")
+#     date_created = DateCol("date")
+#     sold_status = Col("sold")
 
 
 class MarkSold(FlaskForm):
