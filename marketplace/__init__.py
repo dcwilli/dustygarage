@@ -22,7 +22,7 @@ def create_app():
     #app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///marketplace.sqlite"
     # Flask-SQLAlchemy settings
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['HEROKU_POSTGRESQL_ROSE_URL']
 
     # initialize db with flask app
     db.init_app(app)
