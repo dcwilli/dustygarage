@@ -126,8 +126,8 @@
                                                     {{undoForm.submit(class_="btn btn-danger")}}
                                                     {% else %}
                                                     {{soldForm.csrf_token}}
-                                                    {{soldForm.bid_user_id(value= bid.user_id )}}
-                                                    userr id: {{bid.user_id}}
+                                                    {{soldForm.bid_user_id(value= user.user_id )}}
+                                                    userr id: {{user.user_id}}
                                                     {{soldForm.submit(class_="btn btn-secondary")}}
                                                     {% endif %}
                                                 </div>
