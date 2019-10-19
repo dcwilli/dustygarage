@@ -101,7 +101,7 @@ def manage(id):
         print(heading)
         # join the user and bid table
         bid_user = db.session.query(User, Bid).filter(
-            Bid.user_id == User.id).filter(Bid.tool_id == Tool.id).filter(Tool.sold_status == Bid.id).all()
+            Bid.user_id == User.id).filter(Bid.tool_id == Tool.id).filter(Tool.sold_status == User.id).all()
 
         print(bid_user)
 
