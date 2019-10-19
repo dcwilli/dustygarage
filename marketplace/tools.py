@@ -106,17 +106,22 @@ def manage(id):
             Bid.user_id == User.id).filter(Bid.tool_id == Tool.id).filter(Tool.sold_status == Bid.user_id).all()
 
     # User submits a mark as sold OR undo
-    if request.method == "POST":
-
-        # pass the form details
+    # if request.method == "POST":
+    if soldForm.submit.data and soldForm.validate_on_submit():
         form_input = soldForm.bid_user_id.data
-        print("Form Input Data$$$$$$$$$$$$$$$$$$$$$$$$$:")
+        print("Form Input:")
         print(form_input)
-        # update and commit the db tool soldStatus column
         update_tool = Tool.query.get(id)
         update_tool.sold_status = form_input
-        print("updated row details:")
-        print(update_tool)
+        db.session.commit()
+        print('COMMITED TO DB')
+
+    if undoForm.submit.data and undoForm.validate_on_submit():
+        form_input = undoForm.undoSold.data
+        print("Form Input:")
+        print(form_input)
+        update_tool = Tool.query.get(id)
+        update_tool.sold_status = form_input
         db.session.commit()
         print('COMMITED TO DB')
 
