@@ -118,7 +118,7 @@ def manage(id):
             print(bid_userid)
         # update and commit the db tool soldStatus column
         update_tool = Tool.query.get(id)
-        update_tool.sold_status = bid_userid
+        update_tool.sold_status = 6
         print("updated row details:")
         print(update_tool)
         db.session.commit()
