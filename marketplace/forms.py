@@ -49,7 +49,7 @@ class CreateForm(FlaskForm):
             ("Other Tools", "Other Tools"),
         ],
     )
-    description = StringField("Description", validators=[InputRequired()])
+    desc = StringField("Description", validators=[InputRequired()])
     brand = StringField("Brand", validators=[InputRequired()])
     submit = SubmitField("Create")
 
