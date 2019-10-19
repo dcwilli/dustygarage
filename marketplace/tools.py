@@ -85,7 +85,7 @@ def manage(id):
     print(sold_user)
 
     bid_user = None
-    set_to_zero = 2
+    set_to_zero = "2"
     # If a user has not been marked as sold, show a list of current bids
     if sold_user == 0:
         print("THIS ITEM HAS ***NOT*** BEEN SOLD")
