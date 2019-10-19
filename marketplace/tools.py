@@ -95,7 +95,7 @@ def manage(id):
         print('Current Bids')
         print(bid_user)
 
-    # If a user has been marked as sold, show the details of that user and bid
+    # If a user has been marked as sold, show the details of that user and bid#
     if sold_user != "":
         heading = "Bid sold to:"
         print(heading)
