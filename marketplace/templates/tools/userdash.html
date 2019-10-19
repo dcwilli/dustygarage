@@ -76,7 +76,7 @@
                                             <td> <img class="img-fluid img-thumbnail" style="max-width: 70px;"
                                                     src={{'/static/img/' + tool.images }}></td>
                                             <td>
-                                                <form><a href="{{'/tools/' + tool.id + '/manage'}}"><button
+                                                <form><a href="{{'/tools/{}/manage'.format(tool.id)}}"><button
                                                             type="button" onclick="login"
                                                             class=" btn btn-light mt-4">More
                                                             Details</button></a>
