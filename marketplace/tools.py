@@ -85,7 +85,7 @@ def manage(id):
     print("Current Logged in user:")
     print(userid)
 
-    if tool_user != userid:
+    if userid != tool_user:
         return redirect('../not_found')
 
     # pass the sold status of the item
