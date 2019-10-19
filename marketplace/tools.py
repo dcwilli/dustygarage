@@ -99,7 +99,7 @@ def manage(id):
     if sold_user != 0:
         print("THIS ITEM HAS BEEN SOLD")
 
-        # join the user and bid table
+        # join the user and bid table l
         bid_user = db.session.query(User, Bid).filter(
             Bid.user_id == User.id).filter(Bid.tool_id == Tool.id).filter(Tool.sold_status == Bid.user_id).all()
 
