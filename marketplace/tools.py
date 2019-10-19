@@ -74,18 +74,18 @@ def manage(id):
 
     # get the user id from the current session
     userid = session.get('user_id')
-
+    intuserid = int(userid)
     # get the current tool details passed through the url
     tool = Tool.query.filter_by(id=id).first()
     print("tool details:")
     print(tool)
-    tool_user = tool.user_id
+    tool_user = int(tool.user_id)
     print("Tool Listed By:")
     print(tool_user)
     print("Current Logged in user:")
     print(userid)
 
-    if userid == tool_user:
+    if intuserid != tool_user:
         print("users do not match")
         return redirect('../not_found')
 
