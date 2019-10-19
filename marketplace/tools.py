@@ -114,7 +114,7 @@ def manage(id):
             db.session.commit()
             print('COMMITED TO DB')
 
-        if undoForm.submit.data:
+        if undoForm.submit_undo.data:
             form_input = undoForm.undoSold.data
             print("Form Input:")
             print(form_input)

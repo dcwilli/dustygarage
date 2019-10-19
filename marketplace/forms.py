@@ -82,7 +82,7 @@ class MarkSold(FlaskForm):
 
 class UndoSold(FlaskForm):
     undoSold = HiddenField("zero")
-    submit = SubmitField("Undo")
+    submit_undo = SubmitField("Undo")
 
 
 class BidForm(FlaskForm):
