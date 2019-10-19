@@ -112,11 +112,12 @@ def manage(id):
 
         # pass the form details
         bid_userid = soldForm.bid_user_id.data
+        biduserint = int(bid_userid)
         print("Form Input Data:")
-        print(bid_userid)
+        print(biduserint)
         # update and commit the db tool soldStatus column
         update_tool = Tool.query.get(id)
-        update_tool.sold_status = bid_userid
+        update_tool.sold_status = biduserint
         print("updated row details:")
         print(update_tool)
         db.session.commit()
