@@ -122,6 +122,7 @@
                                                     {% if tool.sold_status %}
                                                     {{undoForm.csrf_token}}
                                                     {{undoForm.undoSold(value= set_to_zero)}}
+                                                    {{set_to_zero}} set to 0
                                                     {{undoForm.submit(class_="btn btn-danger")}}
                                                     {% else %}
                                                     {{soldForm.csrf_token}}
