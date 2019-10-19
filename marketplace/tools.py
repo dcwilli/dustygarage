@@ -99,15 +99,14 @@ def manage(id):
     # If a user has been marked as sold, show the details of that user and bid
     if sold_user != 0:
         print("THIS ITEM HAS BEEN SOLD")
-        heading = "Bid sold to:"
-        print(heading)
+
         # join the user and bid table
         bid_user = db.session.query(User, Bid).filter(
             Bid.user_id == User.id).filter(Bid.tool_id == Tool.id).filter(Tool.sold_status == Bid.user_id).all()
 
     # User submits a mark as sold OR undo
     # if request.method == "POST":
-    if soldForm.submit.data and soldForm.validate_on_submit():
+    if soldForm.validate_on_submit():
         form_input = soldForm.bid_user_id.data
         print("Form Input:")
         print(form_input)
@@ -116,7 +115,7 @@ def manage(id):
         db.session.commit()
         print('COMMITED TO DB')
 
-    if undoForm.submit.data and undoForm.validate_on_submit():
+    if undoForm.validate_on_submit():
         form_input = undoForm.undoSold.data
         print("Form Input:")
         print(form_input)
