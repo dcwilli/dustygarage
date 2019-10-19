@@ -54,14 +54,14 @@ class CreateForm(FlaskForm):
     submit = SubmitField("Create")
 
 
-class SearchForm(FlaskForm):
-    search = StringField("")
-    search_button = SubmitField("Search")
+# class SearchForm(FlaskForm):
+#     search = StringField("")
+#     search_button = SubmitField("Search")
 
 
-class LandingForm(FlaskForm):
-    landing_search = StringField("", validators=[InputRequired()])
-    landing_search_button = SubmitField("Search")
+# class LandingForm(FlaskForm):
+#     landing_search = StringField("", validators=[InputRequired()])
+#     landing_search_button = SubmitField("Search")
 
 
 # class Results(Table):
@@ -81,7 +81,7 @@ class MarkSold(FlaskForm):
 
 
 class UndoSold(FlaskForm):
-    undoSold = HiddenField('bid_user_id')
+    undoSold = HiddenField("zero")
     submit = SubmitField("Undo")
 
 
