@@ -85,7 +85,7 @@ def manage(id):
     print(sold_user)
 
     bid_user = None
-    set_to_zero = None
+    set_to_zero = 2
     # If a user has not been marked as sold, show a list of current bids
     if sold_user == None:
         print("THIS ITEM HAS ***NOT*** BEEN SOLD")
@@ -105,20 +105,16 @@ def manage(id):
         bid_user = db.session.query(User, Bid).filter(
             Bid.user_id == User.id).filter(Bid.tool_id == Tool.id).filter(Tool.sold_status == Bid.user_id).all()
 
-        print(bid_user)
-
     # User submits a mark as sold OR undo
     if request.method == "POST":
 
         # pass the form details
-        bid_userid = soldForm.bid_user_id.data
-        if bid_userid == None:
-
-            print("Form Input Data:")
-            print(bid_userid)
+        form_input = soldForm.bid_user_id.data
+        print("Form Input Data$$$$$$$$$$$$$$$$$$$$$$$$$:")
+        print(form_input)
         # update and commit the db tool soldStatus column
         update_tool = Tool.query.get(id)
-        update_tool.sold_status = 6
+        update_tool.sold_status = form_input
         print("updated row details:")
         print(update_tool)
         db.session.commit()
