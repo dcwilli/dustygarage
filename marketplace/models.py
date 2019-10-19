@@ -36,16 +36,16 @@ class Tool(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     tool_name = db.Column(db.String(100))
     modelNo = db.Column(db.String(100))
-    list_price = db.Column(db.Float
-    images=db.Column(db.String(1000), default='noimage.png')
-    category=db.Column(db.String(100))
-    user_id=db.Column(db.Integer, db.ForeignKey('users.id'))
-    desc=db.Column(db.String(100))
-    brand=db.Column(db.String(100))
-    date_created=db.Column(db.DateTime, default=datetime.now())
-    sold_status=db.Column(db.String(100), default="")
+    list_price = db.Column(db.Numeric(10))
+    images = db.Column(db.String(1000), default='noimage.png')
+    category = db.Column(db.String(100))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    desc = db.Column(db.String(100))
+    brand = db.Column(db.String(100))
+    date_created = db.Column(db.DateTime, default=datetime.now())
+    sold_status = db.Column(db.String(100), default="")
 
-    bid_id=db.relationship('Bid', backref='tools')
+    bid_id = db.relationship('Bid', backref='tools')
 
     def __repr__(self):
         return "\n\n<Tool Name: {}\n Tool ID: {}\n Brand: {}\n sold_status: {}\n User Id: {} \nImages: {}>\n".format(
