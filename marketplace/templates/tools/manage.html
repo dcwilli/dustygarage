@@ -121,7 +121,7 @@
                                                 <div class="dropdown-menu text-center dropdown-menu-right">
                                                     {% if tool.sold_status != 0 %}
                                                     {{undoForm.csrf_token}}
-                                                    {{undoForm.undoSold(value= None)}}
+                                                    {{undoForm.undoSold(value= "None")}}
                                                     {{set_to_zero}} set to 0
                                                     {{undoForm.submit(class_="btn btn-danger")}}
                                                     {% else %}
