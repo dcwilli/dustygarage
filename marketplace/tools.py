@@ -89,8 +89,7 @@ def manage(id):
     # If a user has not been marked as sold, show a list of current bids
     if sold_user == 0:
         print("THIS ITEM HAS ***NOT*** BEEN SOLD")
-        heading = "Current Bids"
-        print(heading)
+
         bid_user = db.session.query(User, Bid).join(
             Bid).filter_by(tool_id=id).all()
         print('Current Bids')
@@ -127,7 +126,7 @@ def manage(id):
         # redirect back to the manage page with refreshed list
         return redirect(url_for('tool.manage', id=id))
 
-    return render_template('tools/manage.html', soldForm=soldForm, userid=userid, tool=tool, heading=heading, undoForm=undoForm, bid_user=bid_user, set_to_zero=set_to_zero)
+    return render_template('tools/manage.html', soldForm=soldForm, userid=userid, tool=tool, undoForm=undoForm, bid_user=bid_user, set_to_zero=set_to_zero)
 
     # db_file_path = check_file(form)
 
