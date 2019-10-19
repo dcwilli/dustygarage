@@ -105,7 +105,7 @@ def manage(id):
 
     # User submits a mark as sold OR undo
     if request.method == "POST":
-        if soldForm.submit.data and soldForm.validate_on_submit():
+        if soldForm.submit.data:
             form_input = soldForm.bid_user_id.data
             print("Form Input:")
             print(form_input)
@@ -114,7 +114,7 @@ def manage(id):
             db.session.commit()
             print('COMMITED TO DB')
 
-        if undoForm.submit.data and undoForm.validate_on_submit():
+        if undoForm.submit.data:
             form_input = undoForm.undoSold.data
             print("Form Input:")
             print(form_input)
