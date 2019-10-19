@@ -84,7 +84,7 @@ def manage(id):
     print("tool soldstatus:")
     print(sold_user)
 
-    bid_user = ""
+    bid_user = None
     set_to_zero = 0
     # If a user has not been marked as sold, show a list of current bids
     if sold_user == set_to_zero:
