@@ -85,9 +85,9 @@ def manage(id):
     print(sold_user)
 
     bid_user = ""
-    set_to_null = None
+    set_to_null = 0
     # If a user has not been marked as sold, show a list of current bids
-    if sold_user == "":
+    if sold_user == 0:
         heading = "Current Bids"
         print(heading)
         bid_user = db.session.query(User, Bid).join(
@@ -96,7 +96,7 @@ def manage(id):
         print(bid_user)
 
     # If a user has been marked as sold, show the details of that user and bid
-    if sold_user != "":
+    if sold_user != 0:
         heading = "Bid sold to:"
         print(heading)
         # join the user and bid table
