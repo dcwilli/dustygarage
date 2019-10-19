@@ -86,6 +86,7 @@ def manage(id):
     print(userid)
 
     if userid != tool_user:
+        print("users do not match")
         return redirect('../not_found')
 
     # pass the sold status of the item
