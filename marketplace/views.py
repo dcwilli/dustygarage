@@ -25,26 +25,26 @@ def index():
     tools = Tool.query.order_by(desc(Tool.date_created)).limit(4).all()
     # form_land = LandingForm()
     print("Form has not validated")
-    search_results = []
-    search = SearchForm()
-    if request.args.get("landing_search") != None:
-        print("Form has validated")
-        search_string = request.args.get("landing_search")
-        print(search_string)
+    # search_results = []
+    # search = SearchForm()
+    # if request.args.get("landing_search") != None:
+    #     print("Form has validated")
+    #     search_string = request.args.get("landing_search")
+    #     print(search_string)
 
-        all_tools = Tool.query.all()
-        for tool in all_tools:
-            if re.search(search_string, tool.tool_name):
-                search_results.append(tool)
+    #     all_tools = Tool.query.all()
+    #     for tool in all_tools:
+    #         if re.search(search_string, tool.tool_name):
+    #             search_results.append(tool)
 
-        print("Below is Search results")
+    #     print("Below is Search results")
 
-        # display results
-        table = Results(search_results)
-        table.border = True
-        # del input_string
-        return render_template("results.html", form=search, table=table)
-    return render_template("index.html", form=form_land, tools=tools)
+    #     # display results
+    #     table = Results(search_results)
+    #     table.border = True
+    #     # del input_string
+    #     return render_template("results.html", form=search, table=table)
+    return render_template("index.html", tools=tools)
 
 
 # @bp.route("/results", methods=["GET", "POST"])
