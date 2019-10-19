@@ -79,6 +79,11 @@ def manage(id):
     tool = Tool.query.filter_by(id=id).first()
     print("tool details:")
     print(tool)
+    tool_user = tool.user_id
+
+    if tool_user != userid:
+        return redirect('../not_found')
+        
     # pass the sold status of the item
     sold_user = tool.sold_status
     print("tool soldstatus:")
@@ -99,7 +104,7 @@ def manage(id):
     if sold_user != 0:
         print("THIS ITEM HAS BEEN SOLD")
 
-        # join the user and bid table l
+        # join the user and bid table
         bid_user = db.session.query(User, Bid).filter(
             Bid.user_id == User.id).filter(Bid.tool_id == Tool.id).filter(Tool.sold_status == Bid.user_id).all()
 
