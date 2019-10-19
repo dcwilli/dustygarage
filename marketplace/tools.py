@@ -85,7 +85,7 @@ def manage(id):
     print(sold_user)
 
     bid_user = ""
-
+    set_to_null = None
     # If a user has not been marked as sold, show a list of current bids
     if sold_user == "":
         heading = "Current Bids"
@@ -120,7 +120,7 @@ def manage(id):
         # redirect back to the manage page with refreshed list
         return redirect(url_for('tool.manage', id=id))
 
-    return render_template('tools/manage.html', soldForm=soldForm, userid=userid, tool=tool, heading=heading, undoForm=undoForm, bid_user=bid_user)
+    return render_template('tools/manage.html', soldForm=soldForm, userid=userid, tool=tool, heading=heading, undoForm=undoForm, bid_user=bid_user, set_to_null=set_to_null)
 
     # db_file_path = check_file(form)
 
