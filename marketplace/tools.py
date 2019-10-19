@@ -135,10 +135,10 @@ def create():
         new_tool = Tool(
             tool_name=form.title.data,
             modelNo=form.modelNo.data,
-            price=form.price.data,
+            list_price=form.price.data,
             category=form.category.data,
             user_id=session.get("user_id"),
-            description=form.description.data,
+            desc=form.description.data,
             brand=form.brand.data,
         )
         db.session.add(new_tool)
