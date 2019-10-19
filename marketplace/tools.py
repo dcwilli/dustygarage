@@ -85,7 +85,7 @@ def manage(id):
     print("Current Logged in user:")
     print(userid)
 
-    if userid != tool_user:
+    if userid == tool_user:
         print("users do not match")
         return redirect('../not_found')
 
