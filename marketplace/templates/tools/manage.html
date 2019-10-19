@@ -119,14 +119,14 @@
                                                     <form method=post>
                                                 </button>
                                                 <div class="dropdown-menu text-center dropdown-menu-right">
-                                                    {% if tool.sold_status %}
+                                                    {% if tool.sold_status != 0 %}
                                                     {{undoForm.csrf_token}}
                                                     {{undoForm.undoSold(value= 0)}}
                                                     {{set_to_zero}} set to 0
                                                     {{undoForm.submit(class_="btn btn-danger")}}
                                                     {% else %}
                                                     {{soldForm.csrf_token}}
-                                                    {{soldForm.bid_user_id(value= user.id )}}
+                                                    {{soldForm.bid_user_id(value= bid.user_id )}}
                                                     userr id: {{user.id}}
                                                     {{soldForm.submit(class_="btn btn-secondary")}}
                                                     {% endif %}
