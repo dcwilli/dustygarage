@@ -112,7 +112,7 @@ def manage(id):
 
         # pass the form details
         bid_userid = soldForm.bid_user_id.data
-        biduserint = int(bid_userid)
+        biduserint = int(float(bid_userid))
         print("Form Input Data:")
         print(biduserint)
         # update and commit the db tool soldStatus column
