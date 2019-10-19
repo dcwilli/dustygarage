@@ -80,6 +80,10 @@ def manage(id):
     print("tool details:")
     print(tool)
     tool_user = tool.user_id
+    print("Tool Listed By:")
+    print(tool_user)
+    print("Current Logged in user:")
+    print(userid)
 
     if tool_user != userid:
         return redirect('../not_found')
