@@ -116,6 +116,7 @@ def manage(id):
         update_tool.sold_status = bid_userid
         db.session.commit()
         print('COMMITED TO DB')
+        #
 
         # redirect back to the manage page with refreshed list
         return redirect(url_for('tool.manage', id=id))
