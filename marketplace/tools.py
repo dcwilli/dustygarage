@@ -95,13 +95,8 @@ def manage(id):
         print('Current Bids')
         print(bid_user)
 
-<<<<<<< HEAD
-    # If a user has been marked as sold, show the details of that user and bid#
-    if sold_user != "":
-=======
     # If a user has been marked as sold, show the details of that user and bid
-    if sold_user != 0:
->>>>>>> ddf532da55f07bf263dcec3e213e0d598188346b
+    if sold_user != set_to_zero:
         heading = "Bid sold to:"
         print(heading)
         # join the user and bid table
