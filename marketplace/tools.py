@@ -29,10 +29,10 @@ def show(id):
     list_price = tool.list_price
 
     # format list price for whole numbers and decimals
-    if list_price.is_integer():
-        list_price = '${:.0f}'.format(list_price)
-    else:
-        list_price = '${:,.2f}'.format(tool.list_price)
+    # if list_price.is_integer():
+    #     list_price = '${:.0f}'.format(list_price)
+    # else:
+    #     list_price = '${:,.2f}'.format(tool.list_price)
 
     bid_user = Bid.query.filter_by(user_id=user_obj, tool_id=id).first()
     current_bid_amount = ""
