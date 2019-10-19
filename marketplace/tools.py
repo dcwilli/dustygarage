@@ -133,7 +133,7 @@ def create():
     if form.validate_on_submit():
         print("Form validated")
         new_tool = Tool(
-            title=form.title.data,
+            tool_name=form.title.data,
             modelNo=form.modelNo.data,
             price=form.price.data,
             category=form.category.data,
