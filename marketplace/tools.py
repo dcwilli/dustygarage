@@ -52,7 +52,7 @@ def userdash(userid):
     # query db for tools current user has listed
     tool = Tool.query.filter_by(user_id=userid).all()
     print(tool)
-    print("------------------------------------")
+    print("----------------------------------")
     # query db for bids current user has made
     bids = db.session.query(Tool, Bid).join(
         Bid).filter_by(user_id=userid).all()
@@ -83,7 +83,7 @@ def manage(id):
 
     if tool_user != userid:
         return redirect('../not_found')
-        
+
     # pass the sold status of the item
     sold_user = tool.sold_status
     print("tool soldstatus:")
