@@ -13,7 +13,9 @@
         <ol class="container-fluid ml-4 pb-5 pt-0 breadcrumb bg-white">
             <li class="breadcrumb-item"><a href="main.index">Home</a></li>
             <li class="breadcrumb-item"><a href="{{'/userdash/main/{}'.format(current_user.id)}}">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="manage.html">{{current_user.name}}'s Listed Items</a></li>
+            <li class="breadcrumb-item"><a
+                    href="{{'/userdash/userselling/{}'.format(current_user.id)}}">{{current_user.name}}'s Listed
+                    Items</a></li>
         </ol>
     </nav>
     <!--breadcrumb-end-->
