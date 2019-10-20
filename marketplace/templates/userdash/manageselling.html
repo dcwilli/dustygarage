@@ -5,36 +5,15 @@
 <main>
     <!---Contains Main Content-->
     <section class="container-fluid mt-4 text-left">
-
         <h3 class="display-4 mx-auto col-sm-12">{{current_user.name}}'s Dashboard</h3>
 
     </section>
-
-    <!--breadcrumb-start-->
-
-    <nav aria-label="breadcrumb">
-
-        <ol class="container-fluid ml-4 pb-5 pt-0 breadcrumb bg-white">
-
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-
-
-
-            <li class="breadcrumb-item"><a href="manage.html">{{current_user.name}}'s Dashboard</a></li>
-
-
-
-        </ol>
-
-    </nav>
-
-    <!---Main Content-->
     <!--breadcrumb-start-->
     <nav>
         <ol class="container-fluid ml-4 pb-5 pt-0 breadcrumb bg-white">
             <li class="breadcrumb-item"><a href="main.index">Home</a></li>
             <li class="breadcrumb-item"><a href="{{'/userdash/main/{}'.format(current_user.id)}}">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="manage.html">{{current_user.name}}'s Bids</a></li>
+            <li class="breadcrumb-item"><a href="manage.html">{{current_user.name}}'s Listed Items</a></li>
         </ol>
     </nav>
     <!--breadcrumb-end-->
