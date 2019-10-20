@@ -6,7 +6,7 @@ from sqlalchemy import desc
 from .models import User, Bid, Tool
 
 from .forms import LoginForm, RegisterForm, CreateForm
-# , SearchForm, Results, LandingForm
+# , SearchForm, Results, LandingForm,
 import sqlalchemy as db
 from . import db
 
