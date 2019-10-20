@@ -87,53 +87,45 @@
                 <!--duplicate-->
                 <article class="col-sm-2 " id="browse ">
 
-                    <div class="card">
-                        <h5 class="card-header">Items you are selling</h5>
-                        <div class="card-body p-0">
-                            <div class="table-responsive">
-                                <table class="table table-striped">
-                                    <thead class="bg-light">
-                                        <tr class="border-0">
+                    <nav class="navbar col-12 navbar-expand-sm bg-base-blue text-white py-2">
 
-                                            <th class="border-0">Name</th>
-                                            <th class="border-0">List Date</th>
-                                            <th class="border-0">List Price</th>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
 
-                                            <th class="border-0">Highest Bid</th>
-                                            <th class="border-0">Image</th>
-                                            <th class="border-0 text-center"></th>
-                                        </tr>
-                                    </thead>
+                        <div class="container-fluid">
+                            <div class="navbar-nav text-white justify-content-end">
+                                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 
-                                    <tbody>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-outline-success"><i
+                                                class="fas fa-dollar-sign"></i>
+                                            Selling</button>
+                                        <button type="button"
+                                            class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+                                            data-toggle="dropdown">
+                                            <span class="sr-only ">Toggle Dropdown</span>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <div class="dropdown-header">Manage</div>
+                                            <a class="dropdown-item" href="#">All Selling</a>
+                                            <a class="dropdown-item" href="tools/userdash/{{current_user.id}}">Sold</a>
 
-                                        {% for tool in tool %}
-                                        <tr>
-                                            <td>{{tool.tool_name}}</td>
-                                            <td>{{tool.date_created.strftime("%b %d %Y")}}</td>
-                                            <th scope="row">${{tool.list_price}}</th>
-                                            <td>Not Availiable</td>
-                                            <td> <img class="img-fluid img-thumbnail" style="max-width: 70px;"
-                                                    src={{'/static/img/' + tool.images }}></td>
-                                            <td>
-                                                <form><a href="{{'/tools/{}/manage'.format(tool.id)}}"><button
-                                                            type="button" onclick="login"
-                                                            class=" btn btn-light mt-4">Manage Item</button></a>
-                                                </form>
-                                            </td>
+                                        </div>
+                                        <a class="nav-item font-weight-bold text-light-blue nav-link" href="#"><i
+                                                class="fas fa-dollar-sign"></i> Selling </a>
 
-                            </div>
-                        </div>
-                    </div>
+                                        <a class="nav-item font-weight-bold text-light-blue nav-link" href="#"><i
+                                                class="far fa-user-circle"></i> Bids </a>
 
-                    </tr>
-                    {% endfor %}
+                                        <a class="nav-item font-weight-bold text-light-blue nav-link" href="#"><i
+                                                class="far fa-edit"></i> Sold </a>
 
-
-
-                    </tbody>
-
-                    </table>
+                                    </div>
+                                </div>
+                    </nav>
 
                 </article>
 
