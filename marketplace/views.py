@@ -5,8 +5,7 @@ from flask import session
 from sqlalchemy import desc
 from .models import User, Bid, Tool
 
-from .forms import LoginForm, RegisterForm, CreateForm
-# , SearchForm, Results, LandingForm
+from .forms import LoginForm, RegisterForm, CreateForm, SearchForm, Results, LandingForm
 import sqlalchemy as db
 from . import db
 
