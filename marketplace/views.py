@@ -44,7 +44,7 @@ def index():
         table.border = True
         # del input_string
         return render_template("results.html", form=search, table=table)
-    return render_template("index.html", tools=tools, form_land=form_land)
+    return render_template("index.html", tools=tools, form=form_land)
 
 
 @bp.route("/results", methods=["GET", "POST"])
@@ -72,4 +72,3 @@ def search():
         return render_template("results.html", form=search, table=table)
 
     return render_template("results.html", form=search)
-#
