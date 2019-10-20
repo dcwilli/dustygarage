@@ -16,11 +16,9 @@
 
         <ol class="container-fluid ml-4 breadcrumb bg-white">
 
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-
-
-
-            <li class="breadcrumb-item"><a href="manage.html">{{current_user.name}}'s Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="main.index">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{'/userdash/main/{}'.format(current_user.id)}}">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="manage.html">{{current_user.name}}'s Bids</a></li>
 
 
 
@@ -29,19 +27,8 @@
     </nav>
 
     <!---Main Content-->
-
-
-
-
-    <div class="col-md-6">
-
-
-    </div>
-
-    </div>
-    </div>
     <div class="container-fluid px-0" id="itemdescription">
-        <section class="container-fluid text-center " id="services ">
+        <section class="container-fluid" id="services ">
             <!------------------------------------------------------------------------------------------------------>
             <!--------------------------------------Start Dashboard Nav--------------------------------------------->
             <!------------------------------------------------------------------------------------------------------>
@@ -53,15 +40,15 @@
                             <a class="nav-link text-white" href="#">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active"
+                            <a class="nav-link text-white"
                                 href="{{'/userdash/userselling/{}'.format(current_user.id)}}">Selling</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="#">Sold</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white"
-                                href="{{'/userdash/userbids/{}'.format(current_user.id)}}">Your Bids</a>
+                            <a class="nav-link active" href="{{'/userdash/userbids/{}'.format(current_user.id)}}">Your
+                                Bids</a>
                         </li>
                     </ul>
                 </nav>
@@ -71,9 +58,9 @@
             <!------------------------------------------------------------------------------------------------------>
 
             <!------------------------------------------------------------------------------------------------------>
-            <!--------------------------------------Start Selling Table--------------------------------------------->
+            <!--------------------------------------Start Bids Made Table------------------------------------------->
             <!------------------------------------------------------------------------------------------------------>
-            <div class="row py-0" style="background: lightgrey ">
+            <div class="row py-0 justify-content-center" style="background: lightgrey ">
                 <article class="col-sm-10 py-4" id="browse ">
 
                     <div class="card">
