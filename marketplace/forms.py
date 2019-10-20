@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-# from flask_table import Table, Col, BoolCol, DateCol
+from flask_table import Table, Col, BoolCol, DateCol
 from wtforms.fields import (
     TextAreaField,
     SubmitField,
