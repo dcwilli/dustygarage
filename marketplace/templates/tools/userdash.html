@@ -85,7 +85,7 @@
             </div>
             <div class="row py-4" style="background: lightgrey ">
                 <!--duplicate-->
-                <article class="col-sm-4 " id="browse ">
+                <article class="col-sm-4 py-0" id="browse ">
 
                     <nav class="navbar col-12 navbar-expand-sm bg-base-blue text-white py-2">
 
@@ -98,33 +98,83 @@
                         <div class="container-fluid">
                             <div class="navbar-nav text-white justify-content-end">
                                 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                                    <ul class="nav navbar-nav">
+                                        <li>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-outline-success"><i
+                                                        class="fas fa-dollar-sign"></i>
+                                                    Selling</button>
+                                                <button type="button"
+                                                    class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+                                                    data-toggle="dropdown">
+                                                    <span class="sr-only ">Toggle Dropdown</span>
+                                                </button>
+                                                <div class="dropdown-menu">
 
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-outline-success"><i
-                                                class="fas fa-dollar-sign"></i>
-                                            Selling</button>
-                                        <button type="button"
-                                            class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
-                                            data-toggle="dropdown">
-                                            <span class="sr-only ">Toggle Dropdown</span>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <div class="dropdown-header">Manage</div>
-                                            <a class="dropdown-item" href="#">All Selling</a>
-                                            <a class="dropdown-item" href="tools/userdash/{{current_user.id}}">Sold</a>
+                                                    <a class="dropdown-item" href="#">All Selling</a>
+                                                    <a class="dropdown-item"
+                                                        href="tools/userdash/{{current_user.id}}">Sold</a>
 
-                                        </div>
-                                        <a class="nav-item font-weight-bold text-light-blue nav-link" href="#"><i
-                                                class="fas fa-dollar-sign"></i> Selling </a>
+                                                </div>
+                                            </div>
 
-                                        <a class="nav-item font-weight-bold text-light-blue nav-link" href="#"><i
-                                                class="far fa-user-circle"></i> Bids </a>
+                                        </li>
+                                        <li>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-outline-success"><i
+                                                        class="fas fa-dollar-sign"></i>
+                                                    Selling</button>
+                                                <button type="button"
+                                                    class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+                                                    data-toggle="dropdown">
+                                                    <span class="sr-only ">Toggle Dropdown</span>
+                                                </button>
+                                                <div class="dropdown-menu">
 
-                                        <a class="nav-item font-weight-bold text-light-blue nav-link" href="#"><i
-                                                class="far fa-edit"></i> Sold </a>
+                                                    <a class="dropdown-item" href="#">All Selling</a>
+                                                    <a class="dropdown-item"
+                                                        href="tools/userdash/{{current_user.id}}">Sold</a>
 
-                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </li>
+                                        <li>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-outline-success"><i
+                                                        class="fas fa-dollar-sign"></i>
+                                                    Selling</button>
+                                                <button type="button"
+                                                    class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+                                                    data-toggle="dropdown">
+                                                    <span class="sr-only ">Toggle Dropdown</span>
+                                                </button>
+                                                <div class="dropdown-menu">
+
+                                                    <a class="dropdown-item" href="#">All Selling</a>
+                                                    <a class="dropdown-item"
+                                                        href="tools/userdash/{{current_user.id}}">Sold</a>
+
+                                                </div>
+                                            </div>
+
+                                        </li>
+
+
+
+                                    </ul>
+
+                                    <a class="nav-item font-weight-bold text-light-blue nav-link" href="#"><i
+                                            class="fas fa-dollar-sign"></i> Selling </a>
+
+                                    <a class="nav-item font-weight-bold text-light-blue nav-link" href="#"><i
+                                            class="far fa-user-circle"></i> Bids </a>
+
+                                    <a class="nav-item font-weight-bold text-light-blue nav-link" href="#"><i
+                                            class="far fa-edit"></i> Sold </a>
+
                                 </div>
+                            </div>
                     </nav>
 
                 </article>
