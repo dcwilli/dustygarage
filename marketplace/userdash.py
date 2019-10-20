@@ -12,14 +12,14 @@ from . import db
 bp = Blueprint('userdash', __name__, url_prefix='/userdash')
 
 
-@bp.route('/userdash/main/<userid>', methods=["POST", "GET"])
+@bp.route('/main/<userid>', methods=["POST", "GET"])
 @login_required
 def maindash(userid):
 
     return render_template('userdash/maindash.html', userid=userid)
 
 
-@bp.route('/userdash/userselling/<userid>', methods=["POST", "GET"])
+@bp.route('/userselling/<userid>', methods=["POST", "GET"])
 @login_required
 def userselling(userid):
 
@@ -32,7 +32,7 @@ def userselling(userid):
     return render_template('userdash/userselling.html', userid=userid, tool=tool)
 
 
-@bp.route('/userdash/userbids/<userid>', methods=["POST", "GET"])
+@bp.route('/userbids/<userid>', methods=["POST", "GET"])
 @login_required
 def userbids(userid):
     # query db for bids current user has made
