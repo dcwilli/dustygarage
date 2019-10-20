@@ -4,27 +4,19 @@
 
 <main>
     <!---Contains Main Content-->
-    <section class="container-fluid my-4 text-left" id="services">
-
+    <section class="container-fluid mt-4 text-left">
         <h3 class="display-4 mx-auto col-sm-12">{{current_user.name}}'s Dashboard</h3>
-
     </section>
 
     <!--breadcrumb-start-->
-
-    <nav aria-label="breadcrumb">
-
-        <ol class="container-fluid ml-4 breadcrumb bg-white">
-
+    <nav>
+        <ol class="container-fluid ml-4 pb-5 pt-0 breadcrumb bg-white">
             <li class="breadcrumb-item"><a href="main.index">Home</a></li>
             <li class="breadcrumb-item"><a href="{{'/userdash/main/{}'.format(current_user.id)}}">Dashboard</a></li>
             <li class="breadcrumb-item"><a href="manage.html">{{current_user.name}}'s Bids</a></li>
-
-
-
         </ol>
-
     </nav>
+    <!--breadcrumb-end-->
 
     <!---Main Content-->
     <div class="container-fluid px-0" id="itemdescription">
@@ -61,7 +53,7 @@
             <!--------------------------------------Start Bids Made Table------------------------------------------->
             <!------------------------------------------------------------------------------------------------------>
             <div class="row py-0 justify-content-center" style="background: lightgrey ">
-                <article class="col-sm-10 py-4" id="browse ">
+                <article class="col-sm-12 py-4" id="browse ">
 
                     <div class="card">
                         <h5 class="card-header">Items you have bid on</h5>
