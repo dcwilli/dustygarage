@@ -12,7 +12,7 @@ from . import db
 bp = Blueprint('userdash', __name__, url_prefix='/userdash')
 
 
-@bp.route('/userdash/main/<userid>', methods=["POST", "GET"])
+@bp.route('userdash/main/<userid>', methods=["POST", "GET"])
 @login_required
 def maindash(userid):
 
