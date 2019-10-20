@@ -62,83 +62,66 @@
 
                     <nav class="navbar col-12 navbar-expand-sm bg-base-blue text-white py-2">
 
-                        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
 
                         <div class="container-fluid">
                             <div class="navbar-nav text-white justify-content-end">
-                                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                                    <ul class="nav navbar-nav">
-                                        <li class="py-4">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-outline-success"><i
-                                                        class="fas fa-dollar-sign"></i>
-                                                    Selling</button>
-                                                <button type="button"
-                                                    class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
-                                                    data-toggle="dropdown">
-                                                    <span class="sr-only ">Toggle Dropdown</span>
-                                                </button>
-                                                <div class="dropdown-menu">
 
-                                                    <a class="dropdown-item" href="#">All Selling</a>
-                                                    <a class="dropdown-item" href="#">Sold</a>
+                                <nav class="nav flex-column">
+                                    <a class="nav-link active" href="#">Active</a>
+                                    <a class="nav-link" href="#">Link</a>
+                                    <a class="nav-link" href="#">Link</a>
+                                    <a class="nav-link disabled" href="#">Disabled</a>
+                                </nav>
 
-                                                </div>
-                                            </div>
+                                <li class="py-4">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-outline-success"><i
+                                                class="fas fa-dollar-sign"></i>
+                                            Selling</button>
+                                        <button type="button"
+                                            class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+                                            data-toggle="dropdown">
+                                            <span class="sr-only ">Toggle Dropdown</span>
+                                        </button>
+                                        <div class="dropdown-menu">
 
-                                        </li>
-                                        <li class="py-4">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-outline-success"><i
-                                                        class="fas fa-dollar-sign"></i>
-                                                    Selling</button>
-                                                <button type="button"
-                                                    class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
-                                                    data-toggle="dropdown">
-                                                    <span class="sr-only ">Toggle Dropdown</span>
-                                                </button>
-                                                <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">All Selling</a>
+                                            <a class="dropdown-item"
+                                                href="userdash/usersold/{{current_user.id}}">Sold</a>
 
-                                                    <a class="dropdown-item" href="#">All Selling</a>
-                                                    <a class="dropdown-item"
-                                                        href="userdash/usersold/{{current_user.id}}">Sold</a>
+                                        </div>
+                                    </div>
 
-                                                </div>
-                                            </div>
+                                </li>
+                                <hr>
+                                <li class="py-4">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-outline-success"><i
+                                                class="fas fa-dollar-sign"></i>
+                                            Selling</button>
+                                        <button type="button"
+                                            class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+                                            data-toggle="dropdown">
+                                            <span class="sr-only ">Toggle Dropdown</span>
+                                        </button>
+                                        <div class="dropdown-menu">
 
-                                        </li>
-                                        <li class="py-4">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-outline-success"><i
-                                                        class="fas fa-dollar-sign"></i>
-                                                    Selling</button>
-                                                <button type="button"
-                                                    class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
-                                                    data-toggle="dropdown">
-                                                    <span class="sr-only ">Toggle Dropdown</span>
-                                                </button>
-                                                <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">All Selling</a>
+                                            <a class="dropdown-item" href="">Sold</a>
 
-                                                    <a class="dropdown-item" href="#">All Selling</a>
-                                                    <a class="dropdown-item" href="">Sold</a>
+                                        </div>
+                                    </div>
 
-                                                </div>
-                                            </div>
-
-                                        </li>
+                                </li>
 
 
 
-                                    </ul>
+                                </ul>
 
 
 
-                                </div>
                             </div>
+                        </div>
                     </nav>
 
                 </article>
