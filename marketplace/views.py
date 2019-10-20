@@ -11,7 +11,7 @@ import sqlalchemy as db
 from . import db
 
 import re
-# from flask_table import Table, Col
+from flask_table import Table, Col
 
 print("this is __name__")
 print(type(__name__))
