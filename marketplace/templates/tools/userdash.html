@@ -54,17 +54,15 @@
                     <div class="container-fluid">
                         <div class="navbar-nav text-white justify-content-end">
                             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                                <form class="form-inline">
-                                    <a href="#"><button class="btn btn-outline-success" type="button"></button></a>
 
-                                </form>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-outline-success"><i
-                                            class="far fa-user-circle"></i>
+                                            class="fas fa-dollar-sign"></i>
                                         Selling</button>
-                                    <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split"
+                                    <button type="button"
+                                        class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
                                         data-toggle="dropdown">
-                                        <span class="sr-only">Toggle Dropdown</span>
+                                        <span class="sr-only ">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <div class="dropdown-header">Manage</div>
@@ -86,7 +84,66 @@
                 </nav>
             </div>
             <div class="row py-4" style="background: lightgrey ">
+                <!--duplicate-->
+                <article class="col-sm-2 " id="browse ">
+
+                    <div class="card">
+                        <h5 class="card-header">Items you are selling</h5>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead class="bg-light">
+                                        <tr class="border-0">
+
+                                            <th class="border-0">Name</th>
+                                            <th class="border-0">List Date</th>
+                                            <th class="border-0">List Price</th>
+
+                                            <th class="border-0">Highest Bid</th>
+                                            <th class="border-0">Image</th>
+                                            <th class="border-0 text-center"></th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+
+                                        {% for tool in tool %}
+                                        <tr>
+                                            <td>{{tool.tool_name}}</td>
+                                            <td>{{tool.date_created.strftime("%b %d %Y")}}</td>
+                                            <th scope="row">${{tool.list_price}}</th>
+                                            <td>Not Availiable</td>
+                                            <td> <img class="img-fluid img-thumbnail" style="max-width: 70px;"
+                                                    src={{'/static/img/' + tool.images }}></td>
+                                            <td>
+                                                <form><a href="{{'/tools/{}/manage'.format(tool.id)}}"><button
+                                                            type="button" onclick="login"
+                                                            class=" btn btn-light mt-4">Manage Item</button></a>
+                                                </form>
+                                            </td>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    </tr>
+                    {% endfor %}
+
+
+
+                    </tbody>
+
+                    </table>
+
+                </article>
+
+                <!--End Duplicate-->
+
+
+
+
                 <!-- List of Items being sold by user -->
+
                 <article class="col-sm-6 " id="browse ">
 
                     <div class="card">
