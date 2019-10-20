@@ -1,148 +1,165 @@
 {% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <style>
-        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-        .row.content {
-            height: 550px
-        }
+<main>
+    <!---Contains Main Content-->
+    <section class="container-fluid my-4 text-left" id="services">
 
-        /* Set gray background color and 100% height */
-        .sidenav {
-            background-color: #f1f1f1;
-            height: 100%;
-        }
+        <h3 class="display-4 mx-auto col-sm-12">{{current_user.name}}'s Dashboard</h3>
 
-        /* On small screens, set height to 'auto' for the grid */
-        @media screen and (max-width: 767px) {
-            .row.content {
-                height: auto;
-            }
-        }
-    </style>
-</head>
+    </section>
 
-<body>
+    <!--breadcrumb-start-->
 
-    <nav class="navbar navbar-inverse visible-xs">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Logo</a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Dashboard</a></li>
-                    <li><a href="#">Age</a></li>
-                    <li><a href="#">Gender</a></li>
-                    <li><a href="#">Geo</a></li>
-                </ul>
-            </div>
-        </div>
+    <nav aria-label="breadcrumb">
+
+        <ol class="container-fluid ml-4 breadcrumb bg-white">
+
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+
+
+
+            <li class="breadcrumb-item"><a href="manage.html">{{current_user.name}}'s Dashboard</a></li>
+
+
+
+        </ol>
+
     </nav>
 
-    <div class="container-fluid">
-        <div class="row content">
-            <div class="col-sm-3 sidenav hidden-xs">
-                <h2>Logo</h2>
-                <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a href="#section1">Dashboard</a></li>
-                    <li><a href="#section2">Age</a></li>
-                    <li><a href="#section3">Gender</a></li>
-                    <li><a href="#section3">Geo</a></li>
-                </ul><br>
-            </div>
-            <br>
+    <!---Main Content-->
+    <!--Items Selling-->
 
-            <div class="col-sm-9">
-                <div class="well">
-                    <h4>Dashboard</h4>
-                    <p>Some text..</p>
-                </div>
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="well">
-                            <h4>Users</h4>
-                            <p>1 Million</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="well">
-                            <h4>Pages</h4>
-                            <p>100 Million</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="well">
-                            <h4>Sessions</h4>
-                            <p>10 Million</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="well">
-                            <h4>Bounce</h4>
-                            <p>30%</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="well">
-                            <p>Text</p>
-                            <p>Text</p>
-                            <p>Text</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="well">
-                            <p>Text</p>
-                            <p>Text</p>
-                            <p>Text</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="well">
-                            <p>Text</p>
-                            <p>Text</p>
-                            <p>Text</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-8">
-                        <div class="well">
-                            <p>Text</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="well">
-                            <p>Text</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+    <!-- List of Items being sold by user -->
+    <div class="col-md-6">
+
+
     </div>
 
-</body>
+    </div>
+    </div>
+    <div class="container-fluid" id="itemdescription">
+        <section class="container-fluid text-center " id="services ">
 
-</html>
+            <div class="row py-5 " style="background: lightgrey ">
+
+                <article class="col-sm-6 " id="browse ">
+
+                    <div class="card">
+                        <h5 class="card-header">Items you are selling</h5>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead class="bg-light">
+                                        <tr class="border-0">
+
+                                            <th class="border-0">Name</th>
+                                            <th class="border-0">List Date</th>
+                                            <th class="border-0">List Price</th>
+
+                                            <th class="border-0">Highest Bid</th>
+                                            <th class="border-0">Image</th>
+                                            <th class="border-0 text-center"></th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+
+                                        {% for tool in tool %}
+                                        <tr>
+                                            <td>{{tool.tool_name}}</td>
+                                            <td>{{tool.date_created.strftime("%b %d %Y")}}</td>
+                                            <th scope="row">${{tool.list_price}}</th>
+                                            <td>Not Availiable</td>
+                                            <td> <img class="img-fluid img-thumbnail" style="max-width: 70px;"
+                                                    src={{'/static/img/' + tool.images }}></td>
+                                            <td>
+                                                <form><a href="{{'/tools/{}/manage'.format(tool.id)}}"><button
+                                                            type="button" onclick="login"
+                                                            class=" btn btn-light mt-4">Manage Item</button></a>
+                                                </form>
+                                            </td>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    </tr>
+                    {% endfor %}
+
+
+
+                    </tbody>
+
+                    </table>
+
+                </article>
+
+                <article class="col-sm-6 " id="sell ">
+
+                    <div class="card">
+                        <h5 class="card-header">Items you have bid on</h5>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead class="bg-light">
+                                        <tr class="border-0">
+
+                                            <th class="border-0">Name</th>
+                                            <th class="border-0">List Date</th>
+                                            <th class="border-0">List Price</th>
+
+                                            <th class="border-0">Highest Bid</th>
+                                            <th class="border-0">Image</th>
+                                            <th class="border-0 text-center"></th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+
+                                        {% for bid, tool in bids %}
+                                        <tr>
+                                            <td>{{bid.tool_name}}</td>
+                                            <td>{{tool.bid_date.strftime("%b %d %Y")}}</td>
+                                            <th scope="row">${{bid.list_price}}</th>
+                                            <td>Not Availiable</td>
+                                            <td> <img class="img-fluid img-thumbnail" style="max-width: 70px;"
+                                                    src={{'/static/img/' + bid.images }}></td>
+                                            <td>
+                                                <form><a href="{{'/tools/{}'.format(bid.id)}}"><button type="button"
+                                                            onclick="login" class=" btn btn-light mt-4">More
+                                                            Details</button></a>
+                                                </form>
+                                            </td>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    </tr>
+                    {% endfor %}
+
+
+
+                    </tbody>
+
+                    </table>
+
+                </article>
+
+            </div>
+
+            <!--End Row Div-->
+    </div>
+
+    </section>
 
 
 
 
+</main>
+
+</div>
 {% endblock %}
