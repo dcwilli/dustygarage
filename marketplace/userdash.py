@@ -29,7 +29,7 @@ def userselling(userid):
     print(tool)
     print("----------------------------------")
 
-    return render_template('userdash/userselling.html', userid=userid, tool=tool)
+    return render_template('userdash/manageselling.html', userid=userid, tool=tool)
 
 
 @bp.route('/userbids/<userid>', methods=["POST", "GET"])
