@@ -2,8 +2,6 @@ from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 import os
-
-
 from flask_login import LoginManager
 
 db = SQLAlchemy()
@@ -56,6 +54,9 @@ def create_app():
 
     from . import tools
     app.register_blueprint(tools.bp)
+
+    from . import userdash
+    app.register_blueprint(userdash.bp)
 
     @app.errorhandler(404)
     def not_found(e):
