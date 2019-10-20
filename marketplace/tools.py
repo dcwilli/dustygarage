@@ -44,15 +44,22 @@ def show(id):
     return render_template('tools/item.html', tool=tool, list_price=list_price, form=bform, bid_user=bid_user, current_bid_amount=current_bid_amount)
 
 
-@bp.route('/userdash/<userid>', methods=["POST", "GET"])
+@bp.route('/userdash/userselling/<userid>', methods=["POST", "GET"])
 @login_required
-def userdash(userid):
+def userselling(userid):
 
     print(userid)
     # query db for tools current user has listed
     tool = Tool.query.filter_by(user_id=userid).all()
     print(tool)
     print("----------------------------------")
+
+    return render_template('userdash/userselling.html', userid=userid, tool=tool)
+
+
+@bp.route('/userdash/userbids/<userid>' methods=["POST", "GET"])
+@login_required
+def userbids(userid):
     # query db for bids current user has made
     bids = db.session.query(Tool, Bid).join(
         Bid).filter_by(user_id=userid).all()
@@ -62,8 +69,7 @@ def userdash(userid):
     # if the url userid does not match the logged in user - log them out
     # if current_user != userid:
     #     return redirect(url_for('auth.logout'))
-
-    return render_template('tools/userdash.html', userid=userid, tool=tool, bids=bids)
+    return render_template('userdash/userbids.html', userid=userid, bids=bids)
 
 
 @bp.route('/<id>/manage', methods=["POST", "GET"])
