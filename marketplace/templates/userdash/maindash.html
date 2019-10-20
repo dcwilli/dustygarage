@@ -43,26 +43,26 @@
     <div class="container-fluid px-0" id="itemdescription">
         <section class="container-fluid text-center " id="services ">
             <div class="row" style="background: lightgrey ">
-                <nav class="navbar col-12 navbar-expand-sm bg-base-blue text-white py-2">
+                <nav class="navbar col-12 navbar-expand-sm bg-base-blue text-white pt-3">
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Active</a>
+                            <a class="nav-link active" href="#">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link text-white"
+                                href="{{'../userdash/userselling/{}'.format(current_user.id)}}">Selling</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link text-white" href="#">Sold</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Disabled</a>
+                            <a class="nav-link text-white"
+                                href="{{'../userdash/userbids/{}'.format(current_user.id)}}">Your Bids</a>
                         </li>
                     </ul>
 
 
-                    <div class="container-fluid">
 
-                    </div>
                 </nav>
             </div>
             <div class="row py-0" style="background: lightgrey ">
