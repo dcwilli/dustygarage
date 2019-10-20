@@ -44,4 +44,4 @@ def userbids(userid):
     # if the url userid does not match the logged in user - log them out
     # if current_user != userid:
     #     return redirect(url_for('auth.logout'))
-    return render_template('userdash/userbids.html', userid=userid, bids=bids)
+    return render_template('userdash/managebids.html', userid=userid, bids=bids)
