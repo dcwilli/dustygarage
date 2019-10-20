@@ -6,7 +6,20 @@
 
     <h1 class="bg-base-blue col-4 text-white">Find The Perfect Tool</h1>
     <div class="container">
+        <form class="inline-form col-sm-10">
+            <div class="input-group-lg col-sm-10">
+                <div class="aaa">
+                    {{wtf.form_field(form.landing_search, placeholder="I'm looking for...", type="text", class="form-control btn-success-mog")}}
+                </div>
 
+                <div class="bbb">
+                    {{wtf.form_field(form.landing_search_button, class="form-control btn btn-success btn-success-mod", )}}
+                </div>
+
+            </div>
+
+
+        </form>
     </div>
 </section>
 <!-- Jumbotron Search ./ End -->
