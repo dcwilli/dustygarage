@@ -31,6 +31,14 @@ def maindash(userid):
         Tool.sold_status != 0).all()
     sold_length = len(sold)
 
+    # recently viewed itemts list
+    recently_viewed = session.get('vieweditems')
+
+    for i in recently_viewed:
+        recently_viewed = tool = Tool.query.filter_by(user_id=userid).filter(
+            Tool.id == i).all()
+
+    print(recently_viewed)
     return render_template('userdash/maindash.html', userid=userid, tool_length=tool_length, bid_length=bid_length, sold_length=sold_length)
 
 

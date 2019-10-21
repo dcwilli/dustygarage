@@ -16,11 +16,6 @@ bp = Blueprint('tool', __name__, url_prefix='/tools')
 @bp.route('/<id>', methods=["POST", "GET"])
 def show(id):
 
-    vieweditems = session.get('vieweditems')
-    if id not in vieweditems:
-        vieweditems.append(id)
-    session['vieweditems'] = vieweditems
-    print(vieweditems)
     bform = BidForm()
 
     user_obj = session.get('user_id')
@@ -31,6 +26,12 @@ def show(id):
     # check that the product exists in the DB
     if tool == None:
         return redirect('../not_found')
+
+    vieweditems = session.get('vieweditems')
+    if id not in vieweditems:
+        vieweditems.append(id)
+    session['vieweditems'] = vieweditems
+    print(vieweditems)
 
     list_price = tool.list_price
 
