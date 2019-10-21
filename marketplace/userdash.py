@@ -33,12 +33,12 @@ def maindash(userid):
 
     # recently viewed itemts list
     recently_viewed = session.get('vieweditems')
-
+    viewed_items = None
     for i in recently_viewed:
         print(i)
-        viewed_items = Tool.query.filter_by(user_id=userid).filter(
+        viewed_tools = Tool.query.filter_by(user_id=userid).filter(
             Tool.id == i).all()
-        print(viewed_items)
+        viewed_items.append(viewed_tools)
     print(viewed_items)
     return render_template('userdash/maindash.html', userid=userid, tool_length=tool_length, bid_length=bid_length, sold_length=sold_length)
 
