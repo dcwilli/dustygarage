@@ -2,133 +2,272 @@
 {% import "bootstrap/wtf.html" as wtf %}
 {% block content %}
 
-<main>
-    <!---Contains Main Content-->
-    <section class="container-fluid my-4 text-left" id="services">
+<!DOCTYPE html>
+<html lang="en">
 
-        <h3 class="display-4 mx-auto col-sm-12">{{current_user.name}}'s Dashboard</h3>
 
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="The Dusty Garage">
+    <title> The Dusty Garage </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/ee9defe254.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <style>
+        .hero-image {
+            background-image: url("static/img/toolbg.jpg");
+            background-size: cover;
+
+
+        }
+
+        .special-card {
+            opacity: .9;
+        }
+
+        .holder {
+            width: auto;
+            display: inline-block;
+        }
+
+        .holder img {
+            width: 30%;
+            /* Will shrink image to 30% of its original width */
+            height: auto;
+        }
+
+        .text-light-blue {
+            color: #698abd
+        }
+
+        .bg-base-green {
+            background-color: #3C4631;
+        }
+
+        .bg-base-blue {
+            background-color: #263346;
+        }
+
+        .btn-bg-dp {
+            background-color: #de8439;
+        }
+
+        .aaa {
+            width: 60% !important;
+            float: left;
+        }
+
+        .bbb {
+            width: 30% !important;
+            float: left;
+            margin-top: 24px;
+            margin-left: 5%;
+        }
+
+        .jumbotron {
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!---Contains Navigation and Logo-->
+    <header>
+
+        <nav class="navbar navbar-expand-sm bg-base-blue text-white py-2">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="container-fluid">
+
+                <a class="navbar-brand py-0 display-4" href="/">{{current_user.name}}'s Dashboard
+
+                    <!-- Logo stored at https://logomakr.com/1eX9e9 -->
+                </a>
+
+                <div class="navbar-nav text-white justify-content-end">
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+
+
+                        {% if current_user.is_authenticated %}
+
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-light text-black"><i class="far fa-user-circle"></i>
+                                {{ current_user.name }}</button>
+                            <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split"
+                                data-toggle="dropdown">
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <div class="dropdown-header">Manage</div>
+                                <a class="dropdown-item" href="{{ url_for('tool.create') }}">List a
+                                    Tool</a>
+                                <a class="dropdown-item" href="/userdash/main/{{current_user.id}}">Your
+                                    Dashboard</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ url_for('auth.logout') }}">Log Out</a>
+                            </div>
+                        </div>
+
+                        {% else %}
+
+                        <a class="nav-item font-weight-bold text-light-blue nav-link"
+                            href="{{ url_for('tool.create') }}"><i class="fas fa-dollar-sign"></i> List a Tool</a>
+
+                        <a class="nav-item font-weight-bold text-light-blue nav-link"
+                            href="{{ url_for('auth.login') }}"><i class="far fa-user-circle"></i> Login</a>
+
+                        <a class="nav-item font-weight-bold text-light-blue nav-link"
+                            href="{{ url_for('auth.register')}}"><i class="far fa-edit"></i> Register</a>
+
+
+
+                        {% endif %}
+
+                    </div>
+                </div>
+        </nav>
+
+    </header>
+    <!------------------------------------------------------------------------------------------------------>
+    <!--------------------------------------Start Dashboard Nav--------------------------------------------->
+    <!------------------------------------------------------------------------------------------------------>
+
+    <div class="row" style="background: lightgrey ">
+        <nav class="navbar col-12 navbar-expand-sm bg-base-blue text-white pt-3">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#"><i class="fas fa-home"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{'/userdash/userselling/{}'.format(current_user.id)}}"><i
+                            class="fas fa-sign"></i> Selling</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#"><i class="fas fa-hand-holding-usd"></i> Sold</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{'/userdash/userbids/{}'.format(current_user.id)}}"><i
+                            class="fas fa-money-bill-wave"></i> Your Bids</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
     </section>
+    <!------------------------------------------------------------------------------------------------------>
+    <!--------------------------------------End Dashboard Nav----------------------------------------------->
+    <!------------------------------------------------------------------------------------------------------>
+    <main>
+        <!---Contains Main Content-->
 
-    <!--breadcrumb-start-->
+        <!--breadcrumb-start-->
 
-    <nav aria-label="breadcrumb">
-        <ol class="container-fluid ml-4 breadcrumb bg-white">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item"><a href="manage.html">{{current_user.name}}'s Dashboard</a></li>
-        </ol>
-    </nav>
+        <nav aria-label="breadcrumb">
+            <ol class="container-fluid ml-4 breadcrumb bg-white">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="manage.html">{{current_user.name}}'s Dashboard</a></li>
+            </ol>
+        </nav>
 
-    <!---Main Content-->
-    <div class="container-fluid px-0">
-        <section class="container-fluid text-center">
+        <!---Main Content-->
+        <div class="container-fluid px-0">
+            <section class="container-fluid text-center">
+                <!------------------------------------------------------------------------------------------------------>
+                <!------------------------------------Start Dashboard Cards--------------------------------------------->
+                <!------------------------------------------------------------------------------------------------------>
+                <div class="row py-0" style="background: lightgrey ">
 
-            <!------------------------------------------------------------------------------------------------------>
-            <!--------------------------------------Start Dashboard Nav--------------------------------------------->
-            <!------------------------------------------------------------------------------------------------------>
+                    <div class="card-columns px-4 py-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <p class="card-text">You've Made </p>
+                                <h5 class="card-title display-2 text-center">4 Bids</h5>
 
-            <div class="row" style="background: lightgrey ">
-                <nav class="navbar col-12 navbar-expand-sm bg-base-blue text-white pt-3">
-                    <ul class="nav nav-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#"><i class="fas fa-home"></i> Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white"
-                                href="{{'/userdash/userselling/{}'.format(current_user.id)}}"><i
-                                    class="fas fa-sign"></i> Selling</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#"><i class="fas fa-hand-holding-usd"></i> Sold</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="{{'/userdash/userbids/{}'.format(current_user.id)}}"><i
-                                    class="fas fa-money-bill-wave"></i> Your Bids</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </section>
-        <!------------------------------------------------------------------------------------------------------>
-        <!--------------------------------------End Dashboard Nav----------------------------------------------->
-        <!------------------------------------------------------------------------------------------------------>
-
-        <!------------------------------------------------------------------------------------------------------>
-        <!------------------------------------Start Dashboard Cards--------------------------------------------->
-        <!------------------------------------------------------------------------------------------------------>
-        <div class="row py-0" style="background: lightgrey ">
-
-            <div class="card-columns px-4 py-3">
-                <div class="card">
-                    <div class="card-body">
-                        <p class="card-text">You've Made </p>
-                        <h5 class="card-title display-2 text-center">4 Bids</h5>
-
+                            </div>
+                        </div>
+                        <div class="card p-3">
+                            <blockquote class="blockquote mb-0 card-body">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                                </p>
+                                <footer class="blockquote-footer">
+                                    <small class="text-muted">
+                                        Someone famous in <cite title="Source Title">Source Title</cite>
+                                    </small>
+                                </footer>
+                            </blockquote>
+                        </div>
+                        <div class="card">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This card has supporting text below as a natural lead-in to
+                                    additional
+                                    content.</p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
+                        </div>
+                        <div class="card bg-primary text-white text-center p-3">
+                            <blockquote class="blockquote mb-0">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
+                                <footer class="blockquote-footer text-white">
+                                    <small>
+                                        Someone famous in <cite title="Source Title">Source Title</cite>
+                                    </small>
+                                </footer>
+                            </blockquote>
+                        </div>
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This card has a regular title and short paragraphy of text below
+                                    it.
+                                </p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="..." class="card-img-top" alt="...">
+                        </div>
+                        <div class="card p-3 text-right">
+                            <blockquote class="blockquote mb-0">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                                </p>
+                                <footer class="blockquote-footer">
+                                    <small class="text-muted">
+                                        Someone famous in <cite title="Source Title">Source Title</cite>
+                                    </small>
+                                </footer>
+                            </blockquote>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is another card with title and supporting text below. This
+                                    card
+                                    has
+                                    some additional content to make it slightly taller overall.</p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="card p-3">
-                    <blockquote class="blockquote mb-0 card-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                        <footer class="blockquote-footer">
-                            <small class="text-muted">
-                                Someone famous in <cite title="Source Title">Source Title</cite>
-                            </small>
-                        </footer>
-                    </blockquote>
-                </div>
-                <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This card has supporting text below as a natural lead-in to additional
-                            content.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-                <div class="card bg-primary text-white text-center p-3">
-                    <blockquote class="blockquote mb-0">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-                        <footer class="blockquote-footer text-white">
-                            <small>
-                                Someone famous in <cite title="Source Title">Source Title</cite>
-                            </small>
-                        </footer>
-                    </blockquote>
-                </div>
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This card has a regular title and short paragraphy of text below it.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
-                </div>
-                <div class="card p-3 text-right">
-                    <blockquote class="blockquote mb-0">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                        <footer class="blockquote-footer">
-                            <small class="text-muted">
-                                Someone famous in <cite title="Source Title">Source Title</cite>
-                            </small>
-                        </footer>
-                    </blockquote>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is another card with title and supporting text below. This card has
-                            some additional content to make it slightly taller overall.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-            </div>
 
-        </div>
+                </div>
 
 
-</main>
+    </main>
 
-</div>
-{% endblock %}
+    </div>
+    {% endblock %}
