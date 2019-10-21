@@ -86,7 +86,11 @@
             <!-- List of Bids -->
             <div class="col-md-6">
                 <div class="card">
-                    <h5 class="card-header">{{heading}}</h5>
+                    {% if tool.sold_status == 0 %}
+                    <h5 class="card-header bg-primary">Current Bids</h5>
+                    {% elif %}
+                    <h5 class="card-header bg-primary">Item Sold To:</h5>
+                    {% endif %}
                     <div class="card-body p-0">
                         <div class="table-responsive">
                             <table class="table table-striped">
@@ -113,17 +117,15 @@
                                         <td>
 
                                             <div class="btn-group">
-                                                <!-- <button type="button" class="btn btn-light text-black">Options</button> -->
-                                                <button type="button" class="btn btn-secondary rounded m-1 dropdown"
-                                                    data-toggle="dropdown"><i class="fas fa-angle-double-down"></i>
-                                                    <form method=post>
-                                                </button>
-                                                <div class="dropdown-menu text-center dropdown-menu-right">
+
+                                                <form method=post>
+                                                    </button>
+
                                                     {% if tool.sold_status == 0 %}
                                                     {{soldForm.csrf_token}}
                                                     {{soldForm.bid_user_id(value= user.user_id )}}
                                                     user id: {{user.user_id}}
-                                                    {{soldForm.submit(class_="btn btn-secondary")}}
+                                                    {{soldForm.submit(class_="btn btn-primary")}}
 
                                                     {% elif tool.sold_status != 0 %}
                                                     {{undoForm.csrf_token}}
@@ -131,7 +133,7 @@
                                                     {{set_to_zero}} set to 0
                                                     {{undoForm.submit_undo(class_="btn btn-danger")}}
                                                     {% endif %}
-                                                </div>
+
                                                 </form>
                                             </div>
                                         </td>
