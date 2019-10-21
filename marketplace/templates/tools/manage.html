@@ -102,7 +102,8 @@
                                         <th class="border-0 text-center">$</th>
                                     </tr>
                                 </thead>
-                                <tbody> {% for bid, user in bid_user %}
+                                <tbody>
+                                    {% for bid, user in bid_user %}
                                     <tr>
                                         <td>{{bid.name}} {{bid.lastName}}</td>
                                         <th scope="row">{{bid.emailid}}</th>
@@ -137,7 +138,7 @@
                         <h5 class="card-title px-3">Item has been marked as sold</h5>
                         <p>{{bid.name}} {{bid.lastName}}</p>
                         <p>{{emailid}}</p>
-                        <form class="pb-3">
+                        <form class="pb-3" method=post>
                             {{undoForm.csrf_token}}
                             {{undoForm.undoSold(value= set_to_zero)}}
                             {{undoForm.submit_undo(class_="btn btn-danger")}}
