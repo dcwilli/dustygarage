@@ -35,7 +35,7 @@ def maindash(userid):
     recently_viewed = session.get('vieweditems')
 
     for i in recently_viewed:
-        recently_viewed = tool = Tool.query.filter_by(user_id=userid).filter(
+        recently_viewed = Tool.query.filter_by(user_id=userid).filter(
             Tool.id == i).all()
 
     print(recently_viewed)
