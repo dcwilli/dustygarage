@@ -109,18 +109,12 @@
                                         <td>{{user.bid_date.strftime("%b %d %Y")}}</td>
                                         <td>${{user.bid_amount}}</td>
                                         <td>
-
                                             <div class="btn-group">
-
                                                 <form method=post>
                                                     </button>
-
-
                                                     {{soldForm.csrf_token}}
                                                     {{soldForm.bid_user_id(value= user.user_id )}}
                                                     {{soldForm.submit(class_="btn btn-primary")}}
-
-
                                             </div>
                                         </td>
                         </div>
@@ -131,8 +125,11 @@
                 </tbody>
 
                 </table>
+                {% endfor %}
 
                 {% elif tool.sold_status != 0 %}
+                {% for bid, user in bid_user %}
+
                 <div class="card border-danger">
                     <h5 class="card-header text-center border border-danger bg-success">Item Sold</h5>
                     <div class="card-body p-0">
@@ -153,6 +150,7 @@
 
                 {% endfor %}
 
+                {% endif %}
 
             </div>
 
