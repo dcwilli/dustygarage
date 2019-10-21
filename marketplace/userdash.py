@@ -27,9 +27,10 @@ def userselling(userid):
     # query db for tools current user has listed
     tool = Tool.query.filter_by(user_id=userid).filter(
         Tool.sold_status == 0).all()
-    print(tool)
-    print("----------------------------------")
 
+    print(tool)
+    print("-----------Tool length below-----------------------")
+    print(sum([len(tool[x]) for x in tool if isinstance(tool[x], list)]))
     return render_template('userdash/manageselling.html', userid=userid, tool=tool)
 
 
