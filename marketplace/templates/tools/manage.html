@@ -85,8 +85,9 @@
             </div>
             <!-- List of Bids -->
             <div class="col-md-6">
+
+                {% if tool.sold_status == 0 %}
                 <div class="card">
-                    {% if tool.sold_status == 0 %}
                     <h5 class="card-header bg-primary">Current Bids</h5>
                     <div class="card-body p-0">
                         <div class="table-responsive">
@@ -101,59 +102,64 @@
                                         <th class="border-0 text-center">$</th>
                                     </tr>
                                 </thead>
-                                {% elif tool.sold_status != 0 %}
-                                <h5 class="card-header bg-danger">Item Sold To:</h5>
-                                <div class="card-body p-0">
-                                    <div class="table-responsive">
-                                        <table class="table table-striped">
-                                            {% endif %}
-                                            <tbody>
+                                <tbody> {% for bid, user in bid_user %}
+                                    <tr>
+                                        <td>{{bid.name}} {{bid.lastName}}</td>
+                                        <th scope="row">{{bid.emailid}}</th>
+                                        <td>{{user.bid_date.strftime("%b %d %Y")}}</td>
+                                        <td>${{user.bid_amount}}</td>
+                                        <td>
 
-                                                {% for bid, user in bid_user %}
-                                                <tr>
-                                                    <td>{{bid.name}} {{bid.lastName}}</td>
-                                                    <th scope="row">{{bid.emailid}}</th>
-                                                    <td>{{user.bid_date.strftime("%b %d %Y")}}</td>
-                                                    <td>${{user.bid_amount}}</td>
-                                                    <td>
+                                            <div class="btn-group">
 
-                                                        <div class="btn-group">
+                                                <form method=post>
+                                                    </button>
 
-                                                            <form method=post>
-                                                                </button>
 
-                                                                {% if tool.sold_status == 0 %}
-                                                                {{soldForm.csrf_token}}
-                                                                {{soldForm.bid_user_id(value= user.user_id )}}
-                                                                user id: {{user.user_id}}
-                                                                {{soldForm.submit(class_="btn btn-primary")}}
+                                                    {{soldForm.csrf_token}}
+                                                    {{soldForm.bid_user_id(value= user.user_id )}}
+                                                    {{soldForm.submit(class_="btn btn-primary")}}
 
-                                                                {% elif tool.sold_status != 0 %}
-                                                                {{undoForm.csrf_token}}
-                                                                {{undoForm.undoSold(value= set_to_zero)}}
-                                                                {{set_to_zero}} set to 0
-                                                                {{undoForm.submit_undo(class_="btn btn-danger")}}
-                                                                {% endif %}
 
-                                                            </form>
-                                                        </div>
-                                                    </td>
-                                    </div>
-                                </div>
+                                            </div>
+                                        </td>
                         </div>
-
-                        </tr>
-                        {% endfor %}
-
-
-
-                        </tbody>
-
-                        </table>
-
                     </div>
-
                 </div>
+
+                </tr>
+                </tbody>
+
+                </table>
+
+                {% elif tool.sold_status != 0 %}
+                <div class="card border-danger">
+                    <h5 class="card-header text-center border border-danger bg-success">Item Sold</h5>
+                    <div class="card-body p-0">
+                        <h2><i class="far fa-handshake card card-title"></i></h2>
+                        <h5 class="card-title">Item has been marked as sold</h5>
+                        <p>{{bid.name}} {{bid.lastName}}</p>
+                        <p>{{emailid}}</p>
+                        <form>
+                            {{undoForm.csrf_token}}
+                            {{undoForm.undoSold(value= set_to_zero)}}
+                            {{undoForm.submit_undo(class_="btn btn-danger")}}
+                            {% endif %}
+                        </form>
+                    </div>
+                </div>
+
+
+
+                {% endfor %}
+
+
+            </div>
+
+
+        </div>
+
+    </div>
 
 </main>
 
