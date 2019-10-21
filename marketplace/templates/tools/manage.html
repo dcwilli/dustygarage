@@ -136,32 +136,21 @@
                         <h5 class="card-header text-center">Item Sold</h5>
                         <div class="card-body text-center p-0">
                             <h1><i class="far fa-handshake card card-title"></i></h1>
-                            <h5 class="card-title px-3">Item has been marked as sold</h5>
+                            <h5 class="card-title px-3">Buyer</h5>
                             <p>{{bid.name}} {{bid.lastName}}</p>
-                            <p>{{emailid}}</p>
+                            <p>{{bid.emailid}}</p>
                             <form class="pb-3" method=post>
                                 {{undoForm.csrf_token}}
                                 {{undoForm.undoSold(value= set_to_zero)}}
                                 {{undoForm.submit_undo(class_="btn btn-danger")}}
-
                             </form>
                         </div>
                     </div>
-
-
-
                     {% endfor %}
-
                     {% endif %}
-
                 </div>
-
-
             </div>
-
         </div>
-
 </main>
-
 </div>
 {% endblock %}
