@@ -43,7 +43,7 @@ def userselling(userid):
     tool = Tool.query.filter_by(user_id=userid).filter(
         Tool.sold_status == 0).all()
     tool_length = len(tool)
-    session['tool_length'] = tool_length
+
     print(tool)
     print("-----------Tool length below----------------------")
     print(tool_length)

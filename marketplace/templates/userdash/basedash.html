@@ -1,7 +1,3 @@
-{% extends "basedash.html" %}
-{% import "bootstrap/wtf.html" as wtf %}
-{% block content %}
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,10 +57,6 @@
             background-color: #de8439;
         }
 
-        .text-pink {
-            color: #de959a;
-        }
-
         .aaa {
             width: 60% !important;
             float: left;
@@ -100,6 +92,7 @@
                 <a class="navbar-brand py-0 text-decoration-none text-pink display-4" href="/"><img
                         src="/static\img\dg.png" height="80">
                     {{current_user.name}}'s Dashboard</a>
+                </a>
 
                 <div class="navbar-nav text-white justify-content-end">
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
@@ -145,95 +138,52 @@
         </nav>
 
     </header>
-    <!------------------------------------------------------------------------------------------------------>
-    <!--------------------------------------Start Dashboard Nav--------------------------------------------->
-    <!------------------------------------------------------------------------------------------------------>
 
-    <div class="row" style="background: lightgrey ">
-        <nav class="navbar col-12 navbar-expand-sm bg-base-blue text-white pt-3">
-            <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#"><i class="fas fa-home"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="{{'/userdash/userselling/{}'.format(current_user.id)}}"><i
-                            class="fas fa-sign"></i> Selling</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#"><i class="fas fa-hand-holding-usd"></i> Sold</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="{{'/userdash/userbids/{}'.format(current_user.id)}}"><i
-                            class="fas fa-money-bill-wave"></i> Your Bids</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-    </section>
-    <!------------------------------------------------------------------------------------------------------>
-    <!--------------------------------------End Dashboard Nav----------------------------------------------->
-    <!------------------------------------------------------------------------------------------------------>
-    <main>
-        <!---Contains Main Content-->
-
-        <!--breadcrumb-start-->
-
-        <nav aria-label="breadcrumb">
-            <ol class="container-fluid ml-4 breadcrumb bg-white">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item"><a href="manage.html">{{current_user.name}}'s Dashboard</a></li>
-            </ol>
-        </nav>
-
-        <!---Main Content-->
-        <div class="container-fluid px-0">
-            <section class="container-fluid text-center">
-                <!------------------------------------------------------------------------------------------------------>
-                <!------------------------------------Start Dashboard Cards--------------------------------------------->
-                <!------------------------------------------------------------------------------------------------------>
-                <div class="row py-0" style="background: lightgrey ">
-
-                    <div class="card-deck
-                     px-4 py-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <p class="card-text">You've Made </p>
-                                <a href="{{'/userdash/userbids/{}'.format(current_user.id)}}" <h5
-                                    class="card-title display-2 text-decoration-none text-dark text-center">{{bid_length}}
-                                    Bids
-                                    </h5></a>
-
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-body">
-                                <p class="card-text">You've Listed</p>
-                                <a href="{{'/userdash/userselling/{}'.format(current_user.id)}}" <h5
-                                    class="card-title display-2 text-decoration-none text-dark text-center">{{tool_length}}
-                                    Tools
-                                    </h5></a>
+    {% block content %}
 
 
-                            </div>
-                        </div>
-
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <p class="card-text">You've Sold</p>
-                                <a href="{{'/userdash/userselling/{}'.format(current_user.id)}}" <h5 class="card-title
-                                    display-2 text-decoration-none text-dark text-center">{{sold_length}} Tools
-                                    </h5></a>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-
-    </main>
-
-    </div>
     {% endblock %}
+    <footer class="footer container-fluid">
+        <div class="row justify-content-center text-left bg-base-blue text-white pb-5 pt-4">
+
+            <div class="col-4">
+                <h6>About Us</h6>
+                <ul class="list-unstyled">
+                    <li><a class="text-reset" href="#">Our Story</a></li>
+                    <li><a class="text-reset" href="#">Contact Us</a></li>
+                    <li><a class="text-reset" href="#">Our Price Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="col-4">
+                <h6>Our Range</h6>
+                <ul class="list-unstyled text-white">
+                    <li><a class="text-reset" href="#">Categories</a></li>
+                    <li><a class="text-reset" href="#" class="text-decoration-none">Brands</a></li>
+                    <li><a class="text-reset" href="#">Top Sellers</a></li>
+                </ul>
+            </div>
+
+
+            <div class="col-4">
+                <h6>Resources</h6>
+                <ul class="list-unstyled text-reset">
+                    <li><a class="text-reset" href="#">Terms of Use</a></li>
+                    <li><a class="text-reset" href="#">Site Map</a></li>
+                    <li><a class="text-reset" href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row text-white bg-base-blue">
+            <div class="text-center col-12 py-5 mx-auto">
+
+                <p>Copyright &copy; 2019</p>
+
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+</body>
+
+</html>
