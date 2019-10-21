@@ -138,7 +138,7 @@
                             <h1><i class="far fa-handshake card card-title"></i></h1>
                             <h5 class="card-title px-3">Buyer</h5>
                             <p>{{bid.name}} {{bid.lastName}}</p>
-                            <p>{{bid.emailid}}</p>
+                            <p class="px-3">{{bid.emailid}}</p>
                             <form class="pb-3" method=post>
                                 {{undoForm.csrf_token}}
                                 {{undoForm.undoSold(value= set_to_zero)}}
