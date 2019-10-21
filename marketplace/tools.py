@@ -17,7 +17,8 @@ bp = Blueprint('tool', __name__, url_prefix='/tools')
 def show(id):
 
     vieweditems = session.get('vieweditems')
-    vieweditems.append(id)
+    if id not in vieweditems:
+        vieweditems.append(id)
     session['vieweditems'] = vieweditems
     print(vieweditems)
     bform = BidForm()
