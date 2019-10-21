@@ -15,6 +15,7 @@ bp = Blueprint('userdash', __name__, url_prefix='/userdash')
 @bp.route('/main/<userid>', methods=["POST", "GET"])
 @login_required
 def maindash(userid):
+    userselling(userid)
     tool_length = session.get('tool_length', None)
     print(tool_length)
     return render_template('userdash/maindash.html', userid=userid, tool_length=tool_length)
