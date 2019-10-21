@@ -88,7 +88,7 @@
                 <div class="card">
                     {% if tool.sold_status == 0 %}
                     <h5 class="card-header bg-primary">Current Bids</h5>
-                    {% elif %}
+                    {% elif tool.sold_status != 0 %}
                     <h5 class="card-header bg-primary">Item Sold To:</h5>
                     {% endif %}
                     <div class="card-body p-0">
