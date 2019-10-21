@@ -36,10 +36,10 @@ def maindash(userid):
 
     for i in recently_viewed:
         print(i)
-        recently_viewed = Tool.query.filter_by(user_id=userid).filter(
+        viewed_items = Tool.query.filter_by(user_id=userid).filter(
             Tool.id == i).all()
-
-    print(recently_viewed)
+        print(viewed_items)
+    print(viewed_items)
     return render_template('userdash/maindash.html', userid=userid, tool_length=tool_length, bid_length=bid_length, sold_length=sold_length)
 
 
