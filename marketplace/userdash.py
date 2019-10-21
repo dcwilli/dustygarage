@@ -29,7 +29,7 @@ def userselling(userid):
         Tool.sold_status == 0).all()
     tool_length = len(tool))
     print(tool)
-    print("-----------Tool length below-----------------------")
+    print("-----------Tool length below----------------------")
     print(tool_length)
     return render_template('userdash/manageselling.html', userid = userid, tool = tool)
 
