@@ -87,7 +87,7 @@
             <div class="col-md-6">
 
                 {% if tool.sold_status == 0 %}
-                <div class="card">
+                <div class="card mx-4">
                     <h5 class="card-header bg-primary">Current Bids</h5>
                     <div class="card-body p-0">
                         <div class="table-responsive">
@@ -130,14 +130,14 @@
                 {% elif tool.sold_status != 0 %}
                 {% for bid, user in bid_user %}
 
-                <div class="card border-danger">
-                    <h5 class="card-header text-center border border-danger bg-success">Item Sold</h5>
-                    <div class="card-body p-0">
-                        <h2><i class="far fa-handshake card card-title"></i></h2>
-                        <h5 class="card-title">Item has been marked as sold</h5>
+                <div class="card mx-4">
+                    <h5 class="card-header text-center">Item Sold</h5>
+                    <div class="card-body text-center p-0">
+                        <h1><i class="far fa-handshake card card-title"></i></h1>
+                        <h5 class="card-title px-3">Item has been marked as sold</h5>
                         <p>{{bid.name}} {{bid.lastName}}</p>
                         <p>{{emailid}}</p>
-                        <form>
+                        <form class="pb-3">
                             {{undoForm.csrf_token}}
                             {{undoForm.undoSold(value= set_to_zero)}}
                             {{undoForm.submit_undo(class_="btn btn-danger")}}
