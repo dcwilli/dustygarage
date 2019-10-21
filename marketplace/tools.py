@@ -1,4 +1,5 @@
 import datetime
+from datetime import datetime
 from flask import (Blueprint, flash, render_template, session,
                    request, url_for, redirect)
 from .models import Tool, Bid, User
@@ -43,33 +44,7 @@ def show(id):
 
     return render_template('tools/item.html', tool=tool, list_price=list_price, form=bform, bid_user=bid_user, current_bid_amount=current_bid_amount)
 
-
-# @bp.route('/userdash/userselling/<userid>', methods=["POST", "GET"])
-# @login_required
-# def userselling(userid):
-
-#     print(userid)
-#     # query db for tools current user has listed
-#     tool = Tool.query.filter_by(user_id=userid).all()
-#     print(tool)
-#     print("----------------------------------")
-
-#     return render_template('userdash/userselling.html', userid=userid, tool=tool)
-
-
-# @bp.route('/userdash/userbids/<userid>' methods=["POST", "GET"])
-# @login_required
-# def userbids(userid):
-#     # query db for bids current user has made
-#     bids = db.session.query(Tool, Bid).join(
-#         Bid).filter_by(user_id=userid).all()
-#     print(bids)
-#     current_user = session.get('user_id')
-
-#     # if the url userid does not match the logged in user - log them out
-#     # if current_user != userid:
-#     #     return redirect(url_for('auth.logout'))
-#     return render_template('userdash/userbids.html', userid=userid, bids=bids)
+# <-------------------------------------Manage Item
 
 
 @bp.route('/<id>/manage', methods=["POST", "GET"])
@@ -127,6 +102,7 @@ def manage(id):
             print(form_input)
             update_tool = Tool.query.get(id)
             update_tool.sold_status = form_input
+            update_tool.sold_date = datetime.now()
             db.session.commit()
             print('COMMITED TO DB')
 
@@ -136,6 +112,7 @@ def manage(id):
             print(form_input)
             update_tool = Tool.query.get(id)
             update_tool.sold_status = form_input
+            update_tool.sold_date = 0
             db.session.commit()
             print('COMMITED TO DB')
 
