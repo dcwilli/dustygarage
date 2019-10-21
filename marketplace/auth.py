@@ -1,5 +1,5 @@
 from flask import (
-    Blueprint, flash, render_template, request, url_for, redirect, Markup
+    Blueprint, flash, render_template, request, url_for, redirect, Markup, session
 )
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.urls import url_parse
@@ -33,7 +33,8 @@ def login():
             flash(u'Incorrect Login Credentials', 'alert alert-danger')
             return redirect(url_for('auth.login'))
         login_user(u1)
-
+        viewed = []
+        session['vieweditems'] = viewed
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('main.index')
             print('#################')

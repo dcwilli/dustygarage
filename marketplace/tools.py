@@ -15,10 +15,10 @@ bp = Blueprint('tool', __name__, url_prefix='/tools')
 # create a page that will show the details of the tools
 @bp.route('/<id>', methods=["POST", "GET"])
 def show(id):
-    viewed = []
-    viewed.append(id)
-    session['vieweditems'] = viewed
+
     vieweditems = session.get('vieweditems')
+    vieweditems.append(id)
+    session['vieweditems'] = vieweditems
     print(vieweditems)
     bform = BidForm()
 
