@@ -25,7 +25,8 @@ def userselling(userid):
 
     print(userid)
     # query db for tools current user has listed
-    tool = Tool.query.filter_by(user_id=userid).filter(sold_status==0).all()
+    tool = Tool.query.filter_by(user_id=userid).filter(
+        Tool.sold_status == 0).all()
     print(tool)
     print("----------------------------------")
 
