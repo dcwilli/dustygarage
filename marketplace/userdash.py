@@ -15,7 +15,8 @@ bp = Blueprint('userdash', __name__, url_prefix='/userdash')
 @bp.route('/main/<userid>', methods=["POST", "GET"])
 @login_required
 def maindash(userid):
-
+    tool_length = session.get('tool_length', None)
+    print(tool_length)
     return render_template('userdash/maindash.html', userid=userid)
 
 
@@ -28,6 +29,7 @@ def userselling(userid):
     tool = Tool.query.filter_by(user_id=userid).filter(
         Tool.sold_status == 0).all()
     tool_length = len(tool)
+    session['tool_length'] = tool_length
     print(tool)
     print("-----------Tool length below----------------------")
     print(tool_length)
