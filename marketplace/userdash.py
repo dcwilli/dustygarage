@@ -33,7 +33,7 @@ def maindash(userid):
 
     # recently viewed itemts list
     recently_viewed = session.get('vieweditems')
-    viewed_items = None
+    viewed_items = []
     for i in recently_viewed:
         print(i)
         viewed_tools = Tool.query.filter_by(user_id=userid).filter(
