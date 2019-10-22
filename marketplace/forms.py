@@ -9,6 +9,7 @@ from wtforms.fields import (
     HiddenField
 )
 from wtforms.validators import InputRequired, Length, Email, EqualTo
+from flask_wtf.file import FileField, FileAllowed, FileRequired
 
 
 # creates the login information
@@ -34,29 +35,27 @@ class RegisterForm(FlaskForm):
     submit = SubmitField("Register")
 
 
+ALLOWED_FILE = {'png', 'jpg', 'JPG', 'PNG', 'bmp'}
+
+
 class CreateForm(FlaskForm):
-    ALLOWED_FILE = {"jpg", "JPG"}
-    image = FileField(
-        "Tool Image",
-        validators=[
-            FileRequired(message="Image can not be empty"),
-            FileAllowed(ALLOWED_FILE, message="Only support jpg, JPG"),
-        ],
-    )
-    title = StringField("Title", validators=[InputRequired()])
-    modelNo = StringField("Model Number", validators=[InputRequired()])
-    price = StringField("Price", validators=[InputRequired()])
+
+    images = FileField("Tool Image", validators=[FileRequired(message="Image can not be empty"),
+                                                 FileAllowed(ALLOWED_FILE, message="Only support jpg, JPG, png, bmp")])
+    tool_name = StringField("Title", validators=[InputRequired()])
+
+    list_price = StringField("Price", validators=[InputRequired()])
     category = SelectField(
         u"Category",
         choices=[
-            ("Gardening", "Gardening"),
-            ("Garage Tools", "Garage Tools"),
-            ("Renovation Tools", "Renovation Tools"),
-            ("Industrial Tools", "Industrial Tools"),
-            ("Other Tools", "Other Tools"),
+            ("Garden", "Garden"),
+            ("General Hardware",  "General Hardware"),
+            ("Building and Hardware", "Building and Hardware"),
+            ("Hand Tools", "Hand Tools"),
+            ("Power Tools", "Power Tools"),
         ],
     )
-    description = StringField("Description", validators=[InputRequired()])
+    desc = TextAreaField("Description", validators=[InputRequired()])
     brand = StringField("Brand", validators=[InputRequired()])
     submit = SubmitField("Create")
 

@@ -136,12 +136,15 @@ def create():
     form = CreateForm()
     heading = "List an Item"
     if form.validate_on_submit():
+        db_file_path = check_file(form)
+
         print("Form validated")
         new_tool = Tool(
             tool_name=form.tool_name.data,
             modelNo=form.modelNo.data,
             list_price=form.list_price.data,
             category=form.category.data,
+            images=db_file_path,
             user_id=session.get("user_id"),
             desc=form.desc.data,
             brand=form.brand.data,
@@ -213,7 +216,7 @@ def bid(toolid):
 
 
 def check_file(form):
-    fp = form.files.data
+    fp = form.images.data
 
     # retrieve the file
     filename = fp.filename
@@ -223,7 +226,7 @@ def check_file(form):
 
     upload_path = os.path.join(
         BASE_PATH, 'static/img', secure_filename(filename))
-    db_upload_path = secure_filename(filename)
+    db_upload_path = '/static/img/' + secure_filename(filename)
     print(db_upload_path)
     fp.save(upload_path)
     return db_upload_path
