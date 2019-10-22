@@ -255,7 +255,7 @@
                                     <img class="card-img-top mx-auto" src={{'../static/img/' }} alt="Tool Image">
 
                                     <p class="card-text d-inline-block text-truncate pt-3" style="max-width: 200px;">
-                                        {{viewed_tools.desc}}
+                                        {{query.desc}}
                                     </p>
 
                                 </div>
@@ -264,7 +264,7 @@
                                     <div class="card-footer bg-base-blue text-white border-dark">
                                         <h5> Starting Price </h5>
 
-                                        <h5 class="font-face"> ${{viewed_tools.list_price}}</h5>
+                                        <h5 class="font-face"> ${{query.list_price}}</h5>
                                         <hr><a href="{{'/tools/{}'.format(viewed_tools.id) }}"
                                             class="btn btn-bg-dp mx-auto btn-inline">Make
                                             a
