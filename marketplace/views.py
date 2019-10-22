@@ -27,7 +27,7 @@ def index():
         print(search_string)
         all_tools = Tool.query.all()
         for tool in all_tools:
-            if re.search(search_string, tool.tool_name):
+            if re.search(search_string, tool.tool_name, flags=re.IGNORECASE):
                 search_results.append(tool)
         return render_template("results.html", form=search, items=search_results)
 
