@@ -2,6 +2,7 @@ import datetime
 from flask import (Blueprint, flash, render_template, session,
                    request, url_for, redirect)
 from .models import Tool, Bid, User
+from sqlalchemy import desc
 from .forms import BidForm, MarkSold, UndoSold, CreateForm
 from flask_login import login_user, login_required, logout_user
 from werkzeug.utils import secure_filename
