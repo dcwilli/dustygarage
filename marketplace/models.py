@@ -35,7 +35,6 @@ class Tool(db.Model):
     __tablename__ = "tools"
     id = db.Column(db.Integer, primary_key=True)
     tool_name = db.Column(db.String(100))
-    modelNo = db.Column(db.String(100))
     list_price = db.Column(db.Numeric(10))
     images = db.Column(db.String(1000), default='noimage.png')
     category = db.Column(db.String(100))

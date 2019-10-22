@@ -141,7 +141,6 @@ def create():
         print("Form validated")
         new_tool = Tool(
             tool_name=form.tool_name.data,
-            modelNo=form.modelNo.data,
             list_price=form.list_price.data,
             category=form.category.data,
             images=db_file_path,
