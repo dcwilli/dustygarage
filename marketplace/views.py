@@ -96,6 +96,7 @@ def search():
         print(search_string)
         if search_string != "":
             all_tools = Tool.query.all()
+            print(all_tools)
             for tool in all_tools:
                 if re.search(search_string, tool.tool_name):
                     search_results.append(tool)
