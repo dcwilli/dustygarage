@@ -40,8 +40,6 @@ ALLOWED_FILE = {'png', 'jpg', 'JPG', 'PNG', 'bmp'}
 
 class CreateForm(FlaskForm):
 
-    images = FileField("Tool Image", validators=[FileRequired(message="Image can not be empty"),
-                                                 FileAllowed(ALLOWED_FILE, message="Only support jpg, JPG, png, bmp")])
     tool_name = StringField("Title", validators=[InputRequired()])
 
     list_price = StringField("Price", validators=[InputRequired()])
@@ -57,6 +55,8 @@ class CreateForm(FlaskForm):
     )
     desc = TextAreaField("Description", validators=[InputRequired()])
     brand = StringField("Brand", validators=[InputRequired()])
+    images = FileField("Select an Image  ", validators=[FileRequired(message="Image can not be empty"),
+                                                        FileAllowed(ALLOWED_FILE, message="Only support jpg, JPG, png, bmp")])
     submit = SubmitField("Create")
 
 
