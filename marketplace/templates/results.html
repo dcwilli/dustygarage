@@ -5,6 +5,11 @@
 
 
 </div>
+<script>    
+    if (typeof window.history.pushState == 'function') {
+        window.history.pushState({}, "Hide", "http://127.0.0.1:5000/results");
+    }
+</script>
 <div class="container ">
     <div class="row ">
         <!-- BEGIN SEARCH RESULT -->
@@ -35,7 +40,43 @@
                                 <span class="input-group-btn ">
                                     {{wtf.quick_form(form)}}
                                     <title>Search Results</title>
-                                    {{ table }}
+                                    <table class="table table-striped">
+                                        <tbody>
+                                            {% for item in items %}
+                                            <TR>
+                                                <TD class="c1">
+                                                    <img src={{item.image}} height="120" width="120">
+                                                </TD>
+                                                <TD class="c2">{{item.title}}</TD>
+                                                <TD class="c3">${{item.price}}</TD>
+                                                <TD class="c4">
+                                                    <SPAN>{{item.category}}</SPAN>
+                                                </TD>
+                                                <TD class="c5">
+                                                    <SPAN>{{item.user_id}}</SPAN>
+                                                </TD>
+                                                <TD class="c6">
+                                                    {% if item.description|length > 50 %}
+                                                    <SPAN>{{item.description[0:50]}}...</SPAN>
+                                                    {% else %}
+                                                    <SPAN>{{item.description}}</SPAN>
+                                                    {% endif %}
+
+                                                </TD>
+                                                <TD class="c7">
+                                                    <SPAN>{{item.date}}</SPAN>
+                                                </TD>
+                                            </TR>
+                                            {% endfor %}
+                                        </tbody>
+
+
+
+
+
+
+                                    </table>
+
 
                                 </span>
                             </div>
