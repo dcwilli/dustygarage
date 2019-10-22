@@ -2,7 +2,6 @@ from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 import os
-
 from flask_login import LoginManager
 
 db = SQLAlchemy()
@@ -18,7 +17,11 @@ def create_app():
     app.debug = True
     app.secret_key = "utroutoru"
     # set the app configuration data
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///marketplace.sqlite"
+    #app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///marketplace.sqlite"
+    # Flask-SQLAlchemy settings
+
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+
     # initialize db with flask app
     db.init_app(app)
 
@@ -48,6 +51,12 @@ def create_app():
     from . import auth
 
     app.register_blueprint(auth.bp)
+
+    from . import tools
+    app.register_blueprint(tools.bp)
+
+    from . import userdash
+    app.register_blueprint(userdash.bp)
 
     @app.errorhandler(404)
     def not_found(e):

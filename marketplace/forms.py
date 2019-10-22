@@ -6,34 +6,29 @@ from wtforms.fields import (
     StringField,
     PasswordField,
     SelectField,
+    HiddenField
 )
 from wtforms.validators import InputRequired, Length, Email, EqualTo
 
 
 # creates the login information
 class LoginForm(FlaskForm):
-    username = StringField("User Name", validators=[
-                           InputRequired("Enter user name")])
-    password = PasswordField(
-        "Password", validators=[InputRequired("Enter user password")]
-    )
+    emailid = StringField("Email Address", validators=[
+        InputRequired('Enter email address')])
+    password = PasswordField("Password", validators=[
+                             InputRequired('Enter user password')])
     submit = SubmitField("Login")
 
 
 class RegisterForm(FlaskForm):
-    username = StringField("User Name", validators=[InputRequired()])
-    email = StringField(
-        "Email Address", validators=[Email("Please enter a valid email")]
-    )
+    name = StringField("First Name", validators=[InputRequired()])
+    lastName = StringField("Last Name", validators=[InputRequired()])
+    email = StringField("Email Address", validators=[
+                        Email("Please enter a valid email")])
 
     # linking two fields - password should be equal to data entered in confirm
-    password = PasswordField(
-        "Password",
-        validators=[
-            InputRequired(),
-            EqualTo("confirm", message="Passwords should match"),
-        ],
-    )
+    password = PasswordField("Password", validators=[InputRequired(),
+                                                     EqualTo('confirm', message="Passwords should match")])
     confirm = PasswordField("Confirm Password")
     # submit button
     submit = SubmitField("Register")
@@ -41,9 +36,9 @@ class RegisterForm(FlaskForm):
 
 class CreateForm(FlaskForm):
 
-    title = StringField("Title", validators=[InputRequired()])
+    tool_name = StringField("Title", validators=[InputRequired()])
     modelNo = StringField("Model Number", validators=[InputRequired()])
-    price = StringField("Price", validators=[InputRequired()])
+    list_price = StringField("Price", validators=[InputRequired()])
     category = SelectField(
         u"Category",
         choices=[
@@ -54,7 +49,7 @@ class CreateForm(FlaskForm):
             ("Other Tools", "Other Tools"),
         ],
     )
-    description = StringField("Description", validators=[InputRequired()])
+    desc = StringField("Description", validators=[InputRequired()])
     brand = StringField("Brand", validators=[InputRequired()])
     submit = SubmitField("Create")
 
@@ -70,11 +65,26 @@ class LandingForm(FlaskForm):
 
 
 class Results(Table):
-    title = Col("title")
+    tool_name = Col("title")
     modelNo = Col("modelNo")
-    price = Col("price")
+    list_price = Col("price")
     category = Col("category")
-    description = Col("description")
+    desc = Col("description")
     brand = Col("brand")
-    date = DateCol("date")
-    sold = Col("sold")
+    date_created = DateCol("date")
+    sold_status = Col("sold")
+
+
+class MarkSold(FlaskForm):
+    bid_user_id = HiddenField('bid_user id', '{{user.user_id}}')
+    submit = SubmitField("Mark as Sold")
+
+
+class UndoSold(FlaskForm):
+    undoSold = HiddenField("zero")
+    submit_undo = SubmitField("Undo")
+
+
+class BidForm(FlaskForm):
+    bidamount = StringField("Bid Amount", validators=[InputRequired()])
+    submit = SubmitField("Submit Bid")
