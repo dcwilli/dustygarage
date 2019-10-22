@@ -43,7 +43,7 @@ def maindash(userid):
     query = Tool.query.filter(Tool.id.in_(recently_viewed)).all()
     print(query)
 
-    return render_template('userdash/maindash.html', userid=userid, tool_length=tool_length, bid_length=bid_length, sold_length=sold_length, viewed_tools=viewed_tools)
+    return render_template('userdash/maindash.html', userid=userid, tool_length=tool_length, bid_length=bid_length, sold_length=sold_length, query=query, viewed_tools=viewed_tools)
 
 
 @bp.route('/userselling/<userid>', methods=["POST", "GET"])
