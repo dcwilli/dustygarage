@@ -40,7 +40,8 @@ def maindash(userid):
             Tool.id == i).all()
         viewed_items.append(viewed_tools)
     print(viewed_items)
-    return render_template('userdash/maindash.html', userid=userid, tool_length=tool_length, bid_length=bid_length, sold_length=sold_length)
+
+    return render_template('userdash/maindash.html', userid=userid, tool_length=tool_length, bid_length=bid_length, sold_length=sold_length, viewed_items=viewed_items)
 
 
 @bp.route('/userselling/<userid>', methods=["POST", "GET"])
