@@ -47,7 +47,7 @@ def maindash(userid):
     for i in tools:
         print(tools.tool_name)
 
-    return render_template('userdash/maindash.html', userid=userid, tool_length=tool_length, bid_length=bid_length, sold_length=sold_length, query=query, viewed_tools=viewed_tools)
+    return render_template('userdash/maindash.html', userid=userid, tool_length=tool_length, bid_length=bid_length, sold_length=sold_length, query=query, tools=tools, viewed_tools=viewed_tools)
 
 
 @bp.route('/userselling/<userid>', methods=["POST", "GET"])

@@ -101,18 +101,18 @@
                 </div>
                 <div class="container">
                     <div class="card-deck my-4">
-                        {% for tool in query %}
+                        {% for i in tools %}
 
                         <div class="card border-dark">
                             <div class="card-header bg-base-blue text-white border-dark">
-                                <h5 class="card-title">{{query.tool_name }}</h5>
+                                <h5 class="card-title">{{tools.tool_name }}</h5>
                             </div>
 
                             <div class="card-body">
                                 <img class="card-img-top mx-auto" src={{'../static/img/' }} alt="Tool Image">
 
                                 <p class="card-text d-inline-block text-truncate pt-3" style="max-width: 200px;">
-                                    {{query.desc}}
+                                    {{tools.desc}}
                                 </p>
 
                             </div>
@@ -121,7 +121,7 @@
                                 <div class="card-footer bg-base-blue text-white border-dark">
                                     <h5> Starting Price </h5>
 
-                                    <h5 class="font-face"> ${{query.list_price}}</h5>
+                                    <h5 class="font-face"> ${{tools.list_price}}</h5>
                                     <hr><a href="{{'/tools/{}'.format(viewed_tools.id) }}"
                                         class="btn btn-bg-dp mx-auto btn-inline">Make
                                         a
