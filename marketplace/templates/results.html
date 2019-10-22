@@ -45,26 +45,26 @@
                                             {% for item in items %}
                                             <TR>
                                                 <TD class="c1">
-                                                    <img src={{item.image}} height="120" width="120">
+                                                    <img src="{{item.images}}" height="120" width="120">
                                                 </TD>
-                                                <TD class="c2">{{item.title}}</TD>
-                                                <TD class="c3">${{item.price}}</TD>
+                                                <TD class="c2">{{item.tool_name}}</TD>
+                                                <TD class="c3">${{item.list_price}}</TD>
                                                 <TD class="c4">
                                                     <SPAN>{{item.category}}</SPAN>
                                                 </TD>
                                                 <TD class="c5">
-                                                    <SPAN>{{item.user_id}}</SPAN>
+                                                    <SPAN>{{item.id}}</SPAN>
                                                 </TD>
                                                 <TD class="c6">
-                                                    {% if item.description|length > 50 %}
-                                                    <SPAN>{{item.description[0:50]}}...</SPAN>
+                                                    {% if item.desc|length > 50 %}
+                                                    <SPAN>{{item.desc[0:50]}}...</SPAN>
                                                     {% else %}
-                                                    <SPAN>{{item.description}}</SPAN>
+                                                    <SPAN>{{item.desc}}</SPAN>
                                                     {% endif %}
 
                                                 </TD>
                                                 <TD class="c7">
-                                                    <SPAN>{{item.date}}</SPAN>
+                                                    <SPAN>{{item.date_created}}</SPAN>
                                                 </TD>
                                             </TR>
                                             {% endfor %}
