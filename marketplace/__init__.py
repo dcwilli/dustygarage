@@ -71,7 +71,7 @@ def create_app():
         image = "static/img/500.png"
         return render_template("error.html", heading=heading, image=image), 500
 
-    UPLOAD_FOLDER = "/static/img"
+    UPLOAD_FOLDER = "../static/img"
     app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
     return app
