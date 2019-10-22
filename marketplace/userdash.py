@@ -34,18 +34,9 @@ def maindash(userid):
 
     # recently viewed itemts list
     recently_viewed = session.get('vieweditems')
-    viewed_items = []
-    for i in recently_viewed:
-        print(i)
-        viewed_tools = Tool.query.filter_by(user_id=userid).filter(
-            Tool.id == i).all()
-        viewed_items.append(viewed_tools)
 
-    query = Tool.query.filter(Tool.id.in_(recently_viewed)).all()
-    tools = Tool.query.order_by(desc(Tool.date_created)).limit(4).all()
-    print(query)
-
-    return render_template('userdash/maindash.html', userid=userid, tool_length=tool_length, bid_length=bid_length, sold_length=sold_length, query=query, tools=tools, viewed_tools=viewed_tools)
+    views = Tool.query.filter(Tool.id.in_(recently_viewed)).all()
+    return render_template('userdash/maindash.html', userid=userid, tool_length=tool_length, bid_length=bid_length, sold_length=sold_length, views=views)
 
 
 @bp.route('/userselling/<userid>', methods=["POST", "GET"])
