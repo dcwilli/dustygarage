@@ -35,10 +35,17 @@ class RegisterForm(FlaskForm):
 
 
 class CreateForm(FlaskForm):
-
-    tool_name = StringField("Title", validators=[InputRequired()])
+    ALLOWED_FILE = {"jpg", "JPG"}
+    image = FileField(
+        "Tool Image",
+        validators=[
+            FileRequired(message="Image can not be empty"),
+            FileAllowed(ALLOWED_FILE, message="Only support jpg, JPG"),
+        ],
+    )
+    title = StringField("Title", validators=[InputRequired()])
     modelNo = StringField("Model Number", validators=[InputRequired()])
-    list_price = StringField("Price", validators=[InputRequired()])
+    price = StringField("Price", validators=[InputRequired()])
     category = SelectField(
         u"Category",
         choices=[
@@ -49,7 +56,7 @@ class CreateForm(FlaskForm):
             ("Other Tools", "Other Tools"),
         ],
     )
-    desc = StringField("Description", validators=[InputRequired()])
+    description = StringField("Description", validators=[InputRequired()])
     brand = StringField("Brand", validators=[InputRequired()])
     submit = SubmitField("Create")
 
