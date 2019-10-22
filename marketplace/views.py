@@ -46,7 +46,8 @@ def check_upload_file(form):
     # get the current path of the module file… store file relative to this path
     BASE_PATH = os.path.dirname(__file__)
     # upload file location – directory of this file/static/image
-    upload_path = os.path.join(BASE_PATH, "static/img", secure_filename(filename))
+    upload_path = os.path.join(
+        BASE_PATH, "static/img", secure_filename(filename))
     # store relative path in DB as image location in HTML is relative
     db_upload_path = "/static/img/" + secure_filename(filename)
     # save the file and return the db upload path
@@ -82,7 +83,7 @@ def create():
     return render_template("create.html", form=form)
 
 
-##### use a for in the html to count the length of the string
+# use a for in the html to count the length of the string
 @bp.route("/results", methods=["GET", "POST"])
 def search():
 
@@ -96,7 +97,7 @@ def search():
         if search_string != "":
             all_tools = Tool.query.all()
             for tool in all_tools:
-                if re.search(search_string, tool.title):
+                if re.search(search_string, tool.tool_name):
                     search_results.append(tool)
         else:
             print("This string is empty")
@@ -104,4 +105,3 @@ def search():
         return render_template("results.html", form=search, items=search_results)
 
     return render_template("results.html", form=search)
-
