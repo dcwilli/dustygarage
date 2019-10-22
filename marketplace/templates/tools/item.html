@@ -59,29 +59,17 @@
     <div class="container-fluid" id="itemdescription">
 
         <div class="row p-4" style="background-color: lightgray">
-
-
             <div class="col-sm-4">
-
-                <article id="itemimg">
-
-                    <img src={{'/static/img/' + tool.images }} class="img-fluid max-width: 30%">
-
-                </article>
 
             </div>
 
             <div class="col-sm-4">
-
                 <h4>{{tool.brand}} {{tool.tool_name}}</h4>
-
-
                 <p> {{tool.desc}}</p>
-
-
-
-
             </div>
+            <article id="itemimg">
+                <img src={{'/static/img/' + tool.images }} class="img-fluid max-width: 30%">
+            </article>
 
             <div class="card mx-auto py-3 h-25 border-0" style="background-color: lightgray">
 
