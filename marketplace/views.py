@@ -99,4 +99,3 @@ def search():
         return render_template("results.html", form=search, table=table)
 
     return render_template("results.html", form=search)
-
