@@ -5,86 +5,6 @@
 
 {% block content %}
 
-<head>
-    <meta charset="utf-8">
-    <meta name="description" content="The Dusty Garage">
-    <title> The Dusty Garage </title>
-    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
-    <link href="assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/libs/css/style.css">
-    <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://kit.fontawesome.com/ee9defe254.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-    <style>
-        .hero-image {
-            background-image: url("static/img/toolbg.jpg");
-            background-size: cover;
-
-
-        }
-
-        .special-card {
-            opacity: .9;
-        }
-
-        .holder {
-            width: auto;
-            display: inline-block;
-        }
-
-        .holder img {
-            width: 30%;
-            /* Will shrink image to 30% of its original width */
-            height: auto;
-        }
-
-        .text-light-blue {
-            color: #698abd
-        }
-
-        .bg-base-green {
-            background-color: #3C4631;
-        }
-
-        .bg-base-blue {
-            background-color: #263346;
-        }
-
-        .text-pink {
-            color: #de959a;
-        }
-
-        .btn-bg-dp {
-            background-color: #de8439;
-        }
-
-        .aaa {
-            width: 60% !important;
-            float: left;
-        }
-
-        .bbb {
-            width: 30% !important;
-            float: left;
-            margin-top: 24px;
-            margin-left: 5%;
-        }
-
-        .jumbotron {
-            height: 300px;
-        }
-    </style>
-</head>
 
 
 </header>
@@ -139,304 +59,147 @@
     <div class="container-fluid" id="itemdescription">
 
         <div class="row p-4" style="background-color: lightgray">
-            <div class="offset-xl-2 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
-                <div class="row mx-auto bg-light">
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 pr-xl-0 pr-lg-0 pr-md-0  m-b-30">
+
+
+            <div class="col-sm-4">
+
+                <article id="itemimg">
+
+                    <img src={{'/static/img/' + tool.images }} class="img-fluid max-width: 30%">
+
+                </article>
+
+            </div>
+
+            <div class="col-sm-4">
+
+                <h4>{{tool.brand}} {{tool.tool_name}}</h4>
+
+
+                <p> {{tool.desc}}</p>
 
 
 
 
+            </div>
 
-                        <img class="d-block" src={{'/static/img/' + tool.images }} alt="First slide">
+            <div class="card mx-auto py-3 h-25 border-0" style="background-color: lightgray">
+
+                <div class="card-body bg-dark text-center rounded text-white">
+                    <medium class="text-white-50 ">Starting Price</medium><br>
+                    <h1 class="card-title center pricing-card-title display-3">${{list_price}}</h1>
+                    {% if tool.soldStatus %}
+                    <medium class="text-white-50 ">Item Sold</medium><br>
+
+                    {% elif current_user.is_authenticated %}
 
 
 
 
-                        <div
-                            class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 pl-xl-0 pl-lg-0 pl-md-0 border-left m-b-30">
-                            <div class="product-details">
-                                <div class="border-bottom pb-3 mb-3">
-                                    <h2 class="mb-3">{{tool.brand}} {{tool.tool_name}}</h2>
+                    {% if bid_user %}
+                    <medium class="text-white-50 ">Current Bid</medium><br>
+                    <medium class="text-white-50 ">{{ current_bid_amount }}</medium><br>
+                    <button type="button" class="btn btn-light py-2 mt-4" data-toggle="modal"
+                        data-target="#bidModal">Update Bid</button>
 
+                    <!-- Modal -->
+                    <div class="modal fade" id="bidModal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-dark">Update your Bid</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="input-group justify-content-center py-3 my-3">
 
-                                    {% if tool.soldStatus %}
-                                    <h3 class="mb-0 text-primary">Item Sold</h3>
+                                        <form method=post action="/tools/{{tool.id}}/bid">
 
-                                    {% elif current_user.is_authenticated %}
-                                    <h3 class="mb-0 text-primary">${{tool.list_price}}</h3>
-                                    {% if bid_user %}
-                                    <h4 class="mb-1">Your Current Bid</h4>
-                                    <h3 class="mb-0 text-primary">${{ current_bid_amount }}</h3>
+                                            {{form.csrf_token}}
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="bid-price">$</span>
+
+                                                {{form.bidamount(placeholder="Enter an amount", class_="form-control")}}
+
+                                            </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="input-group float-right">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                            {{form.submit(class_="btn btn-primary mx-2")}}
+                                        </div>
+                                    </div>
+                                    </form>
 
                                 </div>
-
-
-
                             </div>
-                            <div class="product-description">
-                                <h4 class="mb-1">Description</h4>
-                                <p>{{tool.desc}}</p>
-                            </div>
-                            <button type="button" class="btn btn-primary btn-block btn-lg py-2 mt-4" data-toggle="modal"
-                                data-target="#bidModal">Update
-                                Bid</button>
-                            <!-- Modal -->
-                            <div class="modal fade" id="bidModal" tabindex="-1" role="dialog"
-                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title text-dark">Update your Bid</h5>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="input-group justify-content-center py-3 my-3">
-
-                                                <form method=post action="/tools/{{tool.id}}/bid">
-
-                                                    {{form.csrf_token}}
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="bid-price">$</span>
-
-                                                        {{form.bidamount(placeholder="Enter an amount", class_="form-control")}}
-
-                                                    </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <div class="input-group float-right">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-dismiss="modal">Close</button>
-                                                    {{form.submit(class_="btn btn-primary mx-2")}}
-                                                </div>
-                                            </div>
-                                            </form>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            {% else %}
-                            <div class="product-description">
-                                <h4 class="mb-1">Description</h4>
-                                <p>{{tool.desc}}</p>
-                            </div>
-                            <button type="button" class="btn btn-primary btn-block btn-lg py-2 mt-4" data-toggle="modal"
-                                data-target="#bidModal"> Make a bid</button>
-                            <!-- Modal -->
-                            <div class="modal fade" id="bidModal" tabindex="-1" role="dialog"
-                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title text-dark">Update your Bid</h5>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="input-group justify-content-center py-3 my-3">
-
-                                                <form method=post action="/tools/{{tool.id}}/bid">
-
-                                                    {{form.csrf_token}}
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="bid-price">$</span>
-
-                                                        {{form.bidamount(placeholder="Enter an amount", class_="form-control")}}
-
-                                                    </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <div class="input-group float-right">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-dismiss="modal">Close</button>
-                                                    {{form.submit(class_="btn btn-primary mx-2")}}
-                                                </div>
-                                            </div>
-                                            </form>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            {% endif %}
-                            {% else %}
-
-                            <div class="product-description">
-                                <h4 class="mb-1">Description</h4>
-                                <p>{{tool.desc}}</p>
-                            </div>
-                            <form><a href="/login"><button type="button" onclick="login"
-                                        class="btn btn-primary btn-block btn-lg py-2 mt-4">Login
-                                        to Bid</button></a>
-                            </form>
-                        </div>
-                        {% endif %}
-
-
-
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-b-60">
-                            <div class="simple-card">
-                                <ul class="nav nav-tabs" id="myTab5" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active border-left-0" id="product-tab-1" data-toggle="tab"
-                                            href="#tab-1" role="tab" aria-controls="product-tab-1"
-                                            aria-selected="true">Description</a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content" id="myTabContent5">
-                                    <div class="tab-pane fade show active" id="tab-1" role="tabpanel"
-                                        aria-labelledby="product-tab-1">
-                                        <p>{{tool.desc}}</p>
-                                    </div>
-
-
-
-                                    <div class="col-sm-4">
-
-                                        <article id="itemimg">
-
-                                            <img src={{'/static/img/' + tool.images }} class="img-fluid max-width: 30%">
-
-                                        </article>
-
-                                    </div>
-
-                                    <div class="col-sm-4">
-
-                                        <h4>{{tool.brand}} {{tool.tool_name}}</h4>
-
-
-                                        <p> {{tool.desc}}</p>
-
-
-
-
-                                    </div>
-
-                                    <div class="card mx-auto py-3 h-25 border-0" style="background-color: lightgray">
-
-                                        <div class="card-body bg-dark text-center rounded text-white">
-                                            <medium class="text-white-50 ">Starting Price</medium><br>
-                                            <h1 class="card-title center pricing-card-title display-3">
-                                                ${{list_price}}</h1>
-                                            {% if tool.soldStatus %}
-                                            <medium class="text-white-50 ">Item Sold</medium><br>
-
-                                            {% elif current_user.is_authenticated %}
-
-
-
-
-                                            {% if bid_user %}
-                                            <medium class="text-white-50 ">Current Bid</medium><br>
-                                            <medium class="text-white-50 ">{{ current_bid_amount }}</medium><br>
-                                            <button type="button" class="btn btn-light py-2 mt-4" data-toggle="modal"
-                                                data-target="#bidModal">Update
-                                                Bid</button>
-
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="bidModal" tabindex="-1" role="dialog"
-                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title text-dark">Update your Bid
-                                                            </h5>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class="input-group justify-content-center py-3 my-3">
-
-                                                                <form method=post action="/tools/{{tool.id}}/bid">
-
-                                                                    {{form.csrf_token}}
-                                                                    <div class="input-group-prepend">
-                                                                        <span class="input-group-text"
-                                                                            id="bid-price">$</span>
-
-                                                                        {{form.bidamount(placeholder="Enter an amount", class_="form-control")}}
-
-                                                                    </div>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <div class="input-group float-right">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-dismiss="modal">Close</button>
-                                                                    {{form.submit(class_="btn btn-primary mx-2")}}
-                                                                </div>
-                                                            </div>
-                                                            </form>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    {% else %}
-
-
-                                    <button type="button" class="btn btn-light mt-4" data-toggle="modal"
-                                        data-target="#bidModal">Make a
-                                        Bid</button>
-
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="bidModal" tabindex="-1" role="dialog"
-                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title text-dark">Update your Bid</h5>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="input-group justify-content-center py-3 my-3">
-
-                                                        <form method=post action="/tools/{{tool.id}}/bid">
-
-                                                            {{form.csrf_token}}
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="bid-price">$</span>
-
-                                                                {{form.bidamount(placeholder="Enter an amount", class_="form-control")}}
-
-                                                            </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <div class="input-group float-right">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">Close</button>
-                                                            {{form.submit(class_="btn btn-primary mx-2")}}
-                                                        </div>
-                                                    </div>
-                                                    </form>
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            {% endif %}
-
-
-                            {% else %}
-                            <form><a href="/login"><button type="button" onclick="login"
-                                        class=" btn btn-light mt-4">Login
-                                        to Bid</button></a>
-                            </form>
-                            {% endif %}
                         </div>
 
                     </div>
+                </div>
+            </div>
 
+
+            {% else %}
+
+
+            <button type="button" class="btn btn-light mt-4" data-toggle="modal" data-target="#bidModal">Make a
+                Bid</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="bidModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-dark">Update your Bid</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="input-group justify-content-center py-3 my-3">
+
+                                <form method=post action="/tools/{{tool.id}}/bid">
+
+                                    {{form.csrf_token}}
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="bid-price">$</span>
+
+                                        {{form.bidamount(placeholder="Enter an amount", class_="form-control")}}
+
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="input-group float-right">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    {{form.submit(class_="btn btn-primary mx-2")}}
+                                </div>
+                            </div>
+                            </form>
+
+                        </div>
+                    </div>
                 </div>
 
             </div>
-            <!-- End Item Description -->
+        </div>
+    </div>
+
+    {% endif %}
+
+
+    {% else %}
+    <form><a href="/login"><button type="button" onclick="login" class=" btn btn-light mt-4">Login
+                to Bid</button></a>
+    </form>
+    {% endif %}
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+    <!-- End Item Description -->
 </main>
 
 
