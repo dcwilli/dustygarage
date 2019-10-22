@@ -39,7 +39,9 @@ def maindash(userid):
         viewed_tools = Tool.query.filter_by(user_id=userid).filter(
             Tool.id == i).all()
         viewed_items.append(viewed_tools)
-    print(viewed_tools)
+
+    query = Tool.query.filter(Tool.id.in_(recently_viewed)).all()
+    print(query)
 
     return render_template('userdash/maindash.html', userid=userid, tool_length=tool_length, bid_length=bid_length, sold_length=sold_length, viewed_tools=viewed_tools)
 
