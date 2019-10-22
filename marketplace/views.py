@@ -93,10 +93,10 @@ def search():
     if search.validate_on_submit():
 
         search_string = search.data["search"]
-        print(search_string)
+        print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
         if search_string != "":
             all_tools = Tool.query.all()
-            print(all_tools)
+            print(all_tools[0].tool_name)
             for tool in all_tools:
                 if re.search(search_string, tool.tool_name):
                     search_results.append(tool)
