@@ -2,51 +2,87 @@ from flask import Blueprint, flash, render_template, request, url_for, redirect
 from flask_login import login_required
 from flask import session as login_session
 from flask import session
-from sqlalchemy import desc
 from .models import User, Bid, Tool
-
-from .forms import LoginForm, RegisterForm, CreateForm, SearchForm, Results, LandingForm
+from .forms import LoginForm, RegisterForm, CreateForm, SearchForm, LandingForm
 import sqlalchemy as db
 from . import db
-
+import os
 import re
-#from flask_table import Table, Col
-
-print("this is __name__")
-print(type(__name__))
-print(__name__)
+from werkzeug.utils import secure_filename
+from flask_table import Table, Col
 
 bp = Blueprint("main", __name__)
 
 
 @bp.route("/", methods=["GET", "POST"])
 def index():
-    tools = Tool.query.order_by(desc(Tool.date_created)).limit(4).all()
-    print(tools)
+    print()
     form_land = LandingForm()
-    print("Form has not validated")
     search_results = []
     search = SearchForm()
     if request.args.get("landing_search") != None:
-        print("Form has validated")
         search_string = request.args.get("landing_search")
         print(search_string)
-
         all_tools = Tool.query.all()
         for tool in all_tools:
-            if re.search(search_string, tool.tool_name):
+            if re.search(search_string, tool.title):
                 search_results.append(tool)
+        return render_template("results.html", form=search, items=search_results)
 
-        print("Below is Search results")
-
-        # display results
-        table = Results(search_results)
-        table.border = True
-        # del input_string
-        return render_template("results.html", form=search, table=table)
-    return render_template("index.html", tools=tools, form=form_land)
+    return render_template("index.html", form=form_land)
 
 
+@bp.route("/manage")
+@login_required
+def manage():
+    return render_template("manage.html")
+
+
+# a simple function:does not handle errors in file types and file not being uploaded
+def check_upload_file(form):
+    # get file data from form
+    fp = form.image.data
+    filename = fp.filename
+    # get the current path of the module file… store file relative to this path
+    BASE_PATH = os.path.dirname(__file__)
+    # upload file location – directory of this file/static/image
+    upload_path = os.path.join(BASE_PATH, "static/img", secure_filename(filename))
+    # store relative path in DB as image location in HTML is relative
+    db_upload_path = "/static/img/" + secure_filename(filename)
+    # save the file and return the db upload path
+    fp.save(upload_path)
+
+    return db_upload_path
+
+
+@bp.route("/create", methods=["GET", "POST"])
+@login_required
+def create():
+    form = CreateForm()
+    print("search_results value is beneath")
+    print(search_results)
+    if form.validate_on_submit():
+        print("Form validated")
+        db_file_path = check_upload_file(form)
+        new_tool = Tool(
+            image=db_file_path,
+            title=form.title.data,
+            modelNo=form.modelNo.data,
+            price=form.price.data,
+            category=form.category.data,
+            user_id=session.get("user_id"),
+            description=form.description.data,
+            brand=form.brand.data,
+        )
+        db.session.add(new_tool)
+
+        db.session.commit()
+        return redirect(url_for("main.create"))
+
+    return render_template("create.html", form=form)
+
+
+##### use a for in the html to count the length of the string
 @bp.route("/results", methods=["GET", "POST"])
 def search():
 
@@ -60,15 +96,12 @@ def search():
         if search_string != "":
             all_tools = Tool.query.all()
             for tool in all_tools:
-                if re.search(search_string, tool.tool_name):
+                if re.search(search_string, tool.title):
                     search_results.append(tool)
         else:
             print("This string is empty")
-        print("Below is Search results")
 
-        # display results
-        table = Results(search_results)
-        table.border = True
-        return render_template("results.html", form=search, table=table)
+        return render_template("results.html", form=search, items=search_results)
 
     return render_template("results.html", form=search)
+
