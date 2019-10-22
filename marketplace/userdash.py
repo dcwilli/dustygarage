@@ -29,7 +29,6 @@ def maindash(userid):
     # tools sold by user
     sold = Tool.query.filter_by(user_id=userid).filter(
         Tool.sold_status != 0).all()
-    i = sold.tool_name
     sold_length = len(sold)
 
     # recently viewed itemts list
