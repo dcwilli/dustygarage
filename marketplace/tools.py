@@ -228,4 +228,6 @@ def check_file(form):
     db_upload_path = secure_filename(filename)
     print(db_upload_path)
     fp.save(upload_path)
+    print("####################UPLOAD PATH#########################")
+    print(upload_path)
     return db_upload_path
