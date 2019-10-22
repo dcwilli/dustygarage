@@ -22,7 +22,7 @@ bp = Blueprint("main", __name__)
 @bp.route("/", methods=["GET", "POST"])
 def index():
     tools = Tool.query.order_by(desc(Tool.date_created)).limit(4).all()
-
+    print(tools)
     form_land = LandingForm()
     print("Form has not validated")
     search_results = []
