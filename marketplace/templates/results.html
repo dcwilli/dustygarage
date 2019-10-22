@@ -45,7 +45,8 @@
                                             {% for item in items %}
                                             <TR>
                                                 <TD class="c1">
-                                                    <img src="{{item.images}}" height="120" width="120">
+                                                    <img src="{{'../static/img/' + item.images}}" height="120"
+                                                        width="120">
                                                 </TD>
                                                 <TD class="c2">{{item.tool_name}}</TD>
                                                 <TD class="c3">${{item.list_price}}</TD>
