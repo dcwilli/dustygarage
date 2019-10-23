@@ -30,7 +30,7 @@
                     <h5 class="card-header">Current Bids</h5>
                     <div class="card-body p-0">
                         <div class="table-responsive">
-                            <table class="table mb-0 table-striped">
+                            <table class="table table-striped">
                                 <thead class="bg-light">
                                     <tr class="border-0">
                                         <th class="border-0">Name</th>
@@ -57,13 +57,15 @@
                                             </div>
                                         </td>
                                     </tr>
+                                    {% endfor %}
+                                </tbody>
                         </div>
                     </div>
                 </div>
 
-                </tbody>
+
                 </table>
-                {% endfor %}
+
 
                 {% elif tool.sold_status != 0 %}
 
