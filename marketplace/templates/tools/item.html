@@ -69,7 +69,7 @@
 
             <div class="col-sm-5 float-left card pr-5 pl-1 border-0" style="background-color: lightgray">
 
-                <div class="card-body bg-dark rounded text-white">
+                <div class="card-body bg-dark rounded text-white" style="max-height:400px;">
                     <h1>{{tool.brand}} {{tool.tool_name}}</h1>
                     <p class="py-2"> {{tool.desc}}</p>
                     <medium class="text-white-50 ">Starting Price</medium><br>
@@ -81,7 +81,7 @@
                     {% elif current_user.is_authenticated %}
 
                     {% if bid_user %}
-                    <medium class="text-white-50 ">Your Current Bid</medium><br>
+                    <medium class="text-white-50 ">Your Current Bid: </medium><br>
                     <medium class="text-white-50 ">{{ current_bid_amount }}</medium><br>
                     <button type="button" class="btn btn-light mt-0 mt-5 col-sm-6 float-right mt-4" data-toggle="modal"
                         data-target="#bidModal">Update
