@@ -56,9 +56,9 @@
 
     <!-- Item Description -->
 
-    <div class="container-fluid" id="itemdescription">
+    <div class="container-fluid " style="background-color: lightgray" id="itemdescription">
 
-        <div class="row p-4" style="background-color: lightgray">
+        <div class="row p-4 mx-auto" style="background-color: lightgray">
             <div class="col-sm-4">
                 <h4>{{tool.brand}} {{tool.tool_name}}</h4>
                 <p> {{tool.desc}}</p </div> <article id="itemimg">
@@ -74,10 +74,8 @@
                     {% if tool.soldStatus %}
                     <medium class="text-white-50 ">Item Sold</medium><br>
 
+                    <!-- Show different price/bid info for logged in, users with current bid and logged out users -->
                     {% elif current_user.is_authenticated %}
-
-
-
 
                     {% if bid_user %}
                     <medium class="text-white-50 ">Current Bid</medium><br>
