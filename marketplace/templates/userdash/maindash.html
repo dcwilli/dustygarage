@@ -173,9 +173,9 @@
             <!---End Card row-->
 
             <!--Start Recently Viewed-->
+            {% if views == [] %}
 
-            <!---Popular Items-->
-
+            {% else %}
             <section>
 
                 <div class="text-dark">
@@ -220,7 +220,7 @@
                     </div>
                 </div>
             </section>
-
+            {% endif %}
 
 </main>
 
