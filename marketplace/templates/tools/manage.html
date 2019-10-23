@@ -22,6 +22,7 @@
     <div class="container-fluid" id="itemdescription">
         <!-- Image -->
         <!-- List of Bids -->
+        {% if tool != [] %}
         <div class="row p-4" style="background-color: lightgray">
             {% if tool.sold_status == 0 %}
             <div class="col-md-10 mx-auto">
@@ -84,6 +85,7 @@
                 </div>
             </div>
         </div>
+        {% endif %}
         <div class="row p-4" style="background-color: lightgray">
             <div class="col-sm-3">
                 <h3 class="text-center pb-3">Description{{ heading }}</h3>
