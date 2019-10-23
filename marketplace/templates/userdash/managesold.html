@@ -83,7 +83,7 @@
                                         {% for tool in sold %}
                                         <tr>
                                             <td>{{tool.tool_name}}</td>
-                                            <td>{{tool.date_created}}</td>
+                                            <td>{{tool.date_created.strftime("%b %d %Y")}}</td>
                                             <th scope="row">${{tool.list_price}}</th>
                                             <td>Not Availiable</td>
                                             <td>{{tool.sold_date.strftime("%b %d %Y")}}</td>
