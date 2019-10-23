@@ -31,6 +31,7 @@ def maindash(userid):
     sold = Tool.query.filter_by(user_id=userid).filter(
         Tool.sold_status != 0).all()
     sold_length = len(sold)
+    #calculate list_price sold total
     total = 0
     for i in sold:
         total = total + i.list_price
