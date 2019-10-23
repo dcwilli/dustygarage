@@ -27,7 +27,7 @@ def index():
         for tool in all_tools:
             if re.search(search_string, tool.tool_name):
                 search_results.append(tool)
-        return render_template("results.html", form=search, items=search_results tools=tools)
+        return render_template("results.html", form=search, items=search_results, tools=tools)
 
     return render_template("index.html", form=form_land)
 
