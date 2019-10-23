@@ -74,7 +74,7 @@
                     <p class="py-2"> {{tool.desc}}</p>
                     <medium class="text-white-50 ">Starting Price</medium><br>
                     <h1 class="card-title center pricing-card-title display-3">${{list_price}}</h1>
-                    {% if tool.soldStatus != 0 %}
+                    {% if tool.soldStatus == 0 %}
                     <medium class="text-white-50 ">Item Sold</medium><br>
 
                     <!-- Show different price/bid info for logged in, users with current bid and logged out users -->
