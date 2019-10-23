@@ -118,7 +118,7 @@ def manage(id):
             print(form_input)
             update_tool = Tool.query.get(id)
             update_tool.sold_status = form_input
-            update_tool.sold_date = 0
+            update_tool.sold_date = None
             db.session.commit()
             print('COMMITED TO DB')
 
