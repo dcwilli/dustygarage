@@ -2,7 +2,7 @@ import datetime
 from flask import (Blueprint, flash, render_template, session,
                    request, url_for, redirect)
 from .models import Tool, Bid, User
-from sqlalchemy import desc
+from sqlalchemy import desc, func
 from .forms import BidForm, MarkSold, UndoSold, CreateForm
 from flask_login import login_user, login_required, logout_user
 from werkzeug.utils import secure_filename
@@ -31,13 +31,12 @@ def maindash(userid):
     sold = Tool.query.filter_by(user_id=userid).filter(
         Tool.sold_status != 0).all()
     sold_length = len(sold)
-    #calculate list_price sold total
+    # calculate list_price sold total
     total = 0
     for i in sold:
         total = total + i.list_price
 
     print(total)
-
 
     # recently viewed itemts list
     recently_viewed = session.get('vieweditems')
@@ -69,6 +68,8 @@ def userbids(userid):
     bids = db.session.query(Tool, Bid).join(
         Bid).filter_by(user_id=userid).all()
     print(bids)
+
+    # get highest bid
     current_user = session.get('user_id')
 
     # if the url userid does not match the logged in user - log them out

@@ -1,19 +1,45 @@
-{% extends "base.html" %}
+{% extends "userdash/basedash.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 {% block content %}
+<!------------------------------------------------------------------------------------------------------>
+<!--------------------------------------Start Dashboard Nav--------------------------------------------->
+<!------------------------------------------------------------------------------------------------------>
+
+<div class="row" style="background: lightgrey ">
+    <nav class="navbar col-12 navbar-expand-sm bg-base-blue text-white pt-3">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{{'/userdash/main/{}'.format(current_user.id)}}"><i
+                        class="fas fa-home"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{{'/userdash/userselling/{}'.format(current_user.id)}}"><i
+                        class="fas fa-sign"></i> Selling</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#"><i class="fas fa-hand-holding-usd"></i> Sold</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="{{'/userdash/userbids/{}'.format(current_user.id)}}"><i
+                        class="fas fa-money-bill-wave"></i> Your
+                    Bids</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<!------------------------------------------------------------------------------------------------------>
+<!--------------------------------------End Dashboard Nav----------------------------------------------->
+<!------------------------------------------------------------------------------------------------------>
 
 <main>
     <!---Contains Main Content-->
-    <section class="container-fluid mt-4 text-left">
-        <h3 class="display-4 mx-auto col-sm-12">{{current_user.name}}'s Dashboard</h3>
-    </section>
-
     <!--breadcrumb-start-->
     <nav>
         <ol class="container-fluid ml-4 pb-5 pt-0 breadcrumb bg-white">
-            <li class="breadcrumb-item"><a href="main.index">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{'/userdash/main/{}'.format(current_user.id)}}">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="manage.html">{{current_user.name}}'s Bids</a></li>
+            <li class="breadcrumb-item"><a href="../">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{'/userdash/main/{}'.format(current_user.id)}}">Dashboard -
+                    {{current_user.name}}</a></li>
+            <li class="breadcrumb-item"><a href="manage.html">Your Bids</a></li>
         </ol>
     </nav>
     <!--breadcrumb-end-->
@@ -21,36 +47,6 @@
     <!---Main Content-->
     <div class="container-fluid px-0" id="itemdescription">
         <section class="container-fluid" id="services ">
-            <!------------------------------------------------------------------------------------------------------>
-            <!--------------------------------------Start Dashboard Nav--------------------------------------------->
-            <!------------------------------------------------------------------------------------------------------>
-
-            <div class="row" style="background: lightgrey ">
-                <nav class="navbar col-12 navbar-expand-sm bg-base-blue text-white pt-3">
-                    <ul class="nav nav-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="{{'/userdash/main/{}'.format(current_user.id)}}"><i
-                                    class="fas fa-home"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white"
-                                href="{{'/userdash/userselling/{}'.format(current_user.id)}}"><i
-                                    class="fas fa-sign"></i> Selling</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#"><i class="fas fa-hand-holding-usd"></i> Sold</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="{{'/userdash/userbids/{}'.format(current_user.id)}}"><i
-                                    class="fas fa-money-bill-wave"></i> Your
-                                Bids</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            <!------------------------------------------------------------------------------------------------------>
-            <!--------------------------------------End Dashboard Nav----------------------------------------------->
-            <!------------------------------------------------------------------------------------------------------>
 
             <!------------------------------------------------------------------------------------------------------>
             <!--------------------------------------Start Bids Made Table------------------------------------------->
