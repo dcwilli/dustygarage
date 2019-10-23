@@ -31,6 +31,8 @@
                             <div class="input-group ">
                                 <span class="input-group-btn ">
                                     {{wtf.quick_form(form, button_map={'search':'secondary'})}}
+                                    {{wtf.form_field(form.landing_search, placeholder="Search a tool here", type="text", class="form-control")}}
+                                    {{wtf.form_field(form.landing_search_button, class="form-control btn btn-success btn-success-mod")}}
                                     <h2>
                                         <i class="fa fa-file-o "></i>Results</h2>
                                     <hr>
