@@ -48,11 +48,9 @@ def maindash(userid):
 @login_required
 def userselling(userid):
 
-    print(userid)
     # query db for tools current user has listed
     tool = Tool.query.filter_by(user_id=userid).filter(
         Tool.sold_status == 0).all()
-    tool_length = len(tool)
 
     return render_template('userdash/manageselling.html', userid=userid, tool=tool)
 
