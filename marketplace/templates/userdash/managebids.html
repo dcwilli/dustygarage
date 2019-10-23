@@ -54,7 +54,13 @@
             <!--------------------------------------Start Bids Made Table------------------------------------------->
             <!------------------------------------------------------------------------------------------------------>
             <div class="row py-0 justify-content-center" style="background: lightgrey ">
-                <article class="col-sm-12 py-4" id="browse ">
+                {% if bids == [] %}
+                <div class="mx-auto py-5">
+                    <h3>No details to show</h3>
+                </div>
+                {% else %}
+
+                <article class="col-sm-12 py-4">
 
                     <div class="card">
                         <h5 class="card-header">Items you have bid on</h5>
@@ -103,7 +109,7 @@
                     </tbody>
 
                     </table>
-
+                    {% endif %}
                 </article>
 
 
