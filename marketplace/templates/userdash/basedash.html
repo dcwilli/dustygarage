@@ -88,7 +88,7 @@
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
                 aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon">test</span>
             </button>
 
             <div class="container-fluid">
@@ -100,9 +100,6 @@
 
                 <div class="navbar-nav text-white justify-content-end">
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-
-
-                        {% if current_user.is_authenticated %}
 
                         <div class="btn-group">
                             <button type="button" class="btn btn-light text-black"><i class="far fa-user-circle"></i>
@@ -122,20 +119,7 @@
                             </div>
                         </div>
 
-                        {% else %}
 
-                        <a class="nav-item font-weight-bold text-light-blue nav-link"
-                            href="{{ url_for('tool.create') }}"><i class="fas fa-dollar-sign"></i> List a Tool</a>
-
-                        <a class="nav-item font-weight-bold text-light-blue nav-link"
-                            href="{{ url_for('auth.login') }}"><i class="far fa-user-circle"></i> Login</a>
-
-                        <a class="nav-item font-weight-bold text-light-blue nav-link"
-                            href="{{ url_for('auth.register')}}"><i class="far fa-edit"></i> Register</a>
-
-
-
-                        {% endif %}
 
                     </div>
                 </div>
