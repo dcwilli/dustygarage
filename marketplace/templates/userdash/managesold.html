@@ -81,13 +81,12 @@
                                     <tbody>
 
                                         {% for tool in sold %}
-                                        {% sold_date = tool.sold_date.striptime(datetime, "%b %d %Y") %}
                                         <tr>
                                             <td>{{tool.tool_name}}</td>
                                             <td>{{tool.date_created.strftime("%b %d %Y")}}</td>
                                             <th scope="row">${{tool.list_price}}</th>
                                             <td>Not Availiable</td>
-                                            <td>{{sold_date}}</td>
+                                            <td>{{tool.sold_date}}</td>
                                             <td> <img class="img-fluid img-thumbnail" style="max-width: 70px;"
                                                     src={{'/static/img/' + tool.images }}></td>
                                             <td>
