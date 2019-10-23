@@ -17,7 +17,7 @@ bp = Blueprint("main", __name__)
 @bp.route("/", methods=["GET", "POST"])
 def index():
     print()
-
+    session.get[] = views
     form_land = LandingForm()
     search_results = []
     search = SearchForm()
