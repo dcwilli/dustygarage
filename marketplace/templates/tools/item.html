@@ -66,106 +66,107 @@
             </div>
 
 
-        </div>
-        <div class="col-sm-4 float-left card pr-5 py-3 border-0" style="background-color: lightgray">
 
-            <div class="card-body bg-dark rounded text-white">
-                <h4>{{tool.brand}} {{tool.tool_name}}</h4>
-                <p> {{tool.desc}}</p>
-                <medium class="text-white-50 ">Starting Price</medium><br>
-                <h1 class="card-title center pricing-card-title display-3">${{list_price}}</h1>
-                {% if tool.soldStatus %}
-                <medium class="text-white-50 ">Item Sold</medium><br>
+            <div class="col-sm-4 float-left card pr-5 py-3 border-0" style="background-color: lightgray">
 
-                <!-- Show different price/bid info for logged in, users with current bid and logged out users -->
-                {% elif current_user.is_authenticated %}
+                <div class="card-body bg-dark rounded text-white">
+                    <h4>{{tool.brand}} {{tool.tool_name}}</h4>
+                    <p> {{tool.desc}}</p>
+                    <medium class="text-white-50 ">Starting Price</medium><br>
+                    <h1 class="card-title center pricing-card-title display-3">${{list_price}}</h1>
+                    {% if tool.soldStatus %}
+                    <medium class="text-white-50 ">Item Sold</medium><br>
 
-                {% if bid_user %}
-                <medium class="text-white-50 ">Current Bid</medium><br>
-                <medium class="text-white-50 ">{{ current_bid_amount }}</medium><br>
-                <button type="button" class="btn btn-light py-2 mt-4" data-toggle="modal" data-target="#bidModal">Update
-                    Bid</button>
+                    <!-- Show different price/bid info for logged in, users with current bid and logged out users -->
+                    {% elif current_user.is_authenticated %}
 
-                <!-- Modal -->
-                <div class="modal fade" id="bidModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title text-dark">Update your Bid</h5>
-                            </div>
-                            <div class="modal-body">
-                                <div class="input-group justify-content-center py-3 my-3">
+                    {% if bid_user %}
+                    <medium class="text-white-50 ">Current Bid</medium><br>
+                    <medium class="text-white-50 ">{{ current_bid_amount }}</medium><br>
+                    <button type="button" class="btn btn-light py-2 mt-4" data-toggle="modal"
+                        data-target="#bidModal">Update
+                        Bid</button>
 
-                                    <form method=post action="/tools/{{tool.id}}/bid">
-
-                                        {{form.csrf_token}}
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="bid-price">$</span>
-
-                                            {{form.bidamount(placeholder="Enter an amount", class_="form-control")}}
-
-                                        </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="bidModal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-dark">Update your Bid</h5>
                                 </div>
-                                <div class="modal-footer">
-                                    <div class="input-group float-right">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Close</button>
-                                        {{form.submit(class_="btn btn-primary mx-2")}}
+                                <div class="modal-body">
+                                    <div class="input-group justify-content-center py-3 my-3">
+
+                                        <form method=post action="/tools/{{tool.id}}/bid">
+
+                                            {{form.csrf_token}}
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="bid-price">$</span>
+
+                                                {{form.bidamount(placeholder="Enter an amount", class_="form-control")}}
+
+                                            </div>
                                     </div>
-                                </div>
-                                </form>
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-
-        {% else %}
-
-
-        <button type="button" class="btn btn-light mt-4" data-toggle="modal" data-target="#bidModal">Make a
-            Bid</button>
-
-        <!-- Modal -->
-        <div class="modal fade" id="bidModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title text-dark">Update your Bid</h5>
-                    </div>
-                    <div class="modal-body">
-                        <div class="input-group justify-content-center py-3 my-3">
-
-                            <form method=post action="/tools/{{tool.id}}/bid">
-
-                                {{form.csrf_token}}
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="bid-price">$</span>
-
-                                    {{form.bidamount(placeholder="Enter an amount", class_="form-control")}}
+                                    <div class="modal-footer">
+                                        <div class="input-group float-right">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                            {{form.submit(class_="btn btn-primary mx-2")}}
+                                        </div>
+                                    </div>
+                                    </form>
 
                                 </div>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="input-group float-right">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                {{form.submit(class_="btn btn-primary mx-2")}}
                             </div>
                         </div>
-                        </form>
 
                     </div>
                 </div>
             </div>
 
+
+            {% else %}
+
+
+            <button type="button" class="btn btn-light mt-4" data-toggle="modal" data-target="#bidModal">Make a
+                Bid</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="bidModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-dark">Update your Bid</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="input-group justify-content-center py-3 my-3">
+
+                                <form method=post action="/tools/{{tool.id}}/bid">
+
+                                    {{form.csrf_token}}
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="bid-price">$</span>
+
+                                        {{form.bidamount(placeholder="Enter an amount", class_="form-control")}}
+
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="input-group float-right">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    {{form.submit(class_="btn btn-primary mx-2")}}
+                                </div>
+                            </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </div>
     </div>
 
     {% endif %}
