@@ -2,6 +2,7 @@ from flask import Blueprint, flash, render_template, request, url_for, redirect
 from flask_login import login_required
 from flask import session as login_session
 from flask import session
+from sqlalchemy import desc
 from .models import User, Bid, Tool
 from .forms import LoginForm, RegisterForm, CreateForm, SearchForm, LandingForm
 import sqlalchemy as db
