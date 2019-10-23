@@ -178,16 +178,16 @@
             {% else %}
             <section>
 
-                <div class="text-dark">
+                <div class="text-dark py-2">
                     <h3 class="col-sm-12 ">Recently Viewed Items</h3>
                 </div>
                 <div class="container">
-                    <div class="card-deck my-4">
+                    <div class="card-deck mx-auto my-4" style="max-width:295px;">
                         {% for view in views %}
 
                         <div class="card border-dark">
                             <div class="card-header bg-base-blue text-white border-dark">
-                                <h5 class="card-title">{{view.brand}} {{view.tool_name }}</h5>
+                                <h5 class="card-title">{{view.brand}} {{view.tool_name}}</h5>
                             </div>
 
                             <div class="card-body">
