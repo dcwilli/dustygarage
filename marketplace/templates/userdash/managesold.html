@@ -81,7 +81,7 @@
                                     <tbody>
 
                                         {% for tool in sold %}
-                                        {% sold_date = tool.sold_date.striptime(datetime, "%b %d %Y") }
+                                        {% sold_date = tool.sold_date.striptime(datetime, "%b %d %Y") %}
                                         <tr>
                                             <td>{{tool.tool_name}}</td>
                                             <td>{{tool.date_created.strftime("%b %d %Y")}}</td>
@@ -101,9 +101,9 @@
                     </div>
                     </tr>
                     {% endfor %}
-                                    </tbody>
-                                </table>
-                                {% endif %}
+                    </tbody>
+                    </table>
+                    {% endif %}
                 </article>
                 <!--End Row Div-->
             </div>
