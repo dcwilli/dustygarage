@@ -26,19 +26,17 @@
                         <!-- THIS WILL BE REPLACE WITH CODE WHICH DISPLAYS DB QUERY RESULTS -->
                         <div class="col-md-10 ">
                             <!-- BEGIN SEARCH INPUT -->
-                            <h3>What type of tool are you looking for ?
+                            <h3 class="pt-4">What type of tool are you looking for ?
                             </h3>
-                            <div class="input-group">
-                                <span class="input-group-btn ">
 
-                                    {{wtf.quick_form(form, button_map={'search':'secondary'})}}
-                                    <form method="post">
-                                        {{form.csrf_token}}
-                                        {{wtf.form_field(form.search, placeholder="Search a tool here", type="text", class="form-control")}}
-                                        {{wtf.form_field(form.search_button, class="form-control btn btn-success btn-success-mod")}}
 
-                                    </form>
-                            </div>
+                            <form method="post">
+                                {{form.csrf_token}}
+                                {{wtf.form_field(form.search, placeholder="Search a tool here", type="text", class="form-control")}}
+                                {{wtf.form_field(form.search_button, class="form-control btn btn-success btn-success-mod")}}
+
+                            </form>
+
 
                             {% if items != None %}
                             <title>Search Results</title>
@@ -87,7 +85,7 @@
                             </table>
 
 
-                            </span>
+
                         </div>
 
 
