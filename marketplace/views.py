@@ -17,7 +17,6 @@ bp = Blueprint("main", __name__)
 @bp.route("/", methods=["GET", "POST"])
 def index():
     print()
-    views = []
 
     form_land = LandingForm()
     search_results = []
@@ -27,7 +26,7 @@ def index():
         print(search_string)
         all_tools = Tool.query.all()
         for tool in all_tools:
-            if re.search(search_string, tool.tool_name, flags=re.IGNORECASE):
+            if re.search(search_string, tool.tool_name):
                 search_results.append(tool)
         return render_template("results.html", form=search, items=search_results)
 

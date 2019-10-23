@@ -65,7 +65,11 @@
 
                                                 </TD>
                                                 <TD class="c7">
-                                                    <SPAN>{{item.date_created}}</SPAN>
+                                                    <form><a href="{{'/tools/{}'.format(item.id)}}"><button
+                                                                type="button" onclick="login"
+                                                                class="btn btn-primary mt-4">More
+                                                                Details</button></a>
+                                                    </form>
                                                 </TD>
                                             </TR>
                                             {% endfor %}
