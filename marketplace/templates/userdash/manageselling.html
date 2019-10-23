@@ -55,9 +55,10 @@
 
                 <!-- List of Items being sold by user -->
                 {% if tool == [] %}
-                <h3>No details to show</h3>
-                {% endif %}
-
+                <div class="text-center py-5">
+                    <h3>No details to show</h3>
+                </div>
+                {% else %}
                 <article class="col-sm-12 py-4" id="browse ">
                     <div class="card">
                         <h5 class="card-header">Items you are selling</h5>
@@ -99,6 +100,7 @@
                     {% endfor %}
                     </tbody>
                     </table>
+                    {% endif %}
                 </article>
                 <!--End Row Div-->
             </div>
