@@ -18,53 +18,49 @@
                 <div class="grid-body ">
                     <div class="row ">
                         <!-- BEGIN FILTERS -->
-                        <div class="col-md-3 ">
 
-                            <h3>What type of tool are you looking for ?
-                            </h3>
-
-
-
-                        </div>
                         <!-- END FILTERS -->
                         <!-- BEGIN RESULT -->
 
 
                         <!-- THIS WILL BE REPLACE WITH CODE WHICH DISPLAYS DB QUERY RESULTS -->
-                        <div class="col-md-9 ">
-                            <h2>
-                                <i class="fa fa-file-o "></i>Results</h2>
-                            <hr>
+                        <div class="col-md-10 ">
                             <!-- BEGIN SEARCH INPUT -->
+                            <h3>What type of tool are you looking for ?
+                            </h3>
                             <div class="input-group ">
                                 <span class="input-group-btn ">
-                                    {{wtf.quick_form(form)}}
+                                    {{wtf.quick_form(form, class="btn btn-secondary")}}
+                                    <h2>
+                                        <i class="fa fa-file-o "></i>Results</h2>
+                                    <hr>
+
                                     <title>Search Results</title>
                                     <table class="table table-striped">
                                         <tbody>
                                             {% for item in items %}
                                             <TR>
-                                                <TD class="c1">
+                                                <TD class="align-middle">
                                                     <img src="{{'../static/img/' + item.images}}" height="120"
                                                         width="120">
                                                 </TD>
-                                                <TD class="c2">{{item.tool_name}}</TD>
-                                                <TD class="c3">${{item.list_price}}</TD>
-                                                <TD class="c4">
+                                                <TD class="align-middle">{{item.tool_name}}</TD>
+                                                <TD class="align-middle">${{item.list_price}}</TD>
+                                                <TD class="align-middle">
                                                     {{item.category}}
                                                 </TD>
-                                                <TD class="c5">
-                                                    <SPAN>{{item.id}}</SPAN>
+                                                <TD class="align-middle">
+                                                    {{item.id}}
                                                 </TD>
-                                                <TD class="c6">
+                                                <TD class="align-middle">
                                                     {% if item.desc|length > 50 %}
-                                                    <SPAN>{{item.desc[0:50]}}...</SPAN>
+                                                    {{item.desc[0:50]}}...
                                                     {% else %}
-                                                    <SPAN>{{item.desc}}</SPAN>
+                                                    {{item.desc}}
                                                     {% endif %}
 
                                                 </TD>
-                                                <TD class="c7">
+                                                <TD class="align-middle">
                                                     <form><a href="{{'/tools/{}'.format(item.id)}}"><button
                                                                 type="button" class="btn btn-primary mt-4">More
                                                                 Details</button></a>
