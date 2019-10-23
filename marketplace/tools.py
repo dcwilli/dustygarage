@@ -194,7 +194,7 @@ def bid(toolid):
             bid = form.bidamount.data
             print(bid)
             bid_float = float(bid)
-            if bid_float < tool_list_price:
+            if bid_float <= tool_list_price:
                 flash(u'Bid amount needs to be higher than the list price',
                       'alert alert-danger')
                 print(u'Bid amount needs to be higher than the list price',
