@@ -32,8 +32,8 @@ def maindash(userid):
         Tool.sold_status != 0).all()
     sold_length = len(sold)
 
-    for i in sold.list_price:
-        total = total + sold.list_price
+    for i in sold:
+        total = total + i.list_price
 
     print(total)
 
