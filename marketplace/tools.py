@@ -97,11 +97,11 @@ def manage(id):
         print("THIS ITEM HAS BEEN SOLD")
 
         # join the user and bid table
-        bid_user = db.session.query(User, Bid).filter(
+        bid_user = db.session.query(User, Bid).join(Bid).filter(
             Bid.user_id == User.id).filter(Bid.tool_id == Tool.id).all()
-            
-            # .filter(Tool.sold_status == Bid.user_id).all()
 
+        # .filter(Tool.sold_status == Bid.user_id).all()
+        print(bid_user)
     # User submits a mark as sold OR undo
     if request.method == "POST":
         if soldForm.submit.data:
