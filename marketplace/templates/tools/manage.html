@@ -50,10 +50,11 @@
                                         <td>
                                             <div class="btn-group">
                                                 <form method=post>
-                                                    </button>
+
                                                     {{soldForm.csrf_token}}
                                                     {{soldForm.bid_user_id(value= user.user_id )}}
                                                     {{soldForm.submit(class_="btn btn-primary")}}
+                                                </form>
                                             </div>
                                         </td>
                         </div>
