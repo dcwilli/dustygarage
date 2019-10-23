@@ -68,7 +68,7 @@ def userbids(userid):
     bids = db.session.query(Tool, Bid).join(
         Bid).filter_by(user_id=userid).all()
     print(bids)
-    if bids == None:
+    if bids == []:
         print("bids equal none")
     # get highest bid
     current_user = session.get('user_id')
