@@ -54,10 +54,17 @@ def userselling(userid):
         Tool.sold_status == 0).all()
     tool_length = len(tool)
 
-    print(tool)
-    print("-----------Tool length below---------------------")
-    print(tool_length)
     return render_template('userdash/manageselling.html', userid=userid, tool=tool)
+
+
+@bp.route('/usersold/<userid>', methods=["POST", "GET"])
+@login_required
+def usersold(userid):
+
+    sold = Tool.query.filter_by(user_id=userid).filter(
+        Tool.sold_status != 0).all()
+
+    return render_template('userdash/managesold.html', userid=userid, sold=sold)
 
 
 @bp.route('/userbids/<userid>', methods=["POST", "GET"])
