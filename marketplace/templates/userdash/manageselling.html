@@ -15,9 +15,9 @@
             <li class="nav-item">
                 <a class="nav-link active" href="{{'/userdash/userselling/{}'.format(current_user.id)}}"><i
                         class="fas fa-sign"></i> Selling</a>
-            </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="#"><i class="fas fa-hand-holding-usd"></i> Sold</a>
+                <a class="nav-link text-white" href="{{'/userdash/usersold/{}'.format(current_user.id)}}"><i
+                        class="fas fa-hand-holding-usd"></i> Sold</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white" href="{{'/userdash/userbids/{}'.format(current_user.id)}}"><i
