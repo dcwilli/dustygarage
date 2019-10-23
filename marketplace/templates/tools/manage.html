@@ -92,26 +92,26 @@
                     <h4>{{tool.tool_name}}</h4>
                     <p> {{tool.desc}}</p>
                 </div>
-                <!-- Pricing -->
-                <div class="col-sm-3">
-                    <h3 class="text-center">Pricing</h3>
-                    <div class="card mx-auto py-3 h-25 border-0" style="background-color: lightgray">
-                        <div class="card-body bg-dark text-center rounded text-white">
-                            <h1 class="card-title center pricing-card-title display-3">${{tool.list_price}}</h1>
-                            <medium class="text-white-50 ">Current Starting Price {{tool.sold_status}}</medium>
-                            <div class="input-group mt-4 mb-1">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="bid-price">$</span>
-                                </div>
-                                <input type="text" class="form-control" placeholder="Enter a new price"
-                                    aria-label="Username" aria-describedby="basic-addon1">
-                            </div>
-                            <button type="button" class="btn btn-light mt-4">Set new price</button>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
+        <!-- Pricing -->
+        <div class="col-sm-3">
+            <h3 class="text-center">Pricing</h3>
+            <div class="card mx-auto py-3 h-25 border-0" style="background-color: lightgray">
+                <div class="card-body bg-dark text-center rounded text-white">
+                    <h1 class="card-title center pricing-card-title display-3">${{tool.list_price}}</h1>
+                    <medium class="text-white-50 ">Current Starting Price {{tool.sold_status}}</medium>
+                    <div class="input-group mt-4 mb-1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="bid-price">$</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Enter a new price" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </div>
+                    <button type="button" class="btn btn-light mt-4">Set new price</button>
+                </div>
+            </div>
+        </div>
+
 </main>
 {% endblock %}
