@@ -22,12 +22,12 @@
     <div class="container-fluid" id="itemdescription">
         <!-- Image -->
         <!-- List of Bids -->
-        {% if tool != [] %}
+        {% if bid != [] %}
         <div class="row p-4" style="background-color: lightgray">
             {% if tool.sold_status == 0 %}
             <div class="col-md-10 mx-auto">
                 <div class="card mx-4">
-                    <h5 class="card-header bg-primary">Current Bids</h5>
+                    <h5 class="card-header">Current Bids</h5>
                     <div class="card-body p-0">
                         <div class="table-responsive">
                             <table class="table table-striped">
@@ -67,24 +67,35 @@
                 {% for bid, user in bid_user %}
                 <div class="mx-auto">
                     <div class="card mx-4">
-                        <h5 class="card-header text-center">Item Sold</h5>
-                        <div class="card-body text-center p-0">
-                            <h1><i class="far fa-handshake card card-title"></i></h1>
-                            <h5 class="card-title px-3">Buyer</h5>
-                            <p>{{bid.name}} {{bid.lastName}}</p>
-                            <p class="px-3">{{bid.emailid}}</p>
-                            <form class="pb-3" method=post>
-                                {{undoForm.csrf_token}}
-                                {{undoForm.undoSold(value= set_to_zero)}}
-                                {{undoForm.submit_undo(class_="btn btn-danger")}}
-                            </form>
+                        <h5 class="card-header">
+                            <h1><i class="far fa-handshake card card-title"></i></h1> Item Sold
+                        </h5>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <tbody>
+                                        {% for bid, user in bid_user %}
+                                        <tr>
+                                            <td>{{bid.name}} {{bid.lastName}}</td>
+                                            <th scope="row">{{bid.emailid}}</th>
+                                            <td>{{user.bid_date.strftime("%b %d %Y")}}</td>
+                                            <td>${{user.bid_amount}}</td>
+                                            <td>
+                                                <form class="pb-3" method=post>
+                                                    {{undoForm.csrf_token}}
+                                                    {{undoForm.undoSold(value= set_to_zero)}}
+                                                    {{undoForm.submit_undo(class_="btn btn-danger")}}
+                                                </form>
+                                            </td>
+                            </div>
                         </div>
+                        {% endfor %}
+                        {% endif %}
                     </div>
-                    {% endfor %}
-                    {% endif %}
                 </div>
             </div>
         </div>
+
         {% endif %}
         <div class="row p-4" style="background-color: lightgray">
             <div class="col-sm-3">
