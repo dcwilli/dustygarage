@@ -51,7 +51,7 @@
                                                 <TD class="c2">{{item.tool_name}}</TD>
                                                 <TD class="c3">${{item.list_price}}</TD>
                                                 <TD class="c4">
-                                                    <SPAN>{{item.category}}</SPAN>
+                                                    {item.category}}
                                                 </TD>
                                                 <TD class="c5">
                                                     <SPAN>{{item.id}}</SPAN>
@@ -66,8 +66,7 @@
                                                 </TD>
                                                 <TD class="c7">
                                                     <form><a href="{{'/tools/{}'.format(item.id)}}"><button
-                                                                type="button" onclick="login"
-                                                                class="btn btn-primary mt-4">More
+                                                                type="button" class="btn btn-primary mt-4">More
                                                                 Details</button></a>
                                                     </form>
                                                 </TD>
