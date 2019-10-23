@@ -43,7 +43,7 @@ def maindash(userid):
     recently_viewed = session.get('vieweditems')
 
     views = Tool.query.filter(Tool.id.in_(recently_viewed)).all()
-    return render_template('userdash/maindash.html', userid=userid, tool_length=tool_length, bid_length=bid_length, sold_length=sold_length, views=views)
+    return render_template('userdash/maindash.html', userid=userid, tool_length=tool_length, bid_length=bid_length, sold_length=sold_length, views=views, total=total)
 
 
 @bp.route('/userselling/<userid>', methods=["POST", "GET"])
