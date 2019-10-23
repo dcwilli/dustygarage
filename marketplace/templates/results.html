@@ -30,12 +30,13 @@
                             </h3>
                             <div class="input-group ">
                                 <span class="input-group-btn ">
-                                    {{wtf.quick_form(form, button_map={'submit':'secondary'})}}
+                                    {{wtf.quick_form(form, button_map={'search':'secondary'})}}
                                     <h2>
                                         <i class="fa fa-file-o "></i>Results</h2>
                                     <hr>
-
+                                    {% if items != None %}
                                     <title>Search Results</title>
+                                    {% endif %}
                                     <table class="table table-striped">
                                         <tbody>
                                             {% for item in items %}
