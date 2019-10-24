@@ -100,7 +100,7 @@ def search():
             print(all_tools[0].tool_name)
             for tool in all_tools:
                 if re.search(search_string, tool.tool_name, re.IGNORECASE):
-                search_results.append(tool)
+                    search_results.append(tool)
         else:
             print("This string is empty")
 
