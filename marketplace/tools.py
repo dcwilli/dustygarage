@@ -174,11 +174,6 @@ def bid(toolid):
     print("9999999999999999999999999999999999999999999999")
     print(tool_user_id)
     print(user_obj)
-    if tool_user_id == user_obj:
-        flash('Just like when you call your own phone number, bidding on your own tool doesn\'t work',
-              'alert alert-danger')
-        return redirect(url_for('tool.show', id=tool_id))
-
     if bid_user is None:
         # get the tool object associated with the page
         if form.validate_on_submit():
