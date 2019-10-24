@@ -23,10 +23,13 @@
         <!-- Image --->
         <!-- List of Bids -->
 
-        <div class="row p-4" style="background-color: lightgray">
+        <section class="row p-4" style="background-color: lightgray">
             {% if tool.sold_status == 0 %}
             <div class="col-md-10 mx-auto">
                 <div class="card mx-4">
+                    {% if bid_user == [] %}
+                    Hello
+                    {% else %}
                     <h5 class="card-header">Current Bids</h5>
                     <div class="card-body p-0">
                         <div class="table-responsive">
@@ -62,6 +65,7 @@
                             </table>
                         </div>
                     </div>
+                    {% endif %}
                 </div>
 
 
@@ -104,7 +108,7 @@
 
 
 
-        </div>
+        </section>
 
 
         <div class="row p-4" style="background-color: lightgray">
