@@ -83,7 +83,7 @@
                     {% if bid_user %}
                     <medium class="text-white-50 ">Your Current Bid: </medium><br>
                     <medium class="text-white-50 ">{{ current_bid_amount }}</medium><br>
-                    <button type="button" class="btn btn-light mt-0 mt-5 col-sm-6 float-right mt-4" data-toggle="modal"
+                    <button type="button" class="btn btn-light mt-0 col-sm-6 float-right" data-toggle="modal"
                         data-target="#bidModal">Update
                         Bid</button>
 
@@ -129,7 +129,7 @@
             {% else %}
 
 
-            <button type="button" class="btn btn-light mt-0 mt-5 col-sm-6 float-right mt-4" data-toggle="modal"
+            <button type="button" class="btn btn-light mt-0 col-sm-6 float-right" data-toggle="modal"
                 data-target="#bidModal">Make a
                 Bid</button>
 
@@ -174,8 +174,7 @@
 
 
     {% else %}
-    <form><a href="/login"><button type="button" onclick="login"
-                class="btn btn-light mt-0 mt-5 col-sm-6 float-right mt-4">Login
+    <form><a href="/login"><button type="button" onclick="login" class="btn btn-light mt-0 col-sm-6 float-right">Login
                 to Bid</button></a>
     </form>
     {% endif %}
