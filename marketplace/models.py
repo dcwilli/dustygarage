@@ -39,7 +39,7 @@ class Tool(db.Model):
     images = db.Column(db.String(1000), default='noimage.png')
     category = db.Column(db.String(100))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    desc = db.Column(db.String(100))
+    desc = db.Column(db.String(300))
     brand = db.Column(db.String(100))
     date_created = db.Column(db.DateTime, default=datetime.now())
     sold_status = db.Column(db.String(100), default=0)
