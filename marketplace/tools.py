@@ -171,6 +171,8 @@ def bid(toolid):
 
     # check the bidder isn't also the seller
     tool_user_id = tool.user_id
+    print(tool_user_id)
+    print(user_obj)
     if tool_user_id == user_obj:
         flash('Just like when you call your own phone number, bidding on your own tool doesn\'t work',
               'alert alert-danger')
