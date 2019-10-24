@@ -86,34 +86,31 @@
 
                 {% elif tool.sold_status != 0 %}
 
-                <div class="mx-auto">
-                    <div class="card mx-4">
-                        <h5 class="card-header alert alert-danger mb-0"> Item Sold </h5>
-                        <div class="card-body p-0">
-                            <div class="table-responsive">
-                                <table class="table my-auto">
-                                    <tbody>
-                                        {% for bid, user in bid_user %}
-                                        <tr>
-                                            <td>{{bid.name}} {{bid.lastName}}</td>
-                                            <th scope="row">{{bid.emailid}}</th>
-                                            <td>{{user.bid_date.strftime("%b %d %Y")}}</td>
-                                            <td>${{user.bid_amount}}</td>
-                                            <td>
-                                                <form class="pb-3" method=post>
-                                                    {{undoForm.csrf_token}}
-                                                    {{undoForm.undoSold(value= set_to_zero)}}
-                                                    {{undoForm.submit_undo(class_="btn btn-danger")}}
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                <h5 class="card-header alert alert-danger mb-0"> Item Sold </h5>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table my-auto">
+                            <tbody>
+                                {% for bid, user in bid_user %}
+                                <tr>
+                                    <td>{{bid.name}} {{bid.lastName}}</td>
+                                    <th scope="row">{{bid.emailid}}</th>
+                                    <td>{{user.bid_date.strftime("%b %d %Y")}}</td>
+                                    <td>${{user.bid_amount}}</td>
+                                    <td>
+                                        <form class="pb-3" method=post>
+                                            {{undoForm.csrf_token}}
+                                            {{undoForm.undoSold(value= set_to_zero)}}
+                                            {{undoForm.submit_undo(class_="btn btn-danger")}}
+                                        </form>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+
 
             </div>
             {% endif %}
