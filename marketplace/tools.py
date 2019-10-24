@@ -171,6 +171,7 @@ def bid(toolid):
 
     # check the bidder isn't also the seller
     tool_user_id = tool.user_id
+    print("9999999999999999999999999999999999999999999999")
     print(tool_user_id)
     print(user_obj)
     if tool_user_id == user_obj:
