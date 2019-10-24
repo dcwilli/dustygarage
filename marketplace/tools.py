@@ -186,6 +186,7 @@ def bid(toolid):
                       'alert alert-danger')
                 print('Bid amount needs to be higher than the list price',
                       'alert alert-danger')
+                return redirect(url_for('tool.show', id=tool_id))
             if tool_user_id == int_userobj:
                 flash('Just like when you call your own phone number, bidding on your own tool doesn\'t work',
                       'alert alert-danger')
@@ -209,6 +210,7 @@ def bid(toolid):
                       'alert alert-danger')
                 print(u'Bid amount needs to be higher than the list price',
                       'alert alert-danger')
+                return redirect(url_for('tool.show', id=tool_id))
             if tool_user_id == int_userobj:
                 flash('Just like when you call your own phone number, bidding on your own tool doesn\'t work',
                       'alert alert-danger')
