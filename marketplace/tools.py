@@ -172,7 +172,6 @@ def bid(toolid):
     # check the bidder isn't also the seller
     tool_user_id = tool.user_id
     int_userobj = int(user_obj)
-    print("9999999999999999999999999999999999999999999999")
     print(tool_user_id)
     print(int_userobj)
     if bid_user is None:
@@ -188,7 +187,7 @@ def bid(toolid):
                       'alert alert-danger')
                 return redirect(url_for('tool.show', id=tool_id))
             if tool_user_id == int_userobj:
-                flash('Just like when you call your own phone number, bidding on your own tool doesn\'t work',
+                flash('Bidding on your own tool doesn\'t work',
                       'alert alert-danger')
                 return redirect(url_for('tool.show', id=tool_id))
 
@@ -212,7 +211,7 @@ def bid(toolid):
                       'alert alert-danger')
                 return redirect(url_for('tool.show', id=tool_id))
             if tool_user_id == int_userobj:
-                flash('Just like when you call your own phone number, bidding on your own tool doesn\'t work',
+                flash('Bidding on your own tool doesn\'t work',
                       'alert alert-danger')
                 return redirect(url_for('tool.show', id=tool_id))
 
