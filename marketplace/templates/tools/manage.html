@@ -28,7 +28,17 @@
             <div class="col-md-10 mx-auto">
                 <div class="card mx-4">
                     {% if bid_user == [] %}
-                    Hello
+                    <h5 class="card-header">Current Bids</h5>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table">
+
+                                <tbody>
+                                    <td>No bids yet! Come back soon</td>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                     {% else %}
                     <h5 class="card-header">Current Bids</h5>
                     <div class="card-body p-0">
