@@ -174,7 +174,7 @@ def bid(toolid):
     int_userobj = int(user_obj)
     print("9999999999999999999999999999999999999999999999")
     print(tool_user_id)
-    print(int_user_obj)
+    print(int_userobj)
     if bid_user is None:
         # get the tool object associated with the page
         if form.validate_on_submit():
@@ -186,7 +186,7 @@ def bid(toolid):
                       'alert alert-danger')
                 print('Bid amount needs to be higher than the list price',
                       'alert alert-danger')
-            if tool_user_id == int_user_obj:
+            if tool_user_id == int_userobj:
                 flash('Just like when you call your own phone number, bidding on your own tool doesn\'t work',
                       'alert alert-danger')
                 return redirect(url_for('tool.show', id=tool_id))
@@ -209,7 +209,7 @@ def bid(toolid):
                       'alert alert-danger')
                 print(u'Bid amount needs to be higher than the list price',
                       'alert alert-danger')
-            if tool_user_id == int_user_obj:
+            if tool_user_id == int_userobj:
                 flash('Just like when you call your own phone number, bidding on your own tool doesn\'t work',
                       'alert alert-danger')
                 return redirect(url_for('tool.show', id=tool_id))
