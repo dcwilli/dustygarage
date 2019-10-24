@@ -101,7 +101,7 @@ def manage(id):
             Bid.user_id == User.id).filter_by(tool_id=id, user_id=sold_user).all()
         print(sold_user)
         print(bid_user)
-    # User submits a mark as sold OR undo
+    # User submits a mark as sold OR undox
     if request.method == "POST":
         if soldForm.submit.data:
             form_input = soldForm.bid_user_id.data
