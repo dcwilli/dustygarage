@@ -169,10 +169,11 @@ def bid(toolid):
     # check if a bid exists for this user
     bid_user = Bid.query.filter_by(user_id=user_obj, tool_id=toolid).first()
 
+    # check the bidder isn't also the seller
     tool_user_id = tool.user_id
     if tool_user_id == user_obj:
-         flash('Just like when you call your own phone number, bidding on your own tool doesn\'t work',
-                      'alert alert-danger')
+        flash('Just like when you call your own phone number, bidding on your own tool doesn\'t work',
+              'alert alert-danger')
         return redirect(url_for('tool.show', id=tool_id))
 
     if bid_user is None:
