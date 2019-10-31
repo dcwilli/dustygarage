@@ -16,6 +16,7 @@ bp = Blueprint('userdash', __name__, url_prefix='/userdash')
 @bp.route('/main/<userid>', methods=["POST", "GET"])
 @login_required
 def maindash(userid):
+
     # count tools selling
     tool = Tool.query.filter_by(user_id=userid).filter(
         Tool.sold_status == 0).all()
@@ -31,19 +32,19 @@ def maindash(userid):
     sold = Tool.query.filter_by(user_id=userid).filter(
         Tool.sold_status != 0).all()
     sold_length = len(sold)
+
     # calculate list_price sold total
     total = 0
     for i in sold:
         total = total + i.list_price
-    print(total)
 
     # recently viewed itemts list
     recently_viewed = session.get('vieweditems')
-    print(recently_viewed)
     views = Tool.query.filter(Tool.id.in_(recently_viewed)).limit(5).all()
+
     return render_template('userdash/maindash.html', userid=userid, tool_length=tool_length, bid_length=bid_length, sold_length=sold_length, views=views, total=total)
 
-
+# Items user is selling
 @bp.route('/userselling/<userid>', methods=["POST", "GET"])
 @login_required
 def userselling(userid):
@@ -54,7 +55,7 @@ def userselling(userid):
 
     return render_template('userdash/manageselling.html', userid=userid, tool=tool)
 
-
+# Items user has sold
 @bp.route('/usersold/<userid>', methods=["POST", "GET"])
 @login_required
 def usersold(userid):
@@ -64,20 +65,13 @@ def usersold(userid):
 
     return render_template('userdash/managesold.html', userid=userid, sold=sold)
 
-
+# Items user has bid on
 @bp.route('/userbids/<userid>', methods=["POST", "GET"])
 @login_required
 def userbids(userid):
+
     # query db for bids current user has made
     bids = db.session.query(Tool, Bid).join(
         Bid).filter_by(user_id=userid).all()
-    print(bids)
-    if bids == []:
-        print("bids equal none")
-    # get highest bid
-    current_user = session.get('user_id')
 
-    # if the url userid does not match the logged in user - log them out
-    # if current_user != userid:
-    #     return redirect(url_for('auth.logout'))
     return render_template('userdash/managebids.html', userid=userid, bids=bids)

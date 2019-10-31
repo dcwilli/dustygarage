@@ -20,6 +20,8 @@ class LoginForm(FlaskForm):
                              InputRequired('Enter user password')])
     submit = SubmitField("Login")
 
+# Register User
+
 
 class RegisterForm(FlaskForm):
     name = StringField("First Name", validators=[InputRequired()])
@@ -36,6 +38,8 @@ class RegisterForm(FlaskForm):
 
 
 ALLOWED_FILE = {'png', 'jpg', 'JPG', 'PNG', 'bmp'}
+
+# List item
 
 
 class CreateForm(FlaskForm):
@@ -59,15 +63,21 @@ class CreateForm(FlaskForm):
                                                         FileAllowed(ALLOWED_FILE, message="Only support jpg, JPG, png, bmp")])
     submit = SubmitField("Create")
 
+# search page form
+
 
 class SearchForm(FlaskForm):
     search = StringField("")
     search_button = SubmitField("Search")
 
+# landing page form
+
 
 class LandingForm(FlaskForm):
     landing_search = StringField("", validators=[InputRequired()])
     landing_search_button = SubmitField("Search")
+
+# Results table for search
 
 
 class Results(Table):
@@ -80,15 +90,21 @@ class Results(Table):
     date_created = DateCol("date")
     sold_status = Col("sold")
 
+# Marking item as sold in manage item
+
 
 class MarkSold(FlaskForm):
     bid_user_id = HiddenField('bid_user id', '{{user.user_id}}')
     submit = SubmitField("Mark as Sold")
 
+# Undo item as sold in manage item
+
 
 class UndoSold(FlaskForm):
     undoSold = HiddenField("zero")
     submit_undo = SubmitField("Undo")
+
+# Bidding on an item in item page
 
 
 class BidForm(FlaskForm):

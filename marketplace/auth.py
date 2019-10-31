@@ -15,6 +15,7 @@ bp = Blueprint('auth', __name__)
 
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
+    # initialise form
     form = LoginForm()
 
     if(form.validate_on_submit()):
@@ -22,25 +23,24 @@ def login():
         password = form.password.data
         u1 = User.query.filter_by(emailid=emailid).first()
 
+        # save previous page data to redirect back
         next_page = request.args.get('next')
-        print('#################')
-
-        print(next_page)
-        print('#################')
 
         # if there is no user with matching username or password is incorrect
         if u1 is None or not check_password_hash(u1.password_hash, password):
             flash(u'Incorrect Login Credentials', 'alert alert-danger')
             return redirect(url_for('auth.login'))
+
+        # set session user
         login_user(u1)
+
+        # reset viewed items
         viewed = []
         session['vieweditems'] = viewed
+
+        # redirect back to page or main page
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('main.index')
-            print('#################')
-
-        print(next_page)
-        print('#################')
 
         return redirect(next_page)
     return render_template('user.html', form=form, heading='Login')

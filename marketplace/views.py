@@ -17,8 +17,11 @@ bp = Blueprint("main", __name__)
 
 @bp.route("/", methods=["GET", "POST"])
 def index():
+
+    # Query for recently listed items card deck
     tools = Tool.query.order_by(desc(Tool.date_created)).limit(4).all()
-    print(tools)
+
+    # Initialise search form on landing page
     form_land = LandingForm()
     search_results = []
     search = SearchForm()
@@ -34,58 +37,6 @@ def index():
     return render_template("index.html", form=form_land, tools=tools)
 
 
-@bp.route("/manage")
-@login_required
-def manage():
-    return render_template("manage.html")
-
-
-# a simple function:does not handle errors in file types and file not being uploaded
-def check_upload_file(form):
-    # get file data from form
-    fp = form.image.data
-    filename = fp.filename
-    # get the current path of the module file… store file relative to this path
-    BASE_PATH = os.path.dirname(__file__)
-    # upload file location – directory of this file/static/image
-    upload_path = os.path.join(
-        BASE_PATH, "static/img", secure_filename(filename))
-    # store relative path in DB as image location in HTML is relative
-    db_upload_path = "/static/img/" + secure_filename(filename)
-    # save the file and return the db upload path
-    fp.save(upload_path)
-
-    return db_upload_path
-
-
-@bp.route("/create", methods=["GET", "POST"])
-@login_required
-def create():
-    form = CreateForm()
-    print("search_results value is beneath")
-    print(search_results)
-    if form.validate_on_submit():
-        print("Form validated")
-        db_file_path = check_upload_file(form)
-        new_tool = Tool(
-            image=db_file_path,
-            title=form.title.data,
-            modelNo=form.modelNo.data,
-            price=form.price.data,
-            category=form.category.data,
-            user_id=session.get("user_id"),
-            description=form.description.data,
-            brand=form.brand.data,
-        )
-        db.session.add(new_tool)
-
-        db.session.commit()
-        return redirect(url_for("main.create"))
-
-    return render_template("create.html", form=form)
-
-
-# use a for in the html to count the length of the string
 @bp.route("/results", methods=["GET", "POST"])
 def search():
 
