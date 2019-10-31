@@ -40,7 +40,8 @@ def maindash(userid):
 
     # recently viewed itemts list
     recently_viewed = session.get('vieweditems')
-    views = Tool.query.filter(Tool.id.in_(recently_viewed)).limit(5).all()
+    views = []
+    # Tool.query.filter(Tool.id.in_(recently_viewed)).limit(5).all()
 
     return render_template('userdash/maindash.html', userid=userid, tool_length=tool_length, bid_length=bid_length, sold_length=sold_length, views=views, total=total)
 
