@@ -155,7 +155,7 @@ def bid(toolid):
                       'alert alert-danger')
                 return redirect(url_for('tool.show', id=tool_id))
             if tool_user_id == int_userobj:
-                flash('It\'s like calling your own phone number, Bidding on your own tool doesn\'t work',
+                flash('It\'s like calling your own phone, bidding on your own tool doesn\'t work.',
                       'alert alert-danger')
                 return redirect(url_for('tool.show', id=tool_id))
 
@@ -177,7 +177,7 @@ def bid(toolid):
                       'alert alert-danger')
                 return redirect(url_for('tool.show', id=tool_id))
             if tool_user_id == int_userobj:
-                flash('It\'s like calling your own phone number, Bidding on your own tool doesn\'t work',
+                flash('It\'s like calling your own phone, bidding on your own tool doesn\'t work',
                       'alert alert-danger')
                 return redirect(url_for('tool.show', id=tool_id))
 
@@ -190,6 +190,8 @@ def bid(toolid):
                 u'Success, Your updated bid has been sent to the seller for review', 'alert alert-success')
     # redirect to the item page
     return redirect(url_for('tool.show', id=tool_id))
+
+# file upload function for the create form
 
 
 def check_file(form):
