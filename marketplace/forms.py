@@ -6,7 +6,7 @@ from wtforms.fields import (
     StringField,
     PasswordField,
     SelectField,
-    HiddenField
+    HiddenField, DecimalField
 )
 from wtforms.validators import InputRequired, Length, Email, EqualTo
 from flask_wtf.file import FileField, FileAllowed, FileRequired
@@ -46,7 +46,7 @@ class CreateForm(FlaskForm):
 
     tool_name = StringField("Title", validators=[InputRequired()])
 
-    list_price = StringField("Price", validators=[InputRequired()])
+    list_price = DecimalField("Price", validators=[InputRequired()])
     category = SelectField(
         u"Category",
         choices=[
