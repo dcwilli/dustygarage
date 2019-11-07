@@ -55,10 +55,12 @@ def logout():
 
 @bp.route('/register', methods=['GET', 'POST'])
 def register():
+
+    # initialise register form
     form = RegisterForm()
     register_error = None
+
     if form.validate_on_submit():
-        print('Registration form Submitted')
         # retrieve Username, Pwd & Email
         name = form.name.data
         lastName = form.lastName.data
@@ -81,7 +83,6 @@ def register():
                         password_hash=pwd_hash, emailid=email)
         db.session.add(new_user)
         db.session.commit()
-        print('COMMITED TO DB')
         register_success = "The Email \"{}\"successfully registered" .format(
             email)
         flash((Markup(register_success)), 'alert alert-info')

@@ -29,10 +29,12 @@ def show(id):
         return redirect('../not_found')
 
     # save this item as viewed in the session
-    # vieweditems = session.get('vieweditems')
-    # if id not in vieweditems:
-    #     vieweditems.append(id)
-    # session['vieweditems'] = vieweditems
+    vieweditems = session.get('vieweditems')
+    print("sessiong.get: line passed")
+    if id not in vieweditems:
+        vieweditems.append(id)
+        print("if id not in vieweditems: line passed")
+    session['vieweditems'] = vieweditems
 
     # get the list price to compare when a user makes a bid
     list_price = tool.list_price
