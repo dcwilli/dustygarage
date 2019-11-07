@@ -109,7 +109,7 @@
                     <h3 class="col-sm-12 ">Recently Viewed Items</h3>
                 </div>
                 <div class="container">
-                    <div class="card-deck mx-auto my-4">
+                    <div class="card-deck mx-auto my-4" style="max-width: 200px">
                         {% for view in views %}
 
                         <div class="card border-dark">
@@ -121,8 +121,7 @@
                                 <img style="height: 200px" class="card-img-top mx-auto"
                                     src={{'/static/img/' + view.images }} alt="Tool Image">
 
-                                <p class="card-text mx-2 px-2 text-center d-inline-block text-truncate pt-3"
-                                    style="max-width: 200px;">
+                                <p class="card-text mx-2 px-2 text-center text-truncate pt-3" style="max-width: 200px;">
                                     {{view.desc}}
                                 </p>
 
