@@ -57,7 +57,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h1 style="font-size:5vw" class="card-text display-4">Bids Made </h1>
-                                <a href="{{'/userdash/userbids/{}'.format(current_user.id)}}" <h5
+                                <a href="{{'/userdash/userbids/{}'.format(current_user.id)}}" <h5 style="font-size:5vw"
                                     class="card-title display-2 text-decoration-none text-dark text-center">{{bid_length}}
                                     </h5></a>
 
@@ -68,6 +68,7 @@
                             <div class="card-body">
                                 <h1 style="font-size:5vw" class="card-text display-4">Tools Listed </h1>
                                 <a href="{{'/userdash/userselling/{}'.format(current_user.id)}}" <h5
+                                    style="font-size:5vw"
                                     class="card-title display-2 text-decoration-none text-dark text-center">{{tool_length}}
                                     </h5></a>
 
@@ -78,7 +79,8 @@
                         <div class="card text-center">
                             <div class="card-body">
                                 <h1 style="font-size:5vw" class="card-text display-4">Tools Sold </h1>
-                                <a href="{{'/userdash/userselling/{}'.format(current_user.id)}}" <h5 class="card-title
+                                <a href="{{'/userdash/userselling/{}'.format(current_user.id)}}" <h5
+                                    style="font-size:5vw" class="card-title
                                     display-2 text-decoration-none text-dark text-center">{{sold_length}}
                                     </h5></a>
                             </div>
