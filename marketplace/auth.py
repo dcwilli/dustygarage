@@ -4,6 +4,7 @@ from flask import (
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.urls import url_parse
 from .models import User
+from datetime import timedelta
 from .forms import LoginForm, RegisterForm
 from flask_login import login_user, login_required, logout_user
 from . import db
@@ -33,6 +34,10 @@ def login():
 
         # set session user
         login_user(u1)
+
+        # set session length
+        session.permanent = True
+        app.permanent_session_lifetime = timedelta(minutes=1)
 
         # reset viewed items
         viewed = []
