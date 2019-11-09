@@ -32,7 +32,7 @@ def login():
             return redirect(url_for('auth.login'))
 
         # set session user
-        login_user(u1)
+        login_user(u1, duration=1)
 
         # reset viewed items
         viewed = []
