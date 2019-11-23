@@ -39,12 +39,14 @@ def index():
 
 @bp.route("/results", methods=["GET", "POST"])
 def search():
-
+    # initialise search form
     search = SearchForm()
     search_results = []
 
+    # submit form input
     if search.validate_on_submit():
 
+        # check search keyword against tool name
         search_string = search.data["search"]
         if search_string != "":
             all_tools = Tool.query.all()
