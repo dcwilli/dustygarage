@@ -36,52 +36,37 @@
             <h3 class="col-sm-12 ">Recently Listed Items</h3>
         </div>
         <div class="container">
-            <div class="card-group">
+            <div class="card-deck-wrapper">
                 <div class="card-deck my-4 rounded-0">
                     {% for tool in tools %}
+                    <div class="card">
+                        <div class="card border-dark mx-auto" style="max-width: 250px">
+                            <div class="card-header bg-base-blue text-white border-dark">
+                                <h5 class="card-title">{{tool.brand}} {{tool.tool_name}}</h5>
+                            </div>
 
-                    <div class="card border-dark mx-auto" style="max-width: 250px">
-                        <div class="card-header bg-base-blue text-white border-dark">
-                            <h5 class="card-title">{{tool.brand}} {{tool.tool_name}}</h5>
-                        </div>
+                            <div class="card-body py-0 px-0">
+                                <img class="img thumb-post card-img-top mx-auto" src={{'../static/img/' + tool.images }}
+                                    alt="Tool Image">
 
-                        <div class="card-body py-0 px-0">
-                            <img class="img thumb-post card-img-top mx-auto" src={{'../static/img/' + tool.images }}
-                                alt="Tool Image">
-
-                            <p class="card-text mx-2 px-2 text-center pt-3">{{tool.desc}}
-                            </p>
-
-                        </div>
-                        <div class="text-center text-inline">
-
-                            <div class="card-footer bg-base-blue text-white border-dark">
-                                <h5> Starting Price </h5>
-
-                                <h5 class="font-face"> ${{tool.list_price}}</h5>
-                                <hr><a href="{{'/tools/{}'.format(tool.id) }}"
-                                    class="btn btn-bg-dp mx-auto btn-inline">Make
-                                    a
-                                    Bid</a>
+                                <p class="card-text mx-2 px-2 text-center pt-3">{{tool.desc}}
+                                </p>
 
                             </div>
-                        </div>
+                            <div class="text-center text-inline">
 
-                    </div>
+                                <div class="card-footer bg-base-blue text-white border-dark">
+                                    <h5> Starting Price </h5>
 
-                    <div class="card" style="max-width: 500px;">
-                        <div class="row no-gutters">
-                            <div class="col-md-5" style="background: #868e96;">
-                                <img src="images/sample.svg" class="card-img-top h-100" alt="...">
-                            </div>
-                            <div class="col-md-7">
-                                <div class="card-body">
-                                    <h5 class="card-title">Alice Liddel</h5>
-                                    <p class="card-text">Alice is a freelance web designer and developer based in
-                                        London. She is specialized in HTML5, CSS3, JavaScript, Bootstrap, etc.</p>
-                                    <a href="#" class="btn btn-primary stretched-link">View Profile</a>
+                                    <h5 class="font-face"> ${{tool.list_price}}</h5>
+                                    <hr><a href="{{'/tools/{}'.format(tool.id) }}"
+                                        class="btn btn-bg-dp mx-auto btn-inline">Make
+                                        a
+                                        Bid</a>
+
                                 </div>
                             </div>
+
                         </div>
                     </div>
                     {% endfor %}
