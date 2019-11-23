@@ -29,8 +29,8 @@ def show(id):
         return redirect('../not_found')
 
     # if the user is logged in start tracking viewed items
-    if id is not None:
-        print(id)
+    if user_obj is not None:
+        print(user_obj)
         print("ID ABOVE")
         # save this item as viewed in the session
         vieweditems = session.get('vieweditems')
