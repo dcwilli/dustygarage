@@ -27,6 +27,8 @@ def show(id):
     # check that the product exists in the DB
     if tool == None:
         return redirect('../not_found')
+
+    # if the user is logged in start tracking viewed items
     if id is not None:
         # save this item as viewed in the session
         vieweditems = session.get('vieweditems')
