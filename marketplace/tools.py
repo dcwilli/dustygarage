@@ -30,6 +30,8 @@ def show(id):
 
     # if the user is logged in start tracking viewed items
     if id is not None:
+        print(id)
+        print("ID ABOVE")
         # save this item as viewed in the session
         vieweditems = session.get('vieweditems')
         print("sessiong.get: line passed")
