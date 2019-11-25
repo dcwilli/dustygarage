@@ -95,7 +95,7 @@ class Results(Table):
 
 class MarkSold(FlaskForm):
     bid_user_id = HiddenField('bid_user id', '{{user.user_id}}')
-    bid_user_price = HiddenField('bid_user price', '{{user.bid_amount}}')
+    bid_user_price = HiddenField()
     submit = SubmitField("Mark as Sold")
 
 # Undo item as sold in manage item
