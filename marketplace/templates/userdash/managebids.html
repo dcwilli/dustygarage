@@ -88,7 +88,7 @@
                                             <td>{{bid.tool_name}}</td>
                                             <td>{{tool.bid_date.strftime("%b %d %Y")}}</td>
                                             <th scope="row">${{bid.list_price}}</th>
-                                            <td>Not Availiable</td>
+                                            <td>{{bid.highest_bid}}</td>
                                             <td> <img class="img-fluid img-thumbnail" style="max-width: 70px;"
                                                     src={{'/static/img/' + bid.images }}></td>
                                             <td>
