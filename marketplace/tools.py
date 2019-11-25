@@ -76,7 +76,7 @@ def manage(id):
     bid_user = None
     set_to_zero = 0
 
-    # If a user has not been marked as sold, show a list of current bids
+    # If a tool has not been marked as sold, show a list of current bids
     if sold_user == 0:
         bid_user = db.session.query(User, Bid).join(
             Bid).filter_by(tool_id=id).all()
@@ -90,7 +90,9 @@ def manage(id):
     if request.method == "POST":
         if soldForm.submit.data:
             form_input = soldForm.bid_user_id.data
+            sold_price = soldForm.bid_user_price
             update_tool = Tool.query.get(id)
+            update_tool.sold_price = sold_price
             update_tool.sold_status = form_input
             update_tool.sold_date = datetime.now()
             db.session.commit()
@@ -100,6 +102,7 @@ def manage(id):
             update_tool = Tool.query.get(id)
             update_tool.sold_status = form_input
             update_tool.sold_date = None
+            update_tool.sold_price = None
             db.session.commit()
 
         # redirect back to the manage page with refreshed list
