@@ -66,6 +66,7 @@
                                                 <form method=post>
                                                     {{soldForm.csrf_token}}
                                                     {{soldForm.bid_user_id(value= user.user_id )}}
+                                                    {{soldForm.bid_user_price(value= user.bid_amount)}}
                                                     {{soldForm.submit(class_="btn btn-primary")}}
                                                 </form>
                                             </div>
