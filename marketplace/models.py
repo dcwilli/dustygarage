@@ -44,6 +44,8 @@ class Tool(db.Model):
     date_created = db.Column(db.DateTime, default=datetime.now())
     sold_status = db.Column(db.String(100), default=0)
     sold_date = db.Column(db.DateTime(50), default=None)
+    highest_bid = db.Column(db.Numeric(10), default=None)
+    sold_price = db.Column(db.Numeric(10), default=None)
 
     bid_id = db.relationship('Bid', backref='tools')
 
